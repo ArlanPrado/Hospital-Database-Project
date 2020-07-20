@@ -21,9 +21,7 @@
   <body>
     <h1>JDBC Connection example</h1>
 
-<!--   dabase name =Hospital -->
-<!-- conection name= root
-connection passwored=passwored -->
+
     <%
     try {
         String connectionURL = "jdbc:mysql://localhost:3306/Hospital?serverTimezone=UTC";
@@ -111,58 +109,11 @@ connection passwored=passwored -->
  
  */     
  
-/*  String createSql = "CREATE TABLE MedicationOrders (MedicationOrdersKey INT NOT NULL AUTO_INCREMENT, " 
-         +"OrderName VARCHAR(45) NULL, "
-         +"OrderAmount VARCHAR(45) NULL, "          
-         +"DoctorKey INT NULL, "
-         +"SpecialistKey INT NULL, "
-         +"SurgeonKey INT NULL, "
-         +"PatientKey INT NULL, "  
-         +"PharmacistKey INT NULL, "
-         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (MedicationOrdersKey))";     
- */
-/*  String createSql = "CREATE TABLE Supervisors (SupervisorsKey INT NOT NULL AUTO_INCREMENT, " 
-         +"SupervisorsFirstname VARCHAR(45) NULL, "
-         +"SupervisorsLastname VARCHAR(45) NULL, "          
-         +"SupervisorsPhoneNumber INT NULL, " 
-         +"Supervision VARCHAR(45) NULL, "
-         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (SupervisorsKey))"; 
- */
- 
-/*  String createSql = "CREATE TABLE Pharmacists (PharmacistKey INT NOT NULL AUTO_INCREMENT, " 
-         +"SupervisorsKey INT NULL, "
-         +"PharmacistFirstname VARCHAR(45) NULL, "
-         +"PharmacistLastname VARCHAR(45) NULL, "          
-         +"PharmacistPhoneNumber INT NULL, " 
-         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (PharmacistKey))"; 
- 
-  */
-  
-/*   String createSql = "CREATE TABLE Receptionists (ReceptionisKey INT NOT NULL AUTO_INCREMENT, " 
-          +"SupervisorsKey INT NULL, "
-          +"ReceptionisFirstname VARCHAR(45) NULL, "
-          +"ReceptionisLastname VARCHAR(45) NULL, "          
-          +"ReceptionisPhoneNumber INT NULL, " 
-          + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (ReceptionisKey))"; 
-   */
-   
-
 
 
  
 
- 
-/*  String createSql = "CREATE TABLE Visit (VisitKey INT NOT NULL AUTO_INCREMENT, " 
-         +"VisitDate VARCHAR(45) NULL, "
-         +"VisitTime VARCHAR(45) NULL, "          
-         +"DoctorKey INT NULL, "
-         +"SpecialistKey INT NULL, "
-         +"SurgeonKey INT NULL, "
-         +"NurseKey INT NULL, "
-         +"ReceptionisKey INT NULL, "
-         +"SecretarieKey INT NULL, "
-         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (VisitKey))"; 
- */
+
  
 /*  Statement statement = connection.createStatement();
  statement.execute(createSql); */
