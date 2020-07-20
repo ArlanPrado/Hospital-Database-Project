@@ -118,15 +118,33 @@ out.print(login_msg);
             
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM user");
+          int user_id=0;
               while(rs.next()) {  
-                  if(rs.getString(6).equals(UserEmail) && rs.getString(7).equals(USerPassword)){
-                     
-            out.println(rs.getString(6) + "<br/><br/>");
-            out.println(rs.getString(7) + "<br/><br/>");
-            response.sendRedirect("patient.jsp");
+                  if(rs.getString(8).equals(UserEmail) && rs.getString(9).equals(USerPassword)){
+            out.println(rs.getInt(1) + "<br/><br/>");         
+            out.println(rs.getString(8) + "<br/><br/>");
+            out.println(rs.getString(9) + "<br/><br/>");
+            user_id = rs.getInt(1);
+            
             break;
                   }
               }
+              
+              ResultSet rs6 = stmt.executeQuery("SELECT * FROM employee ");
+              boolean isPatient = true;
+              while(rs6.next()) {  
+                  if(rs6.getInt(1)== user_id ){
+                      isPatient=false;
+                     break;
+                  }
+              } 
+              if(isPatient == true){
+                  response.sendRedirect("patient.jsp");        
+             }else {                
+                 response.sendRedirect("employee.jsp");  
+                 out.println("you are an not a patient");
+                 }
+              
            
             rs.close();
             stmt.close();

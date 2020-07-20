@@ -65,7 +65,7 @@ div {
         String first_name="";
         String Last_name="";
         String diagnosis="";
-        int patient_id=0;
+      //  int patient_id=0;
         int user_id=0;
         
         String medications="";
@@ -96,21 +96,25 @@ div {
            ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
           
             while(rs.next()) {  
-                if(rs.getString(6).equals(useremail) ){
+                if(rs.getString(8).equals(useremail) ){
                     user_id= rs.getInt(1);       
                     first_name =rs.getString(2);
                     Last_name=rs.getString(3);
                    break;
                 }
             } 
+            
+           
+            
+       
 
           ResultSet rs2 = stmt.executeQuery("SELECT * FROM patient ");
           
            while(rs2.next()) {  
-               if(rs2.getInt(5) == user_id ){
-                   patient_id= rs2.getInt(1);       
-                   diagnosis =  rs2.getString(3);
-                  diagnosisDate =rs2.getDate(6);
+               if(rs2.getInt(1) == user_id ){
+                   //patient_id= rs2.getInt(1);       
+                   diagnosis =  rs2.getString(2);
+                  diagnosisDate =rs2.getDate(4);
          break;
                }
            } 
@@ -119,7 +123,7 @@ div {
            ResultSet rs3 = stmt.executeQuery("SELECT * FROM patientMedicalHistory ");
            
            while(rs3.next()) {  
-               if(rs3.getInt(2) == patient_id ){
+               if(rs3.getInt(2) == user_id ){
                     medications=rs3.getString(3);
                     allergies =rs3.getString(4);
                     diseases=rs3.getString(5);
@@ -133,11 +137,11 @@ div {
            ResultSet rs4 = stmt.executeQuery("SELECT * FROM PatientHasAppointment ");
            
            while(rs4.next()) {  
-               if(rs4.getInt(1) == patient_id ){
+               if(rs4.getInt(1) == user_id ){
                    appointment_id=rs4.getInt(2);
            break;
                }
-           } 
+           }
           
          
           /*  java.sql.Date appointmentDate = Date.valueOf("2000-01-01"); */
@@ -152,7 +156,7 @@ div {
            break;
                }
            } 
-          
+       
 
         
     /*        rs.close();
@@ -169,7 +173,6 @@ div {
     
  <div class="success">
   <p><strong>Hello!</strong> <%=first_name%> <%=Last_name%></p>
-  <p><strong>your patient_ID</strong> <%=patient_id%></p>
    <p><strong>your User_ID</strong> <%=user_id%></p>
 </div>
 

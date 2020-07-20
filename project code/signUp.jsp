@@ -15,7 +15,7 @@ body {
 #main {
   margin: auto;
   width: 320px;
-  height: 300px;
+  height: 370px;
   border: 3px solid #73AD21;
   padding: 10px;
   display: flex;
@@ -41,6 +41,8 @@ body {
     
     <br /> First Name:<input type="text" name="firstName" required/><br />
     <br /> Last Name:<input type="text" name="lastName" required/><br />
+    <br /> Birth Date:<input type="date" name="birthdatE" required/><br />
+    <br /> Gender:<input type="text" name="gendeR" required/><br />
     <br /> Phone:<input type="number"  name="phone" /><br />
     <br /> Address:<input type="text" name="address" /><br />
         <br /> Email:<input type="email" name="email" required/><br />
@@ -65,6 +67,8 @@ body {
     <% 
     String FirstName=request.getParameter("firstName");
     String LastName=request.getParameter("lastName");
+    String dateOfbirth=request.getParameter("birthdatE");
+    String Gender=request.getParameter("gendeR");
     String Phone=request.getParameter("phone");
     String Address=request.getParameter("address");
     String UserEmail=request.getParameter("email");
@@ -86,9 +90,9 @@ body {
             java.util.Date now = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(now.getTime());
             
-            String insertSql = "INSERT INTO user (firstName,lastName,"
+            String insertSql = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
                     + " phoneNumber, address, email, password, CREATED_DATE) "
-                    + "VALUES ('"+FirstName+"', '"+LastName+"', '"+Phone+"' ,"
+                    + "VALUES ('"+FirstName+"', '"+LastName+"','"+dateOfbirth+"','"+Gender+"', '"+Phone+"' ,"
                     +" '"+Address+"','"+UserEmail +"','"+USerPassword+"','" + sqlDate + "')";
             stmt.execute(insertSql);   
             stmt.close();
