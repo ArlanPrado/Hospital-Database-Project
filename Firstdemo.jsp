@@ -21,22 +21,24 @@
   <body>
     <h1>JDBC Connection example</h1>
 
-
+<!--   dabase name =Hospital -->
+<!-- conection name= root
+connection passwored=passwored -->
     <%
     try {
         String connectionURL = "jdbc:mysql://localhost:3306/Hospital?serverTimezone=UTC";
-        Connection connection = null; 
-        Class.forName("com.mysql.jdbc.Driver").newInstance(); 
+        Connection connection = null;
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
         connection = DriverManager.getConnection(connectionURL, "root", "Iluvhim@123");
         if(!connection.isClosed())
              out.println("Successfully connected to " + "MySQL server using "+"<br/><br/>");
-        
-        
- 
+
+
+
      // Create table
-     
-     
-   /*    String createSql = "CREATE TABLE user (userKey INT NOT NULL AUTO_INCREMENT, " 
+
+
+   /*    String createSql = "CREATE TABLE user (userKey INT NOT NULL AUTO_INCREMENT, "
                 + "PatientFirstName VARCHAR(45) NULL,"
                 +"PatientLastName VARCHAR(45) NULL, "
                 +"PatientPhoneNumber INT NULL, "
@@ -47,10 +49,10 @@
                 +"SpecialistKey INT NULL, "
                 +"SurgeonKey INT NULL, "
                 +"NurseKey INT NULL, "
-                + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (PatientKey))"; 
+                + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (PatientKey))";
                  */
-                
-  /*    String createSql = "CREATE TABLE Patient (PatientKey INT NOT NULL AUTO_INCREMENT, " 
+
+  /*    String createSql = "CREATE TABLE Patient (PatientKey INT NOT NULL AUTO_INCREMENT, "
                 + "PatientFirstName VARCHAR(45) NULL,"
                 +"PatientLastName VARCHAR(45) NULL, "
                 +"PatientPhoneNumber INT NULL, "
@@ -62,7 +64,7 @@
                 +"SurgeonKey INT NULL, "
                 +"NurseKey INT NULL, "
                 + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (PatientKey))";  */
-        /* String createSql = "CREATE TABLE PatientMedicalHistory (PatientMedicalHistoryKey INT NOT NULL AUTO_INCREMENT, " 
+        /* String createSql = "CREATE TABLE PatientMedicalHistory (PatientMedicalHistoryKey INT NOT NULL AUTO_INCREMENT, "
                 +"PatientKey INT NULL, "
                 +"Medications VARCHAR(45) NULL, "
                 +"Alergies VARCHAR(45) NULL, "
@@ -74,119 +76,166 @@
                 +"SurgeonKey INT NULL, "
                 +"NurseKey INT NULL, "
                 + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (PatientMedicalHistoryKey))";  */
-         
-    /*      String createSql = "CREATE TABLE Doctor (DoctorKey INT NOT NULL AUTO_INCREMENT, " 
+
+    /*      String createSql = "CREATE TABLE Doctor (DoctorKey INT NOT NULL AUTO_INCREMENT, "
                  +"SupervisorsKey INT NULL, "
                  +"DoctorFirstname VARCHAR(45) NULL, "
-                 +"DoctorLastname VARCHAR(45) NULL, "          
-                 +"DoctorPhoneNumber INT NULL, "    
-                 + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (DoctorKey))";                 
+                 +"DoctorLastname VARCHAR(45) NULL, "
+                 +"DoctorPhoneNumber INT NULL, "
+                 + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (DoctorKey))";
  */
-                
- /* String createSql = "CREATE TABLE Nurses (NurseKey INT NOT NULL AUTO_INCREMENT, " 
+
+ /* String createSql = "CREATE TABLE Nurses (NurseKey INT NOT NULL AUTO_INCREMENT, "
          +"SupervisorsKey INT NULL, "
          +"NurseFirstname VARCHAR(45) NULL, "
-         +"NurseLastname VARCHAR(45) NULL, "          
-         +"NursePhoneNumber INT NULL, "    
-         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (NurseKey))";                 
+         +"NurseLastname VARCHAR(45) NULL, "
+         +"NursePhoneNumber INT NULL, "
+         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (NurseKey))";
  */
- 
-/*  String createSql = "CREATE TABLE Specialists (SpecialistKey INT NOT NULL AUTO_INCREMENT, " 
+
+/*  String createSql = "CREATE TABLE Specialists (SpecialistKey INT NOT NULL AUTO_INCREMENT, "
          +"SupervisorsKey INT NULL, "
          +"SpecialistFirstname VARCHAR(45) NULL, "
-         +"SpecialistLastname VARCHAR(45) NULL, "          
-         +"SpecialistPhoneNumber INT NULL, "  
-         +"specialization VARCHAR(45) NULL, "  
-         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (SpecialistKey))";      
+         +"SpecialistLastname VARCHAR(45) NULL, "
+         +"SpecialistPhoneNumber INT NULL, "
+         +"specialization VARCHAR(45) NULL, "
+         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (SpecialistKey))";
   */
-  
-/*   String createSql = "CREATE TABLE Surgeons (SurgeonKey INT NOT NULL AUTO_INCREMENT, " 
+
+/*   String createSql = "CREATE TABLE Surgeons (SurgeonKey INT NOT NULL AUTO_INCREMENT, "
           +"SupervisorsKey INT NULL, "
           +"SurgeonFirstname VARCHAR(45) NULL, "
-          +"SurgeonLastname VARCHAR(45) NULL, "          
-          +"SurgeonPhoneNumber INT NULL, "  
-          + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (SurgeonKey))";     
- 
- */     
- 
+          +"SurgeonLastname VARCHAR(45) NULL, "
+          +"SurgeonPhoneNumber INT NULL, "
+          + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (SurgeonKey))";
+
+ */
+
+/*  String createSql = "CREATE TABLE MedicationOrders (MedicationOrdersKey INT NOT NULL AUTO_INCREMENT, "
+         +"OrderName VARCHAR(45) NULL, "
+         +"OrderAmount VARCHAR(45) NULL, "
+         +"DoctorKey INT NULL, "
+         +"SpecialistKey INT NULL, "
+         +"SurgeonKey INT NULL, "
+         +"PatientKey INT NULL, "
+         +"PharmacistKey INT NULL, "
+         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (MedicationOrdersKey))";
+ */
+/*  String createSql = "CREATE TABLE Supervisors (SupervisorsKey INT NOT NULL AUTO_INCREMENT, "
+         +"SupervisorsFirstname VARCHAR(45) NULL, "
+         +"SupervisorsLastname VARCHAR(45) NULL, "
+         +"SupervisorsPhoneNumber INT NULL, "
+         +"Supervision VARCHAR(45) NULL, "
+         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (SupervisorsKey))";
+ */
+
+/*  String createSql = "CREATE TABLE Pharmacists (PharmacistKey INT NOT NULL AUTO_INCREMENT, "
+         +"SupervisorsKey INT NULL, "
+         +"PharmacistFirstname VARCHAR(45) NULL, "
+         +"PharmacistLastname VARCHAR(45) NULL, "
+         +"PharmacistPhoneNumber INT NULL, "
+         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (PharmacistKey))";
+
+  */
+
+/*   String createSql = "CREATE TABLE Receptionists (ReceptionisKey INT NOT NULL AUTO_INCREMENT, "
+          +"SupervisorsKey INT NULL, "
+          +"ReceptionisFirstname VARCHAR(45) NULL, "
+          +"ReceptionisLastname VARCHAR(45) NULL, "
+          +"ReceptionisPhoneNumber INT NULL, "
+          + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (ReceptionisKey))";
+   */
 
 
- 
 
 
- 
+
+
+
+/*  String createSql = "CREATE TABLE Visit (VisitKey INT NOT NULL AUTO_INCREMENT, "
+         +"VisitDate VARCHAR(45) NULL, "
+         +"VisitTime VARCHAR(45) NULL, "
+         +"DoctorKey INT NULL, "
+         +"SpecialistKey INT NULL, "
+         +"SurgeonKey INT NULL, "
+         +"NurseKey INT NULL, "
+         +"ReceptionisKey INT NULL, "
+         +"SecretarieKey INT NULL, "
+         + "CREATED_DATE DATE NOT NULL, PRIMARY KEY (VisitKey))";
+ */
+
 /*  Statement statement = connection.createStatement();
  statement.execute(createSql); */
- 
+
 //Insert row
  java.util.Date now = new java.util.Date();
  java.sql.Date sqlDate = new java.sql.Date(now.getTime());
- 
-/* 
- String insertSql1 = "INSERT INTO user (firstName,lastName,"
-                   + "phoneNumber, address, email, CREATED_DATE) "
+
+
+/*  String insertSql1 = "INSERT INTO user (firstName,lastName,"
+                   + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Roman', 'Ballard',0133434830,"
-                   +"'801 Pretlow St, Franklin, VA, 23851','airship@grufefse.cf' ,'" + sqlDate + "')";
+                   +"'801 Pretlow St, Franklin, VA, 23851','airship@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql2 = "INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Marisela', 'Gadison',0143434830,"
-                    +"'63 Twin Peaks Ln, Sequim, WA, 98382','crimsane@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'63 Twin Peaks Ln, Sequim, WA, 98382','crimsane@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql3 ="INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Cliff', 'Woullard',0153434830,"
-                    +"'6908 Longview Beach Rd, Jeffersonville','chrisk@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'6908 Longview Beach Rd, Jeffersonville','chrisk@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql4 ="INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Domingo', 'Zobel',0163434830,"
-                    +"'8863 Black Point Rd, Syracuse, IN, 46567','aaribaud@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'8863 Black Point Rd, Syracuse, IN, 46567','aaribaud@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql5 = "INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Andria', 'Straley',0153174830,"
-                    +"'10318 Kk Rd, Rapid River, MI, 49878','iamcal@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'10318 Kk Rd, Rapid River, MI, 49878','iamcal@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql6 ="INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Santina', 'Linker',0163184830,"
-                    +"'87 Gore Rd, Lancaster, NH, 03584','msloan@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'87 Gore Rd, Lancaster, NH, 03584','msloan@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql7 = "INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Lucretia', 'Grissom',0173194830,"
-                    +"'150 Barren, Conshohocken, PA, 19428 ','kodeman@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'150 Barren, Conshohocken, PA, 19428 ','kodeman@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql8 = "INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Tianna', 'Nielson',0183420830,"
-                    +"'30 Northington Dr, Avon, CT, 06001 ','delpino@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'30 Northington Dr, Avon, CT, 06001 ','delpino@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql9 = "INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Angelia', 'Sisk',0193214830,"
-                    +"'472 870th Hwy, Winnsboro, LA, 71295','arnold@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'472 870th Hwy, Winnsboro, LA, 71295','arnold@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql10 ="INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Sheilah', 'Rueb',0203224830,"
-                    +"'625 E Plum St, Vineland, NJ, 08360','portele@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'625 E Plum St, Vineland, NJ, 08360','portele@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql11 = "INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Mafalda', 'Call',0213234830,"
-                    +"'234 E Black Point Rd, Syracuse, IN, 46567 ','presoff@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'234 E Black Point Rd, Syracuse, IN, 46567 ','presoff@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql12 = "INSERT INTO user (firstName,lastName,"
-                    + "phoneNumber, address, email, CREATED_DATE) "
+                    + "phoneNumber, address, email,password, CREATED_DATE) "
                     + "VALUES ('Lilia', 'Thorsen',0222434830,"
-                    +"'23 Gore st, Lancaster, NH, 03584','vsprintf@grufefse.cf' ,'" + sqlDate + "')";
+                    +"'23 Gore st, Lancaster, NH, 03584','vsprintf@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql13 = "INSERT INTO user (firstName,lastName,"
-        + "phoneNumber, address, email, CREATED_DATE) "
+        + "phoneNumber, address, email,password, CREATED_DATE) "
         + "VALUES ('Mafalda', 'Thorsen',0092434830,"
-        +"'77 Gore st, hamilton, NH, 03584','Mafalda@grufefse.cf' ,'" + sqlDate + "')";
+        +"'77 Gore st, hamilton, NH, 03584','Mafalda@grufefse.cf',111111 ,'" + sqlDate + "')";
 String insertSql14 = "INSERT INTO user (firstName,lastName,"
-        + "phoneNumber, address, email, CREATED_DATE) "
+        + "phoneNumber, address, email,password, CREATED_DATE) "
         + "VALUES ('Lilia', 'Sheilah',0222434830,"
-        +"'567 Gore st, Lancaster, NH, 03584','Lilia45@grufefse.cf' ,'" + sqlDate + "')";
+        +"'567 Gore st, Lancaster, NH, 03584','Lilia45@grufefse.cf',111111 ,'" + sqlDate + "')";
 
 String insertSql15 = "INSERT INTO user (firstName,lastName,"
-        + "phoneNumber, address, email, CREATED_DATE) "
+        + "phoneNumber, address, email,password, CREATED_DATE) "
         + "VALUES ('Angelia', 'Thorsen',0792434830,"
-        +"'568 Gore st, Lancaster, NH, 03584','Angelia56@grufefse.cf' ,'" + sqlDate + "')"; */
+        +"'568 Gore st, Lancaster, NH, 03584','Angelia56@grufefse.cf',111111 ,'" + sqlDate + "')";
 
-
- /*   
+ */
+ /*
  String insertSql1 = "INSERT INTO prescription (medicationName,totalAmount,receivedByPatient,"
        + "prescribedAmount,frequency,CREATED_DATE) "
        + "VALUES ('hydrocodone', '1000 mg',true,'500 mg','2 times', '" + sqlDate + "')";
@@ -233,8 +282,8 @@ String insertSql15 = "INSERT INTO user (firstName,lastName,"
           + "prescribedAmount,frequency,CREATED_DATE) "
           + "VALUES ('naproxen', '1000 mg',true,'800 mg','1 times' , '" + sqlDate + "')"; */
 
-  /*  
-   
+  /*
+
   String insertSql1 = "INSERT INTO note (detail, CREATED_DATE) "
           + "VALUES ('Blood pressure is lower. Feet are inspected and there are no callouses, no compromised skin. No vision complaints.', '" + sqlDate + "')";
   String insertSql2 =  "INSERT INTO note (detail, CREATED_DATE) "
@@ -266,7 +315,7 @@ String insertSql15 = "INSERT INTO user (firstName,lastName,"
   String insertSql15 =  "INSERT INTO note (detail, CREATED_DATE) "
           + "VALUES ('LUNGS:  Clear to auscultation bilaterally. No wheezes, rales or rhonchi.', '" + sqlDate + "')";
      */
-    
+
   /* String insertSql1 = "INSERT INTO patient (dateOfBirth,diagnosis,room, CREATED_DATE) "
            + "VALUES ('1970-09-12','Latex Allergy ', 101,'" + sqlDate + "')";
    String insertSql2 = "INSERT INTO patient (dateOfBirth,diagnosis,room, CREATED_DATE) "
@@ -297,9 +346,9 @@ String insertSql15 = "INSERT INTO user (firstName,lastName,"
            + "VALUES ('1958-1-2','Glaucoma',114 ,'" + sqlDate + "')";
    String insertSql15 = "INSERT INTO patient (dateOfBirth,diagnosis,room, CREATED_DATE) "
            + "VALUES ('1955-2-23','Epilepsy',114 ,'" + sqlDate + "')"; */
-      
-    
-  /*  
+
+
+  /*
    String insertSql1 = "INSERT INTO patientMedicalHistory (patientID,medications,allergies,"
          + "diseases,symptoms,familyHistory, CREATED_DATE) "
          + "VALUES (16,'Clindamycin', 'Latex Allergy','Asthma',"
@@ -308,7 +357,7 @@ String insertSql15 = "INSERT INTO user (firstName,lastName,"
            + "diseases,symptoms,familyHistory, CREATED_DATE) "
            + "VALUES (17,'Ibuprofen', 'Food Allergy','Asthma',"
            +"'breathlessness, chest tightness','none','" + sqlDate + "')";
-    
+
    String insertSql3 = "INSERT INTO patientMedicalHistory (patientID,medications,allergies,"
            + "diseases,symptoms,familyHistory, CREATED_DATE) "
            + "VALUES (18,'Adderall', 'Mold Allergy','Asthma',"
@@ -349,23 +398,23 @@ String insertSql15 = "INSERT INTO user (firstName,lastName,"
            + "diseases,symptoms,familyHistory, CREATED_DATE) "
            + "VALUES (27,'Lisinopril', 'Drug Allergy','none',"
            +"'Coughing, chest tightness','none','" + sqlDate + "')";
-    
+
    String insertSql13 = "INSERT INTO patientMedicalHistory (patientID,medications,allergies,"
            + "diseases,symptoms,familyHistory, CREATED_DATE) "
            + "VALUES (28,'Benzonatate', 'Drug Allergy','none',"
            +"'chest tightness','none','" + sqlDate + "')";
-    
+
    String insertSql14 = "INSERT INTO patientMedicalHistory (patientID,medications,allergies,"
            + "diseases,symptoms,familyHistory, CREATED_DATE) "
            + "VALUES (29,'Ozempic', 'none','none',"
            +"'Coughing','none','" + sqlDate + "')";
-    
+
    String insertSql15 = "INSERT INTO patientMedicalHistory (patientID,medications,allergies,"
            + "diseases,symptoms,familyHistory, CREATED_DATE) "
            + "VALUES (30,'Trazodone', 'Insect Allergy','none',"
            +"'Coughing, chest tightness','none','" + sqlDate + "')";
      */
-    
+
 /*  String insertSql1 = "INSERT INTO Pharmacists (PharmacistFirstname,PharmacistLastname,"
         + "PharmacistPhoneNumber, CREATED_DATE) "
         + "VALUES ('Karine', 'Patnode',1678456466, '" + sqlDate + "')";
@@ -415,7 +464,7 @@ String insertSql15 = "INSERT INTO user (firstName,lastName,"
      */
 
 
- /*    
+ /*
     String insertSql1 = "INSERT INTO EmployeeOrdersPrescription (prescriptionID,employeeID, CREATED_DATE) "
           + "VALUES (16,16, '" + sqlDate + "')";
     String insertSql2 = "INSERT INTO EmployeeOrdersPrescription (prescriptionID,employeeID, CREATED_DATE) "
@@ -447,11 +496,11 @@ String insertSql15 = "INSERT INTO user (firstName,lastName,"
     String insertSql15 = "INSERT INTO EmployeeOrdersPrescription (prescriptionID,employeeID, CREATED_DATE) "
             + "VALUES (30,18, '" + sqlDate + "')";
 
-   
+
    */
- 
-   
-  /*     
+
+
+  /*
    String insertSql1 = "INSERT INTO EmployeeCreateAppointment (appointmentID,employeeID, CREATED_DATE) "
          + "VALUES (16,16, '" + sqlDate + "')";
    String insertSql2 = "INSERT INTO EmployeeCreateAppointment (appointmentID,employeeID, CREATED_DATE) "
@@ -483,9 +532,9 @@ String insertSql15 = "INSERT INTO user (firstName,lastName,"
    String insertSql15 = "INSERT INTO EmployeeCreateAppointment (appointmentID,employeeID, CREATED_DATE) "
            + "VALUES (30,18, '" + sqlDate + "')";
  */
-  
- 
- 
+
+
+
 /* String insertSql1 = "INSERT INTO PatientHasAppointment (patientID,appointmentID, CREATED_DATE) "
       + "VALUES (16,16, '" + sqlDate + "')";
 String insertSql2 = "INSERT INTO PatientHasAppointment (patientID,appointmentID, CREATED_DATE) "
@@ -517,9 +566,9 @@ String insertSql14 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
 String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID, CREATED_DATE) "
         + "VALUES (30,18, '" + sqlDate + "')";
 
- */
-  
- /* 
+
+
+ /*
  String insertSql1 = "INSERT INTO employeeHasPatients (patientID,userID, CREATED_DATE) "
          + "VALUES (16,16, '" + sqlDate + "')";
    String insertSql2 = "INSERT INTO employeeHasPatients (patientID,userID, CREATED_DATE) "
@@ -585,9 +634,9 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
            + "VALUES (30,18, '" + sqlDate + "')";
 
    */
-   
-   
-   /* 
+
+
+   /*
      String insertSql1 = "INSERT INTO employeeWritesNote (employeeID,noteID, CREATED_DATE) "
            + "VALUES (16,16, '" + sqlDate + "')";
      String insertSql2 = "INSERT INTO employeeWritesNote (employeeID,noteID, CREATED_DATE) "
@@ -619,9 +668,9 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
      String insertSql15 = "INSERT INTO employeeWritesNote (employeeID,noteID, CREATED_DATE) "
              + "VALUES (30,18, '" + sqlDate + "')";
  */
-    
- 
-/* 
+
+
+/*
  String insertSql1 = "INSERT INTO PatientHasPrescription (patientID,prescriptionID, CREATED_DATE) "
        + "VALUES (16,16, '" + sqlDate + "')";
  String insertSql2 = "INSERT INTO PatientHasPrescription (patientID,prescriptionID, CREATED_DATE) "
@@ -653,7 +702,7 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
  String insertSql15 = "INSERT INTO PatientHasPrescription (patientID,prescriptionID, CREATED_DATE) "
          + "VALUES (30,18, '" + sqlDate + "')";
  */
- 
+
 
  /* String insertSql1 = "INSERT INTO EmployeeViewsMedicalHistory (patientMedicalHistoryID,employeeID, CREATED_DATE) "
        + "VALUES (16,16, '" + sqlDate + "')";
@@ -686,8 +735,8 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
  String insertSql15 = "INSERT INTO EmployeeViewsMedicalHistory (patientMedicalHistoryID,employeeID, CREATED_DATE) "
          + "VALUES (30,18, '" + sqlDate + "')";
   */
- 
-  /* 
+
+  /*
     String insertSql1 = "INSERT INTO PatientHasMedicalHistory (patientMedicalHistoryID,patientID, CREATED_DATE) "
           + "VALUES (16,16, '" + sqlDate + "')";
     String insertSql2 = "INSERT INTO PatientHasMedicalHistory (patientMedicalHistoryID,patientID, CREATED_DATE) "
@@ -718,11 +767,11 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
             + "VALUES (29,19, '" + sqlDate + "')";
     String insertSql15 = "INSERT INTO PatientHasMedicalHistory (patientMedicalHistoryID,patientID, CREATED_DATE) "
             + "VALUES (30,18, '" + sqlDate + "')";
-    
+
      */
-    
-     
-     
+
+
+
    /*  String insertSql1 = "INSERT INTO Specialists (SpecialistFirstname,SpecialistLastname,"
            + "SpecialistPhoneNumber,specialization, CREATED_DATE) "
            + "VALUES ('Laveta', 'Juntunen',135511600,'Urologist', '" + sqlDate + "')";
@@ -760,8 +809,8 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
            + "SpecialistPhoneNumber,specialization, CREATED_DATE) "
            + "VALUES ('Ermelinda', 'Belmonte',1984511600,'Endocrinologist', '" + sqlDate + "')";
     */
- 
- /* 
+
+ /*
   String insertSql1 = "INSERT INTO employee (salary,position, CREATED_DATE) "
          + "VALUES (120000,'Specialists', '" + sqlDate + "')";
  String insertSql2 = "INSERT INTO employee (salary,position, CREATED_DATE) "
@@ -794,7 +843,7 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
          + "VALUES (140000,'Specialists', '" + sqlDate + "')";
   */
 
-  /* 
+  /*
    String insertSql1 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
           + "VALUES ('2:00 pm','2:30 pm', '1920-08-15','" + sqlDate + "')";
   String insertSql2 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
@@ -825,10 +874,10 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
           + "VALUES ('12:00 pm', '12:30 pm', '1920-11-12', '" + sqlDate + "')";
   String insertSql15 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
           + "VALUES ('12:30 am','1:00 am','1920-11-12',  '" + sqlDate + "')";
- 
+
    */
 
-  
+
  Statement statement = connection.createStatement();
         statement.execute(insertSql1);
         statement.execute(insertSql2);
@@ -838,35 +887,35 @@ String insertSql15 = "INSERT INTO PatientHasAppointment (patientID,appointmentID
         statement.execute(insertSql6);
         statement.execute(insertSql7);
         statement.execute(insertSql8);
-        statement.execute(insertSql9); 
+        statement.execute(insertSql9);
         statement.execute(insertSql10);
         statement.execute(insertSql11);
-        statement.execute(insertSql12); 
+        statement.execute(insertSql12);
         statement.execute(insertSql13);
         statement.execute(insertSql14);
-        statement.execute(insertSql15); 
-        
-        
-        
-        
-        
+        statement.execute(insertSql15);
+
+
+
+
+
         statement.close();
       /*   String sql ="select ID_USER,USERNAME,AGE from USER"; */
        /*  ResultSet resultSet = statement.executeQuery(sql);
       if(resultSet.next()){
-          
+
           out.println(resultSet.getString(1)+
-                  "<br/><br/>"+resultSet.getString(2)+ 
-                  "<br/><br/>"+resultSet.getString(3)  
-          + "<br/><br/>");  
+                  "<br/><br/>"+resultSet.getString(2)+
+                  "<br/><br/>"+resultSet.getString(3)
+          + "<br/><br/>");
       } */
-     
-        
+
+
         connection.close();
     }catch(Exception ex){
         out.println("Unable to connect to database."+ ex.getMessage());
     }
-    
+
     %>
   </body>
 </html>
