@@ -1,7 +1,6 @@
 
 
 <%@ page import="java.sql.*"%>
-<%@ include file="index.jsp"%>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <html>
 <head>

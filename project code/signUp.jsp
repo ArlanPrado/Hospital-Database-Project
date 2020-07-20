@@ -1,13 +1,12 @@
 
 
 <%@ page import="java.sql.*"%>
-<%@ include file="index.jsp"%>
 <html>
 <head>
 <title>SignUp</title>
 <style type="text/css">
 body {
- background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 17%,#D3D3D3 17%,#92a8d1 50%,white 100%);
+ background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 13%,#D3D3D3 13%,#92a8d1 50%,white 100%);
 }
 #mylogin {
   align-self: center;
@@ -47,6 +46,7 @@ body {
         <br /> Email:<input type="email" name="email" required/><br />
         <br /> Password:<input type="password" name="password" required/><br />
         <br /> <input type="submit" value="submit" />
+        <button><a class="button" href="login.jsp"> Login</a></button>
     </form>
 </div> 
 

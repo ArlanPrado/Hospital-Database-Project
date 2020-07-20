@@ -1,7 +1,7 @@
 
 
 <%@ page import="java.sql.*"%>
-<%@ include file="index.jsp"%>
+
 <html>
 <head>
 <title>Patient</title>
@@ -43,6 +43,7 @@ div {
 </style>
 </head>
 <body>
+<a href="login.jsp">Logout</a>  
     <h1>Patient Dashboard </h1>
     <hr />
 
