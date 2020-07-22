@@ -34,7 +34,7 @@ div {
   background-color: #ffffcc;
   border-left: 6px solid #ffeb3b;
 }
-.ppointment {
+.appointment {
   background-color:  #ffc680;
   border-left: 6px solid #FFA500;
 }
@@ -57,7 +57,8 @@ div {
     
          
          
-         String db = "Hospital";
+        String db = "Hospital";
+ 		String dbStatus = "Error connecting to database";	//default error message
         String user; // assumes database name is the same as username
           user = "root";
         String password = "rootpass";
@@ -66,6 +67,7 @@ div {
         String last_name="";
         String diagnosis="";
         String condition="";
+        int room = 0;
         int user_id=0;
         
         String medications="";
@@ -87,7 +89,7 @@ div {
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            out.println(db + " database successfully connected.<br/><br/>");
+            dbStatus = (db + " database successfully connected.<br/><br/>");
             Statement stmt = con.createStatement();
             
             java.util.Date now = new java.util.Date();
@@ -115,6 +117,7 @@ div {
                    diagnosis =  rs2.getString(2);
                    condition = rs2.getString(7);
                   diagnosisDate =rs2.getDate(4);
+                  room = rs2.getInt(3);
          break;
                }
            } 
@@ -172,9 +175,22 @@ div {
     %>
     
  <div class="success">
-  <p><strong>Hello!</strong> <%=first_name%> <%=last_name%></p>
+  <p><strong><%=first_name%> <%=last_name%></strong></p>
    <p><strong>ID: </strong> <%=user_id%></p>
+   <p><strong>Room: </strong> <%=room%></p>
 </div>
+
+ <div class="appointment">
+ <h4>Next Appointment</h4>
+  <p><strong>Date: </strong> <%=appointmentDate%></p>
+  <p><strong>time: </strong> <%=startTime %> - <%=endtTime%></p> 
+</div>
+
+ <div class="danger">
+  <p><strong>Diagnosis: </strong> <%=diagnosis%></p>
+  <p><strong>Patient Status: </strong> <%=condition %></p>
+   <p><strong>Admission Date: </strong> <%=diagnosisDate%></p>
+</div> 
 
  <div class="info">
   <p><strong>Medication History: </strong> <%=medications%></p>
@@ -184,17 +200,11 @@ div {
     <p><strong>Family History: </strong> <%=familyHistory%></p>
 </div>
 
- <div class="danger">
-  <p><strong>Diagnosis: </strong> <%=diagnosis%></p>
-  <p><strong>Patient Status: </strong> <%=condition %></p>
-   <p><strong>Admission Date: </strong> <%=diagnosisDate%></p>
+<div class="dbstatus">
+	<p><%=dbStatus%></p>
 </div>
 
- <div class="appointment">
- <h4>Next Appointment</h4>
-  <p><strong>Date: </strong> <%=appointmentDate%></p>
-  <p><strong>time: </strong> <%=startTime %> - <%=endtTime%></p> 
-</div>
+
 
     
 </body>
