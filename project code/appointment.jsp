@@ -2,6 +2,7 @@
 
 <%@ page import="java.sql.*"%>
 <%@page import="java.util.ArrayList" %>
+<%@page import="java.util.*" %>
 <html>
 <head>
 <title>appointment</title>
@@ -18,6 +19,38 @@ body {
   width: 320px;
   height: 160px;
   border: 3px solid #73AD21;
+  padding: 10px;
+  display: flex;
+}
+#main2 {
+  margin: auto;
+  width: 320px;
+  height: 160px;
+  border: 3px solid #73AD21;
+  padding: 10px;
+  display: flex;
+}
+#continer {
+  margin: auto;
+  width: 600px;
+  height: 200px;
+  border: 10px solid black;
+  padding: 10px;
+  display: flex;
+}
+#continer2 {
+  margin: auto;
+  width: 600px;
+  height: 30px;
+  border: 0px solid black;
+  padding: 10px;
+  display: flex;
+}
+#space {
+  margin: auto;
+  width: 10px;
+  height: 200px;
+  border: 0px solid black;
   padding: 10px;
   display: flex;
 }
@@ -43,7 +76,17 @@ body {
 <body>
     <h1>Hospital Management System Appointment </h1>
     <hr />
-
+    <div id="continer2">
+    <div >
+    <p> <h3>create appointment</h3></p>
+    </div>
+    <div id="space">
+    </div>
+    <div >
+    <p> <h3>request appointment</h3></p>
+    </div>
+    </div>
+ <div id="continer">
 <div id="main">
     <br />
     <form action="appointment.jsp" method="post">
@@ -56,9 +99,22 @@ body {
     </form>
     
 </div> 
-
+<div id="space">
+</div>
+<div id="main2">
+    <br />
+    <form action="appointment.jsp" method="post">
+    
+    <br /> Start Time:<input type="time" name="start_time"  required/><br />
+    <br /> End Time:<input type="time" name="end_time"  required/><br />
+    <br /> Date:<input type="date" name="date"  required/><br />
+        <br /> <input type="submit" onclick="submit()  value="submit" />
+        <button><a class="button" href="patient.jsp"> Back</a></button>
+    </form>
+    
+</div> 
  
-       
+   </div>     
 
     <ul>
         <li><p>
@@ -209,7 +265,6 @@ body {
         
         
     %>
-    
 
 </body>
 </html>

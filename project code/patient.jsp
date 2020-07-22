@@ -41,6 +41,72 @@ div {
 	background-color: #ffc680;
 	border-left: 6px solid #FFA500;
 }
+
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+}
 </style>
 </head>
 <body>
@@ -82,7 +148,8 @@ div {
         
         String note="";
         int note_ID=0;
-      // String note_date="";
+      
+        boolean changInfo=false;
        
           ArrayList <Integer> al = new ArrayList<Integer>();
    
@@ -102,6 +169,7 @@ div {
             //find the patient id using the patient id
            ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
            
+            
             while(rs.next()) {  
                 if(rs.getString(8).equals(useremail) ){
                     patient_id= rs.getInt(1);       
@@ -117,21 +185,80 @@ div {
 		<p>
 			<strong>your User_ID</strong>
 			<%=patient_id%></p>
+			 <!-- Trigger/Open The Modal -->
+<button id="myBtn">Change your Information</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  Modal content
+  <div class="modal-content">
+   <form action="patient.jsp" method="post">
+    <br /> Phone:<input type="number"  name="phone" /><br />
+    <br /> Address:<input type="text" name="address" /><br />
+        <br /> Email:<input type="email" name="email"/><br />
+        <br /> <input type="submit" value="submit" />
+     <button><a class="button" href="patient.jsp">Cancel</a></button> 
+    </form>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script> 
 	</div>
 
 	<%
+	
                    break;
                 }
             } 
-          
+            String Phone=request.getParameter("phone");
+            String Address=request.getParameter("address");
+            String UserEmail=request.getParameter("email");
+      if(request.getParameter("phone") != null || request.getParameter("address") != null
+                               || request.getParameter("email") != null){
+          String insertSql = "UPDATE user SET  phoneNumber = '"+Phone+"',"
+                  +"address = '"+Address+"', email='"+UserEmail +"' WHERE userID='"+patient_id+"' ";
+                      
+                     stmt.execute(insertSql); 
            
+          
+      } 
 
+            
           ResultSet rs2 = stmt.executeQuery("SELECT * FROM patient ");         
            while(rs2.next()) {  
                if(rs2.getInt(1) == patient_id ){
                    patient_id= rs2.getInt(1);       
                    diagnosis =  rs2.getString(2);
                   diagnosisDate =rs2.getDate(4);
+                  session.setAttribute("id", request.getParameter("patient_id"));
                   %>
 	<div class="danger">
 		<p>
@@ -142,7 +269,8 @@ div {
 			<%=diagnosisDate%></p>
 	</div>
 
-	<%        
+	<%    
+	
          break;
                }
            } 
@@ -298,7 +426,9 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
                   // out.println(al.size());
                }            
            } 
-           
+           %>
+           <p><h3>Doctors note:</h3></p>
+           <%
            for(int i=0;i<al.size();i++) {         
        ResultSet rs7 = stmt.executeQuery("SELECT * FROM note");      
            while(rs7.next())
@@ -306,10 +436,11 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
                if(rs7.getInt(1) == al.get(i) ){
                    
                %>
-	<div class="info">
-		<p>
+    <button type="button" class="collapsible"><%=rs7.getString("date")%></button>
+	<div class="content">
+<%-- 		<p>
 			<strong>Note date: </strong>
-			<%=rs7.getString("date")%></p>
+			<%=rs7.getString("date")%></p> --%>
 		<p>
 			<strong>note:</strong>
 			<%=rs7.getString("detail")%><br>
@@ -333,39 +464,22 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
         }
     %>
 
-	<%--  <div class="success">
-  <p><strong>Hello!</strong> <%=first_name%> <%=Last_name%></p>
-   <p><strong>your User_ID</strong> <%=patient_id%></p>
-</div> --%>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
 
-	<%-- <div class="info">
-  <p><strong>Medication History: </strong> <%=medications%></p>
-   <p><strong>Allergies History:</strong> <%=allergies%></p>
-    <p><strong>Diseases History: </strong> <%=diseases%></p>
-   <p><strong>Symptoms History:</strong> <%=symptoms%></p>
-    <p><strong>Family withHistory: </strong> <%=familyHistory%></p>
-</div> --%>
-
-
-	<%--  <div class="danger">
-  <p><strong>You are diagnosis with: </strong> <%=diagnosis%></p>
-   <p><strong>Date: </strong> <%=diagnosisDate%></p>
-</div> --%>
-
-	<%-- <div class="info">
-  <p><strong>Note date: </strong> <%=note_date%></p>
-   <p><strong>note:</strong> <%=note%></p>
-</div> --%>
-	<%-- <div class="ppointment">
- <h4>Next Appointment</h4>
-  <p><strong>Date: </strong> <%=appointmentDate%></p>
-  <p><strong>time: </strong> <%=startTime %> - <%=endtTime%></p> 
-   <form  action="appointment.jsp">
-        <input type="submit" value="Create Appointment" >
-    </form>
-</div> --%>
-
-
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
 </body>
 </html>
 
