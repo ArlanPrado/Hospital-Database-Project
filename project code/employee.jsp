@@ -66,7 +66,7 @@ div {
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "Iluvhim@123";
+        String password = "rootpass";
         try {
             
             java.sql.Connection con; 

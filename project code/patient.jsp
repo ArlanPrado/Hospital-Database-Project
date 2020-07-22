@@ -60,12 +60,12 @@ div {
          String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "Iluvhim@123";
+        String password = "rootpass";
         
         String first_name="";
-        String Last_name="";
+        String last_name="";
         String diagnosis="";
-      //  int patient_id=0;
+        String condition="";
         int user_id=0;
         
         String medications="";
@@ -99,7 +99,7 @@ div {
                 if(rs.getString(8).equals(useremail) ){
                     user_id= rs.getInt(1);       
                     first_name =rs.getString(2);
-                    Last_name=rs.getString(3);
+                    last_name=rs.getString(3);
                    break;
                 }
             } 
@@ -111,9 +111,9 @@ div {
           ResultSet rs2 = stmt.executeQuery("SELECT * FROM patient ");
           
            while(rs2.next()) {  
-               if(rs2.getInt(1) == user_id ){
-                   //patient_id= rs2.getInt(1);       
+               if(rs2.getInt(1) == user_id){    
                    diagnosis =  rs2.getString(2);
+                   condition = rs2.getString(7);
                   diagnosisDate =rs2.getDate(4);
          break;
                }
@@ -172,8 +172,8 @@ div {
     %>
     
  <div class="success">
-  <p><strong>Hello!</strong> <%=first_name%> <%=Last_name%></p>
-   <p><strong>your User_ID</strong> <%=user_id%></p>
+  <p><strong>Hello!</strong> <%=first_name%> <%=last_name%></p>
+   <p><strong>ID: </strong> <%=user_id%></p>
 </div>
 
  <div class="info">
@@ -181,15 +181,16 @@ div {
    <p><strong>Allergies History:</strong> <%=allergies%></p>
     <p><strong>Diseases History: </strong> <%=diseases%></p>
    <p><strong>Symptoms History:</strong> <%=symptoms%></p>
-    <p><strong>Family withHistory: </strong> <%=familyHistory%></p>
+    <p><strong>Family History: </strong> <%=familyHistory%></p>
 </div>
 
  <div class="danger">
-  <p><strong>You are diagnosis with: </strong> <%=diagnosis%></p>
-   <p><strong>Date: </strong> <%=diagnosisDate%></p>
+  <p><strong>Diagnosis: </strong> <%=diagnosis%></p>
+  <p><strong>Patient Status: </strong> <%=condition %></p>
+   <p><strong>Admission Date: </strong> <%=diagnosisDate%></p>
 </div>
 
- <div class="ppointment">
+ <div class="appointment">
  <h4>Next Appointment</h4>
   <p><strong>Date: </strong> <%=appointmentDate%></p>
   <p><strong>time: </strong> <%=startTime %> - <%=endtTime%></p> 
