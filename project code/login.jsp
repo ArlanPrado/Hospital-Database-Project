@@ -78,7 +78,7 @@ out.print(login_msg);
 		<button><a class="button" href="signUp.jsp"> SignUp</a></button>
 		
 		<%
-    session.setAttribute("userEmail", request.getParameter("email"));
+   // session.setAttribute("userEmail", request.getParameter("email"));
         %>
 	</form>
 </div>  
@@ -99,18 +99,18 @@ out.print(login_msg);
 	<% 
  
     String UserEmail=request.getParameter("email");
-    String UserPassword = request.getParameter("password");
+    String USerPassword = request.getParameter("password");
     
        
-     String db = "hospital";
+     String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "rootpass";
+        String password = "Iluvhim@123";
         try {
             
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital?serverTimezone=EST5EDT",user, password);
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
             out.println(db + " database successfully connected.<br/><br/>");
             
  
@@ -118,40 +118,36 @@ out.print(login_msg);
             
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM user");
-          	int user_id=0;
-          	boolean gotUser = false;
-          	boolean attemptedLogin = false;
-          	if(UserEmail != null || UserPassword != null){
-          		attemptedLogin = true;
-          	}
-             while(rs.next()) {  
-             	if(rs.getString(8).equals(UserEmail) && rs.getString(9).equals(UserPassword)){
-	            	out.println(rs.getInt(1) + "<br/><br/>");         
-	            	out.println(rs.getString(8) + "<br/><br/>");
-	           		out.println(rs.getString(9) + "<br/><br/>");
-	            	user_id = rs.getInt(1);   
-	            	gotUser = true;
-            		break;
+          int user_id=0;
+              while(rs.next()) {  
+                  if(rs.getString(8).equals(UserEmail) && rs.getString(9).equals(USerPassword)){
+            out.println(rs.getInt(1) + "<br/><br/>");         
+            out.println(rs.getString(8) + "<br/><br/>");
+            out.println(rs.getString(9) + "<br/><br/>");
+            user_id = rs.getInt(1);
+            
+            break;
                   }
               }
-              if(gotUser && attemptedLogin){
-	              ResultSet rs6 = stmt.executeQuery("SELECT * FROM employee ");
-	              boolean isPatient = true;
-	              while(rs6.next()) {  
-	                  if(rs6.getInt(1)== user_id ){
-	                      isPatient=false;
-	                     break;
-	                  }
-	              } 
-	              if(isPatient == true){
-	                  response.sendRedirect("patient.jsp");        
-	             }else {                
-	                 response.sendRedirect("employee.jsp");  
-	                 out.println("you are an not a patient");
-	                 }
-              }else if(gotUser == false && attemptedLogin){
-            	  out.println("Invalid email or password");
-              }
+              
+              ResultSet rs6 = stmt.executeQuery("SELECT * FROM employee ");
+              boolean isPatient = true;
+              while(rs6.next()) {  
+                  if(rs6.getInt(1)== user_id ){
+                      isPatient=false;
+                     break;
+                  }
+              } 
+              if(isPatient == true ){
+                  if(request.getParameter("email")!= null){
+                  session.setAttribute("userEmail", request.getParameter("email"));
+                  response.sendRedirect("patient.jsp");  
+                  }else{ }
+             }else {                
+                 response.sendRedirect("employee.jsp");  
+                 out.println("you are an not a patient");
+                 }
+              
            
             rs.close();
             stmt.close();
