@@ -112,11 +112,9 @@ out.print(login_msg);
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital?serverTimezone=EST5EDT",user, password);
             out.println(db + " database successfully connected.<br/><br/>");
-            
- 
+             
             Statement stmt = con.createStatement();
-            
-            
+                        
             ResultSet rs = stmt.executeQuery("SELECT * FROM user");
           	int user_id=0;
           	boolean gotUser = false;

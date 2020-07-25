@@ -2,6 +2,7 @@
 
 <%@ page import="java.sql.*"
 	import="java.text.SimpleDateFormat"
+	import="java.util.ArrayList"
 %>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <html>
@@ -31,9 +32,18 @@ div {
 </style>
 </head>
 <body>
+<a href="login.jsp">Logout</a> 
     <h1>Employee Dashboard</h1>
 
-    <hr />
+	<div class="tab">
+		<button class="tabLink" onclick="window.location.href='orderPrescriptions.jsp';">
+			Order Prescriptions
+		</button>
+		<button class="tabLink" onclick="window.location.href='edit_e_profile.jsp';">
+			Edit My Profile
+		</button>
+	</div>
+    <hr>
 
 
  
@@ -41,6 +51,7 @@ div {
     <% 
  
     	String useremail = session.getAttribute("userEmail").toString();
+    	//session.setAttribute("userEmail", useremail);
     	String dbStatus = "Error connecting to database";	//default error message
     
      	String db = "Hospital";
@@ -118,6 +129,28 @@ div {
             	app_date = sdf2.format(rs.getDate(7));
             }
             
+            class PatientObj{
+            	int p_id;
+            	String p_first;
+            	String p_last;
+       			int p_room;
+            }
+            
+            rs = stmt.executeQuery("SELECT userID, firstName, lastName, room" +
+            		" FROM user" +
+            		" JOIN patient ON userID = patientID" + 
+            		" JOIN employeehaspatients ON patient.patientID = employeehaspatients.patientID" +
+            		" WHERE employeeID = " + user_id);
+            ArrayList<PatientObj> patientList = new ArrayList<PatientObj>();
+            while(rs.next()){
+            	PatientObj temp = new PatientObj();
+            	temp.p_id = rs.getInt("userID");
+            	temp.p_first = rs.getString("firstName");
+            	temp.p_last = rs.getString("lastName");
+            	temp.p_room = rs.getInt("room");
+            	patientList.add(temp);
+            }
+        
             stmt.close();
             con.close();
         } catch(SQLException e) { 
@@ -137,6 +170,8 @@ div {
 <p><strong><%=p_first%> <%=p_last%></strong> at room <%=room%></p>
 <p><%=start_time%> - <%=end_time%> <%=app_date%></p>
 </div>
+
+
 <div class="dbstatus">
 	<p><%=dbStatus%></p>
 </div>

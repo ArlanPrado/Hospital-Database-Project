@@ -143,9 +143,7 @@ body {
                      +" '"+AppDate+"','" + sqlDate + "')";
              stmt.execute(insertSql); 
          }
-      
-   
-         
+
         } 
           
             stmt.close();
