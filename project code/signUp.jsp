@@ -97,9 +97,10 @@ body {
             stmt.execute(insertSql);   
             stmt.close();
             con.close();
-        } catch(SQLException e) { 
-            out.println("SQLException caught: " + e.getMessage()); 
-        }
+        }catch(Exception e){
+    		if(e.getMessage() != "null")
+    			out.println("SQL Exception Caught: " + e.getMessage());
+    	}
     %>
     
     

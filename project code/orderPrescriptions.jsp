@@ -14,7 +14,9 @@ body {
 </head>
 <body>
 	<h1>Order Prescription Form</h1>
-	<a href="employee.jsp">Back to Dashboard</a>
+	<button onclick="window.location.href='employee.jsp';">
+			Back to Dashboard
+	</button>
 	<hr>
 	  <%String useremail = session.getAttribute("userEmail").toString(); %>
  <div>
@@ -143,7 +145,7 @@ body {
 		orderStatus = "Success full prescription order!";
 	}catch(Exception e){
 		if(e.getMessage() != "null")
-			out.println(e.getMessage());
+			out.println("Exception Caught: " + e.getMessage());
 	}
 
 

@@ -36,6 +36,9 @@ div {
     <h1>Employee Dashboard</h1>
 
 	<div class="tab">
+		<button class="tabLink" onclick="window.location.href='viewUpAppointments.jsp';">
+			View Upcoming Appointments
+		</button>
 		<button class="tabLink" onclick="window.location.href='orderPrescriptions.jsp';">
 			Order Prescriptions
 		</button>
@@ -129,6 +132,7 @@ div {
             	app_date = sdf2.format(rs.getDate(7));
             }
             
+            //THIS IS FOR PATIENT LIST
             class PatientObj{
             	int p_id;
             	String p_first;
@@ -153,9 +157,10 @@ div {
         
             stmt.close();
             con.close();
-        } catch(SQLException e) { 
-            out.println("SQLException caught: " + e.getMessage()); 
-        }
+        } catch(Exception e){
+    		if(e.getMessage() != "null")
+    			out.println(e.getMessage());
+    	}
     %>
     
  <div class="success">
