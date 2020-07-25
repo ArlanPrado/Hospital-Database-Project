@@ -1,5 +1,3 @@
-
-
 <%@ page import="java.sql.*"
 	import="java.text.SimpleDateFormat"
 	import="java.util.ArrayList"
@@ -54,7 +52,6 @@ div {
     <% 
  
     	String useremail = session.getAttribute("userEmail").toString();
-    	//session.setAttribute("userEmail", useremail);
     	String dbStatus = "Error connecting to database";	//default error message
     
      	String db = "Hospital";
@@ -121,6 +118,8 @@ div {
             		"JOIN employee ON " +
             		"employee.employeeID = employeecreateappointment.employeeID) AS T " +
             		"WHERE T.employeeID = " + user_id +
+            		" AND T.date >= CURDATE()" +
+            		" AND T.start_time >= CURTIME()" +
             		" ORDER BY T.date ASC, T.start_time ASC LIMIT 1 ");
             while(rs.next()){
             	p_id = rs.getInt(1);
@@ -129,6 +128,8 @@ div {
             	room = rs.getInt(4);
             	start_time = sdf.format(rs.getDate(5));
             	end_time = sdf.format(rs.getDate(6));
+            	//start_time = rs.getDate(5).toString();
+            	//end_time = rs.getDate(6).toString();
             	app_date = sdf2.format(rs.getDate(7));
             }
             
