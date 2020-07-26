@@ -16,7 +16,7 @@ div {
   padding: 4px 12px;
 }
 
-.success{
+.employeeInfo{
   background-color: #ddffdd;
   border-left: 6px solid #4CAF50;
 }
@@ -27,10 +27,13 @@ div {
 }
 
 
+
 </style>
 </head>
 <body>
-<a href="login.jsp">Logout</a> 
+<button onclick="window.location.href='login.jsp';">
+			Log Out
+	</button>
     <h1>Employee Dashboard</h1>
 
 	<div class="tab">
@@ -55,11 +58,10 @@ div {
     	String dbStatus = "Error connecting to database";	//default error message
     
      	String db = "Hospital";
-        String user; // assumes database name is the same as username
-        user = "root";
+        String user = "root";
         String password = "rootpass";
         
-        int user_id = 0;
+        int user_id = -1;
         String first_name, last_name;
         String position;
         first_name = last_name = position = "";
@@ -67,8 +69,8 @@ div {
         int salary = 0;
         
         String p_first, p_last;
-        int room = 0;
-        int p_id = 0;
+        int room = -1;
+        int p_id = -1;
         String start_time, end_time, app_date;
         p_first = p_last = start_time = end_time = app_date = "";
         
@@ -103,6 +105,16 @@ div {
             	}
             }
             
+          %>
+          
+<div class="employeeInfo">
+	<p><strong><%=position%> <%=first_name%> <%=last_name%></strong></p>
+	   <p><strong>ID: </strong> <%=user_id%></p>
+	   <p><strong>Salary: </strong> $<%=salary%></p>
+	   <p><strong>Hire Date: </strong> <%=hire_date%></p>
+</div>         
+          <%
+          //THERE IS A PROBLEM WITH DISPLAYING TIME, IT DOES NOT MATCH WITH THE MYSQL
             rs = stmt.executeQuery("SELECT *" +
             		"FROM " + 
             		"(SELECT userID, firstName, lastName, room, start_time, end_time, appointment.date, employee.employeeID " +
@@ -133,29 +145,18 @@ div {
             	app_date = sdf2.format(rs.getDate(7));
             }
             
-            //THIS IS FOR PATIENT LIST
-            class PatientObj{
-            	int p_id;
-            	String p_first;
-            	String p_last;
-       			int p_room;
-            }
-            
-            rs = stmt.executeQuery("SELECT userID, firstName, lastName, room" +
-            		" FROM user" +
-            		" JOIN patient ON userID = patientID" + 
-            		" JOIN employeehaspatients ON patient.patientID = employeehaspatients.patientID" +
-            		" WHERE employeeID = " + user_id);
-            ArrayList<PatientObj> patientList = new ArrayList<PatientObj>();
-            while(rs.next()){
-            	PatientObj temp = new PatientObj();
-            	temp.p_id = rs.getInt("userID");
-            	temp.p_first = rs.getString("firstName");
-            	temp.p_last = rs.getString("lastName");
-            	temp.p_room = rs.getInt("room");
-            	patientList.add(temp);
-            }
-        
+            %>
+<div class="appointment">
+			<%if(room != -1){ %>
+	<h4>Next Appointment</h4>
+		<p><strong><%=p_first%> <%=p_last%></strong> at room <%=room%></p>
+		<p><%=start_time%> - <%=end_time%> <%=app_date%></p>
+			<%}else{ %>
+	<h4> No Upcoming Appointments</h4>
+			<%} %>
+</div>     
+
+        <%
             stmt.close();
             con.close();
         } catch(Exception e){
@@ -163,19 +164,6 @@ div {
     			out.println(e.getMessage());
     	}
     %>
-    
- <div class="success">
-  <p><strong><%=position%> <%=first_name%> <%=last_name%></strong></p>
-   <p><strong>ID: </strong> <%=user_id%></p>
-   <p><strong>Salary: </strong> $<%=salary%></p>
-   <p><strong>Hire Date: </strong> <%=hire_date%></p>
-</div>
-
-<div class="appointment">
-<h4>Next Appointment</h4>
-<p><strong><%=p_first%> <%=p_last%></strong> at room <%=room%></p>
-<p><%=start_time%> - <%=end_time%> <%=app_date%></p>
-</div>
 
 
 <div class="dbstatus">
@@ -183,3 +171,53 @@ div {
 </div>
 </body>
 </html>
+
+
+<%--
+
+.patient_list{
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+}
+
+
+            <%
+            //THIS IS FOR PATIENT LIST
+   
+            rs = stmt.executeQuery("SELECT userID, firstName, lastName, room, diagnosis, patient_condition" +
+            		" FROM user" +
+            		" JOIN patient ON userID = patientID" + 
+            		" JOIN employeehaspatients ON patient.patientID = employeehaspatients.patientID" +
+            		" WHERE employeeID = " + user_id);
+			%>
+		<div class="patient_list">
+			<h4>Patient List</h4>
+			<table border=1 align=top style="text-align:center">
+	        <thead>
+	        	<tr>
+	        		<th>Patient ID</th>
+	        		<th>Name</th>
+	        		<th>Room</th>
+	        		<th>Diagnosis</th>
+	        		<th>Condition</th>
+       		
+	        	<tr>
+	        </thead>
+	        <tbody>
+			<%
+			while(rs.next()){
+            	%>
+				<tr>
+					<td><%= rs.getInt("userID") %></td>
+					<td><%= rs.getString("firstName") + " " + rs.getString("lastName")%></td>
+		        	<td><%= rs.getInt("room")%></td>
+		        	<td><%= rs.getString("diagnosis")%></td>
+		        	<td><%= rs.getString("patient_condition")%></td>        	
+	        	</tr>
+            	<%
+            }
+        %>
+        	</tbody>
+        	</table>
+        </div>
+--%>

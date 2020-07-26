@@ -2,7 +2,7 @@ CREATE TABLE `user` (
   `userID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `firstName` varchar(45) NOT NULL,
   `lastName` varchar(45) NOT NULL,
-  `dateOfBirth` VARCHAR(45) NOT NULL,
+  `dateOfBirth` date NOT NULL,
    `gender` VARCHAR(45) NOT NULL,
   `phoneNumber` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,

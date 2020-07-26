@@ -60,8 +60,7 @@ body {
 	String db = "Hospital";
 	String dbStatus = "Error connecting to database";	//default error message
 	String orderStatus = "Error with processing order";
-	String user; // assumes database name is the same as username
-	user = "root";
+	String user = "root";
 	String password = "rootpass";
 
 	try{

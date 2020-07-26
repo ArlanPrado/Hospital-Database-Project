@@ -2,7 +2,6 @@
 		import="java.text.SimpleDateFormat"
 		import="java.util.Calendar"
 		import="java.util.Date"
-	
 %>
 <html>
 <head>
@@ -28,8 +27,7 @@ div {
 	String dbStatus = "Error connecting to database";	//default error message
     
  	String db = "Hospital";
-    String user; // assumes database name is the same as username
-    user = "root";
+    String user = "root";
     String password = "rootpass";
     
     String p_first, p_last;
@@ -75,7 +73,7 @@ div {
         		"WHERE T.employeeID = " + user_id +
         		" AND T.date >= CURDATE()" + //this line makes sure appointment
         		" ORDER BY T.date ASC, T.start_time ASC");
-        
+        //THERE IS A PROBLEM WITH DISPLAYING TIME, IT DOES NOT MATCH WITH THE MYSQL
         %>
         <table border=1 align=center style="text-align:center">
 	        <thead>
