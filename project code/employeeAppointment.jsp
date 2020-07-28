@@ -1,16 +1,11 @@
 
 
 <%@ page import="java.sql.*"%>
-<%@page import="java.util.ArrayList" %>
-<%@page import="java.util.*" %>
-<%@page import="java.text.SimpleDateFormat" %>
-<%@page import="java.text.DateFormat" %>
-<%@page import="java.util.Date" %>
-<%@page import="java.text.ParseException" %>
-<a href="dashBord.jsp">   <button>HOME</button> </a>
+<a href="dashBord.jsp"><button>HOME</button> </a>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
 <html>
 <head>
-<title>appointment</title>
+<title>Appointments</title>
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 100%,#92a8d1 5%,#D3D3D3 5%,#92a8d1 100%,white 100%);
@@ -61,19 +56,19 @@ body {
   display: flex;
 }
 #continer2 {
-  margin: auto;
-  width: 600px;
+
+  width: 480px;
   height: 35px;
   border: 0px solid black;
   padding: 10px;
   display: flex;
 }
 #continer3 {
-  margin: auto;
-  width: 600px;
+ 
+  width: 500px;
   height: 35px;
   border: 0px ;
-  padding: 10px;
+  padding: 5px;
   display: flex;
 }
 #space {
@@ -105,14 +100,8 @@ body {
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
 </head>
 <body>
-    <h1 style="color:blue;">Hospital Management System Appointment </h1>
+    <h1 style="color:blue;">Appointments</h1>
     <hr />
-  <%String useremail = session.getAttribute("userEmail").toString(); %>
-    <div id="continer2">
-    <div >
-    <p> <h3 style="color:blue;">request appointment</h3></p>
-    </div>
-    </div>
  <div id="continer">
 <script>
     $(document).ready(function(){
@@ -122,29 +111,29 @@ body {
         $("#timePicker4").kendoTimePicker(); 
     });
 </script>
-
-<div id="main2">
+ 
+<div id="main">
     <br />
-    <form action="appointment.jsp" method="post">
-     <label >Choose time in 30 minute interval</label>
-     <br />Doctor Id:<input type="text" name="Doctorid"  required/><br />
-    <br /> Start Time:<input type="time"id="timePicker3"   name="start_time"  min="09:00" max="18:00" required/><br />
-    <br /> End Time:<input type="time" id="timePicker4"  name="end_time"  min="09:00" max="18:00" required/><br />
-    <br /> Date:<input type="date" name="date" id="DOB3" required/><br />
-        <br /> <input type="submit"  value="submit" />
-        <button><a class="button" href="patient.jsp"> Back</a></button>
+    <form action="employeeAppointment.jsp" method="post">
+    <label >Choose time in 30 minute interval</label>
+     <br />patient Id:<input type="text" name="Patientid"  required/><br />
+    <br />Start Time:<input type="time" id="timePicker" name="start_time" min="09:00" max="18:00"  required/><br />
+    <br />End Time:  <input type="time" id="timePicker2" name="end_time" min="09:00" max="18:00"  required/><br />
+    <br />Date:<input type="date" name="date" id="DOB"  required/><br />
+        <br /> <input type="submit" onclick="submit()  value="submit" />
+        <button><a class="button" href="employee.jsp"> BACK</a></button>
     </form>
     
 </div> 
 
+
    </div>     
    <div >
     <br />
-    <form action="appointment.jsp" method="post">
+    <form action="employeeAppointment.jsp" method="post">
      <label style="color:blue;">check appointment by doctor</label>
-      <br /> First Name:<input type="text" name="firstName" required/><br />
-      <br /> Last Name:<input type="text" name="lastName" required/><br />   
-        <br /> <input type="submit"  value= "submit" />
+      <br />Doctor Id:<input type="text" name="DoctoridForList"  required/><br />     
+        <br /> <input type="submit"   value="submit" />
     </form>
     
 </div>
@@ -154,7 +143,7 @@ body {
         $("#DOB").kendoDatePicker({
           format: "yyyy-MM-dd",
           min: new Date(),
-         
+      
           change: onDOBChange
         });
         $("#DOB2").kendoDatePicker({
@@ -166,7 +155,7 @@ body {
         $("#DOB3").kendoDatePicker({
             format: "yyyy-MM-dd",
             min: new Date(),
-         
+           
             change: onDOBChange
           });
       });
@@ -199,32 +188,24 @@ body {
                 <b>end_time:</b>
                 <%= request.getParameter("end_time")%>
             </p></li>
-        <li><p>
-                <b>Padatessword:</b>
-                <%= request.getParameter("date")%>
-            </p></li>
-            <li><p>
-                <b>Doctorid:</b>
-                <%= request.getParameter("Doctorid")%>
-            </p></li>
+     
     </ul>
 
-     
-
+     <%String useremail = session.getAttribute("userEmail").toString(); %>
+ 
     <% 
+    
+    String Patient_id=request.getParameter("Patientid");
     String StartTime=request.getParameter("start_time");
     String EndTime=request.getParameter("end_time");
     String AppDate=request.getParameter("date");
-    String Doctor_ID=request.getParameter("Doctorid");   
-    String doctor_forApp=request.getParameter("DoctoridForList");  
-    String FirstName=request.getParameter("firstName");
-    String LastName=request.getParameter("lastName");
-    String userid="";
+    
+    
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "rootpass";
-
+        String password = "Iluvhim@123";
+         String userid="";
         
         try {
             
@@ -237,56 +218,70 @@ body {
             java.util.Date now = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(now.getTime());
             
-ResultSet rs5 = stmt.executeQuery("SELECT userID FROM user where email = '"+useremail+"'");
+
             
-            while(rs5.next()) {  
+            
+            ResultSet rs3 = stmt.executeQuery("SELECT userID FROM user where email = '"+useremail+"'");
+            
+            while(rs3.next()) {  
               
-                   out.println("user id is "+ rs5.getString("userID"));
-                   userid=rs5.getString("userID");
+                   out.println("user id is "+ rs3.getString("userID"));
+                   userid=rs3.getString("userID");
            
             } 
             
             
-            
-            if(doctor_forApp != null){
-            
-            ResultSet rs4 = stmt.executeQuery("SELECT * FROM appointmentRequest ");
-            %>
-             <div id="continer3">
-        <div id="main3">
-            <table border=1 align=center style="text-align:center">
-            <thead>
-                <tr>
-                  <th>ID</th>
-                   <th>Start Time</th>
-                   <th>End Time</th>
-                   <th>Appo Date</th>
-                </tr>
-            </thead>
-            <tbody>
-               <%           
-               
-              while(rs4.next())
-              {
-                  if(rs4.getInt("employeeID") == Integer.parseInt(doctor_forApp)){
-                  %>
-                  <tr>
-                   <td><%=rs4.getString("employeeID") %></td>
-                      <td><%=rs4.getString("start_time") %></td>
-                      <td><%=rs4.getString("end_time")%></td>
-                      <td><%=rs4.getString("date") %></td>                      
-                  </tr>
-                  <%}}%>
-                 </tbody>
-              </table><br>
-            </div>
-          <%
-          
-            }
+
             
             
             
             
+            
+
+                
+                ResultSet rs4 = stmt.executeQuery("SELECT * FROM appointmentRequest where employeeID ='"+userid+"'");
+                %>
+                <div id="continer2">
+    <div >
+    <p> <h3 style="color:blue;">Requested Appointments</h3></p>
+    </div>
+    <div id="space">
+    </div>
+    <div >
+    <p> <h3 style="color:blue;">Current Appointments</h3></p>
+    </div>
+    </div>
+                 <div id="continer3">
+            <div id="main3">
+                <table border=1 align=center style="text-align:center">
+                <thead>
+                    <tr>
+                      <th>Patient ID</th>
+                       <th>Start Time</th>
+                       <th>End Time</th>
+                       <th>Appo Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <%           
+                   
+                  while(rs4.next())
+                  {
+                     
+                      %>
+                      <tr>
+                       <td><%=rs4.getString("patientID") %></td>
+                          <td><%=rs4.getString("start_time") %></td>
+                          <td><%=rs4.getString("end_time")%></td>
+                          <td><%=rs4.getString("date") %></td>                      
+                      </tr>
+                      <%}%>
+                     </tbody>
+                  </table><br>
+                </div>
+              <%
+              
+
             
             
             
@@ -295,7 +290,7 @@ ResultSet rs5 = stmt.executeQuery("SELECT userID FROM user where email = '"+user
          if( StartTime != null ||  EndTime != null ||  AppDate != null ){ 
              
               boolean check=true;
-              ResultSet rs2 = stmt.executeQuery("SELECT * FROM appointment");
+              ResultSet rs2 = stmt.executeQuery("SELECT * FROM appointment join EmployeeCreateAppointment on appointment.appointmentID=EmployeeCreateAppointment.appointmentID AND EmployeeCreateAppointment.employeeID='"+userid+"'");
               
               
               while(rs2.next()) {  
@@ -322,127 +317,95 @@ ResultSet rs5 = stmt.executeQuery("SELECT userID FROM user where email = '"+user
          if(EndTime.charAt(2) ==':' && StartTime.charAt(1) ==':'){
              TimeCheck= Integer.parseInt(EndTime.substring(0,2)) - Integer.parseInt(StartTime.substring(0,1));   
              TimeCheck2= Integer.parseInt(EndTime.substring(3,5)) - Integer.parseInt(StartTime.substring(2,4));     
-          }else{
+          }else
+              if(EndTime.charAt(1) ==':' && StartTime.charAt(2) ==':'){
+                  TimeCheck= Integer.parseInt(EndTime.substring(0,1)) - Integer.parseInt(StartTime.substring(0,2));   
+                  TimeCheck2= Integer.parseInt(EndTime.substring(2,4)) - Integer.parseInt(StartTime.substring(3,5));     
+               }else{
           TimeCheck= Integer.parseInt(EndTime.substring(0,2)) - Integer.parseInt(StartTime.substring(0,2));   
           TimeCheck2= Integer.parseInt(EndTime.substring(3,5)) - Integer.parseInt(StartTime.substring(3,5));   
-         }
-          
+         }       
          if(TimeCheck == 0 && TimeCheck2==30 ){
              TimeC =true;
          }
         if(TimeCheck == 1 && TimeCheck2==-30 ){
             TimeC =true;
-         }
-         
+         } 
         
         
-        
-        
-        boolean check2=true;
-        ResultSet rs3 = stmt.executeQuery("SELECT * FROM appointmentRequest");
-        
-        
-        while(rs3.next()) {  
-    if((rs3.getString(3).equals(Doctor_ID) && rs3.getString(4).equals(StartTime) 
-        && rs3.getString(5).equals(EndTime) && rs3.getString(6).equals(AppDate)) ){                    
-                out.println(rs3.getString(3) + " to");
-                out.println(rs3.getString(4));
-                out.println(rs3.getString(5));
-                out.println(rs3.getString(6));
-                out.println(" is not aveleble");
-               check =false;
 
-      break;
-   }
-        } 
-        
-        
+       
        
        //check if the requested appointment is aveleble 
-         if(check == true && TimeC==true && Doctor_ID == null){
+         if(check == true && TimeC==true ){
              
              String insertSql = "INSERT INTO appointment (start_time,end_time,"
                      + " date,  CREATED_DATE) "
                      + "VALUES ('"+StartTime+"', '"+EndTime+"' ,"
                      +" '"+AppDate+"','" + sqlDate + "')";
              stmt.execute(insertSql); 
+            
              
-         }else
-             if(check == true && TimeC==true && Doctor_ID != null && check2==true){
+             ResultSet rs6 = stmt.executeQuery("SELECT * FROM appointment");  
+             int appID=0;
+             while(rs6.next()) {  
+            
+              appID=rs6.getInt("appointmentID");
+             }
+             String insertSql3 = "INSERT INTO EmployeeCreateAppointment (appointmentID,employeeID,"
+                     + " CREATED_DATE) "
+                     + "VALUES ('"+appID+"', '"+userid+"' ,"
+                     +"'" + sqlDate + "')";
+             stmt.execute(insertSql3);  
+             String insertSql4 = "INSERT INTO PatientHasAppointment (patientID,appointmentID,"
+                     + " CREATED_DATE) "
+                     + "VALUES ('"+Patient_id+"', '"+appID+"' ,"
+                     +"'" + sqlDate + "')";
+             stmt.execute(insertSql4);  
              
-             String insertSql = "INSERT INTO appointmentRequest (patientID,employeeID,start_time,end_time,"
-                     + " date,  CREATED_DATE) "
-                     + "VALUES ('"+userid+"','"+Doctor_ID+"','"+StartTime+"', '"+EndTime+"' ,"
-                     +" '"+AppDate+"','" + sqlDate + "')";
-             stmt.execute(insertSql); 
+             String insertSql5 = "DELETE FROM appointmentRequest  WHERE patientID='"+Patient_id+"' AND employeeID='"+userid+"'  AND start_time='"+StartTime+"'  AND end_time='"+EndTime+"'  AND date='"+AppDate+"'";
+             stmt.execute(insertSql5);  
              
-         }else{
+             }else{
              out.println("invalide time or unaveleble date and time");
              }
-         
+       
         } 
          
-         ResultSet rs2 = stmt.executeQuery("SELECT * FROM user,employee where user.userID=employee.employeeID AND user.firstName = '"+FirstName+"' AND user.lastName = '"+LastName+"' ");
-         
+ 
+    ResultSet rs = stmt.executeQuery("SELECT start_time,appointment.end_time,date,firstName,userID FROM user,  appointment  join EmployeeCreateAppointment on  appointment.appointmentID=EmployeeCreateAppointment.appointmentID join PatientHasAppointment  on  PatientHasAppointment.appointmentID=EmployeeCreateAppointment.appointmentID where  user.userID=PatientHasAppointment.patientID AND  EmployeeCreateAppointment.employeeID = '"+userid+"'");
+    
          %>
-          <div id="continer3">
-     <div id="main3">
-        <table border=1 align=center style="text-align:center">
-       <thead>
-           <tr>
-              <th>ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>position</th>
-           </tr>
-       </thead>
-       <tbody>
-          <%           
-          
-         while(rs2.next())
-         {
-             userid=rs2.getString("userID");
-             %>
-             <tr>
-                 <td><%=rs2.getString("userID") %></td>
-                 <td><%=rs2.getString("firstName")%></td>
-                 <td><%=rs2.getString("lastName") %></td>
-                 <td><%=rs2.getString("position") %></td>
-             </tr>
-             <%}%>
-            </tbody>
-         </table><br>
-         </div>
-       <%
-       ResultSet rs = stmt.executeQuery("SELECT start_time,end_time,date FROM appointment JOIN EmployeeCreateAppointment ON EmployeeCreateAppointment.appointmentID=appointment.appointmentID WHERE  EmployeeCreateAppointment.employeeID = '"+userid+"' ");    
 
-       %>
-       <div >
-       <table border=1 align=center style="text-align:center">
+     <div id="main3">
+         <table border=1 align=center style="text-align:center">
          <thead>
              <tr>
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Appo Date</th>
+                <th>Appo with</th>
+                <th>ID</th>
              </tr>
          </thead>
          <tbody>
             <%           
             
-           while(rs.next())
+           while(rs.next() )
            {
                %>
                <tr>
                    <td><%=rs.getString("start_time") %></td>
                    <td><%=rs.getString("end_time")%></td>
                    <td><%=rs.getString("date") %></td>
+                   <td><%=rs.getString("firstName") %></td>
+                    <td><%=rs.getString("userID") %></td>
                </tr>
                <%}%>
               </tbody>
            </table><br>
-       
-       </div>
-        </div>
+         </div>  
+         </div> 
      <%
      
           
