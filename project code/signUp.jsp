@@ -41,8 +41,8 @@ body {
     
     <br /> First Name:<input type="text" name="firstName" required/><br />
     <br /> Last Name:<input type="text" name="lastName" required/><br />
-    <br /> Birth Date:<input type="date" name="birthdatE" required/><br />
-    <br /> Gender:<input type="text" name="gendeR" required/><br />
+    <br /> Birth Date:<input type="date" name="birthdate" required/><br />
+    <br /> Gender:<input type="text" name="gender" required/><br />
     <br /> Phone:<input type="number"  name="phone" /><br />
     <br /> Address:<input type="text" name="address" /><br />
         <br /> Email:<input type="email" name="email" required/><br />
@@ -67,8 +67,8 @@ body {
     <% 
     String FirstName=request.getParameter("firstName");
     String LastName=request.getParameter("lastName");
-    String dateOfbirth=request.getParameter("birthdatE");
-    String Gender=request.getParameter("gendeR");
+    String dateOfbirth=request.getParameter("birthdate");
+    String Gender=request.getParameter("gender");
     String Phone=request.getParameter("phone");
     String Address=request.getParameter("address");
     String UserEmail=request.getParameter("email");
@@ -78,13 +78,12 @@ body {
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "Iluvhim@123";
+        String password = "R?2nX3?6s";
         try {
             
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            out.println(db + " database successfully connected.<br/><br/>");
             Statement stmt = con.createStatement();
             
             java.util.Date now = new java.util.Date();

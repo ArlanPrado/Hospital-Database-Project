@@ -53,9 +53,6 @@ body {
     </form>
     
 </div> 
-
-
-
     <ul>
         <li><p>
                 <b>Email:</b>
@@ -83,7 +80,7 @@ body {
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "Iluvhim@123";
+        String password = "R?2nX3?6s";
 
         
         try {

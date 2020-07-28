@@ -72,10 +72,10 @@ out.print(login_msg);
   <div>
 	<br />
 	<form action="login.jsp" method="post">
-		<br />Email:<input type="text" name="email" /><br />
-		<br /> Password:<input type="password" name="password" /><br />
-		<br /> <input  type="submit" value="login" />
-		<button><a class="button" href="signUp.jsp"> SignUp</a></button>
+		<br />Email: <input type="text" name="email" /><br />
+		<br /> Password: <input type="password" name="password" /><br />
+		<br /> <input  type="submit" value="Login" />
+		<button><a class="button" href="signUp.jsp"> Sign Up</a></button>
 		
 		<%
     session.setAttribute("userEmail", request.getParameter("email"));
@@ -105,15 +105,13 @@ out.print(login_msg);
      String db = "hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "rootpass";
+        String password = "R?2nX3?6s";
         try {
             
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital?serverTimezone=EST5EDT",user, password);
             out.println(db + " database successfully connected.<br/><br/>");
-            
- 
             Statement stmt = con.createStatement();
             
             
@@ -152,7 +150,8 @@ out.print(login_msg);
               }else if(gotUser == false && attemptedLogin){
             	  out.println("Invalid email or password");
               }
-           
+
+            session.setAttribute("userID", user_id);
             rs.close();
             stmt.close();
             con.close();

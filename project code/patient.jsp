@@ -29,16 +29,29 @@ div {
   border-left: 6px solid #2196F3;
 }
 
-
 .warning {
   background-color: #ffffcc;
   border-left: 6px solid #ffeb3b;
 }
-.ppointment {
-  background-color:  #ffc680;
+
+.appointment {
+  background-color:  #FFE7CB;
   border-left: 6px solid #FFA500;
 }
 
+.profile {
+  background-color:  #FDF7B2;
+  border-left: 6px solid #FBEB2C;
+}
+
+.button {
+  border: none;
+  color: black;
+  padding: 5px ;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
 </style>
 </head>
@@ -47,26 +60,21 @@ div {
     <h1>Patient Dashboard </h1>
     <hr />
 
+	
 
 
 
-
-  <%String useremail = session.getAttribute("userEmail").toString(); %>
- 
- <% 
-    
-         
+  <%String userID = session.getAttribute("userID").toString();
          
          String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "Iluvhim@123";
+        String password = "R?2nX3?6s";
         
-        String first_name="";
-        String Last_name="";
+        String firstName="";
+        String lastName="";
         String diagnosis="";
       //  int patient_id=0;
-        int user_id=0;
         
         String medications="";
         String allergies ="";
@@ -76,7 +84,7 @@ div {
         
         int appointment_id=0;
         String startTime ="";
-        String endtTime ="";
+        String endTime ="";
         String appointmentDate ="";
         
         
@@ -87,7 +95,6 @@ div {
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            out.println(db + " database successfully connected.<br/><br/>");
             Statement stmt = con.createStatement();
             
             java.util.Date now = new java.util.Date();
@@ -96,22 +103,17 @@ div {
            ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
           
             while(rs.next()) {  
-                if(rs.getString(8).equals(useremail) ){
-                    user_id= rs.getInt(1);       
-                    first_name =rs.getString(2);
-                    Last_name=rs.getString(3);
+                if(rs.getString(1).equals(userID) ){
+                    firstName =rs.getString(2);
+                    lastName=rs.getString(3);
                    break;
                 }
             } 
             
-           
-            
-       
-
           ResultSet rs2 = stmt.executeQuery("SELECT * FROM patient ");
           
            while(rs2.next()) {  
-               if(rs2.getInt(1) == user_id ){
+               if(rs2.getString(1).equals(userID)){
                    //patient_id= rs2.getInt(1);       
                    diagnosis =  rs2.getString(2);
                   diagnosisDate =rs2.getDate(4);
@@ -123,7 +125,7 @@ div {
            ResultSet rs3 = stmt.executeQuery("SELECT * FROM patientMedicalHistory ");
            
            while(rs3.next()) {  
-               if(rs3.getInt(2) == user_id ){
+               if(rs3.getString(2).equals(userID)){
                     medications=rs3.getString(3);
                     allergies =rs3.getString(4);
                     diseases=rs3.getString(5);
@@ -137,7 +139,7 @@ div {
            ResultSet rs4 = stmt.executeQuery("SELECT * FROM PatientHasAppointment ");
            
            while(rs4.next()) {  
-               if(rs4.getInt(1) == user_id ){
+               if(rs4.getString(1).equals(userID)){
                    appointment_id=rs4.getInt(2);
            break;
                }
@@ -151,7 +153,7 @@ div {
            while(rs5.next()) {  
                if(rs5.getInt(1) == appointment_id ){
                    startTime=rs5.getString(2);
-                   endtTime=rs5.getString(3);
+                   endTime=rs5.getString(3);
                    appointmentDate = rs5.getString(4);
            break;
                }
@@ -169,30 +171,36 @@ div {
         } catch(SQLException e) { 
             out.println("SQLException caught: " + e.getMessage()); 
         }
+          
     %>
     
  <div class="success">
-  <p><strong>Hello!</strong> <%=first_name%> <%=Last_name%></p>
-   <p><strong>your User_ID</strong> <%=user_id%></p>
+  <p><strong>Hello!</strong> <%=firstName%> <%=lastName%></p>
+   <p><strong>Your User ID:</strong> <%=userID%></p>
 </div>
 
  <div class="info">
   <p><strong>Medication History: </strong> <%=medications%></p>
-   <p><strong>Allergies History:</strong> <%=allergies%></p>
-    <p><strong>Diseases History: </strong> <%=diseases%></p>
-   <p><strong>Symptoms History:</strong> <%=symptoms%></p>
-    <p><strong>Family withHistory: </strong> <%=familyHistory%></p>
+   <p><strong>Allergy History:</strong> <%=allergies%></p>
+    <p><strong>Disease History: </strong> <%=diseases%></p>
+   <p><strong>Symptom History:</strong> <%=symptoms%></p>
+    <p><strong>Family History: </strong> <%=familyHistory%></p>
 </div>
 
  <div class="danger">
-  <p><strong>You are diagnosis with: </strong> <%=diagnosis%></p>
+  <p><strong>You are diagnosed with: </strong> <%=diagnosis%></p>
    <p><strong>Date: </strong> <%=diagnosisDate%></p>
 </div>
 
- <div class="ppointment">
+ <div class="appointment">
  <h4>Next Appointment</h4>
   <p><strong>Date: </strong> <%=appointmentDate%></p>
-  <p><strong>time: </strong> <%=startTime %> - <%=endtTime%></p> 
+  <p><strong>Time: </strong> <%=startTime %> - <%=endTime%></p> 
+</div>
+
+ <div class="profile">
+ <h4>View Profile</h4>
+  <button><a class="button" href="profile.jsp">Profile</a></button>
 </div>
 
     
