@@ -18,7 +18,7 @@ body {
 			Back to Dashboard
 	</button>
 	<hr>
-	  <%String useremail = session.getAttribute("userEmail").toString(); %>
+	  <%int user_id = (int)session.getAttribute("user_id"); %>
  <div>
 	 <form action="orderPrescriptions.jsp" method="post">
 	 	<h4>Patient Form:</h4>
@@ -43,9 +43,6 @@ body {
 		<label for="frequency">Frequency:</label>
 		<input type="text" id="frequency" name="frequency">
 		<h4>Employee Confirmation</h4>
-		<label for="e_id">ID:</label>
-		<input type="number" id="e_id" name="e_id">
-		<br></br>
 	 	<label for="e_fname">First Name:</label>
 		<input type="text" id="e_fname" name="e_fname">
 		<label for="p_name">Last Name:</label>
@@ -79,18 +76,16 @@ body {
 		String dose = request.getParameter("dose");
 		String freq = request.getParameter("frequency");
 		
-		int e_id = Integer.parseInt(request.getParameter("e_id"));
 		String e_fname = request.getParameter("e_fname");
 		String e_lname = request.getParameter("e_lname");
 		
 		//check if the employee confirmation and the email logged in with matches
-		ResultSet rs = stmt.executeQuery("SELECT userID, firstName, lastName, email" + 
+		ResultSet rs = stmt.executeQuery("SELECT userID, firstName, lastName" + 
 				" FROM user" +
 				" JOIN employee ON userID = employeeID" +
-				" WHERE userID = " + e_id + 
+				" WHERE userID = " + user_id + 
 				" AND firstName = '" + e_fname + "'" +
-				" AND lastName = '" + e_lname + "'" +
-				" AND email = '" + useremail + "'");
+				" AND lastName = '" + e_lname + "'");
 		
 		
 		if(rs.next());
@@ -137,7 +132,7 @@ body {
 		stmt.execute("INSERT INTO patienthasprescription(patientID, prescriptionID)" +
 				" VALUE (" + p_id + ", " + prescription_id + ")");
 		stmt.execute("INSERT INTO employeeordersprescription(employeeID, prescriptionID)" +
-				" VALUE (" + e_id + ", " + prescription_id + ")");
+				" VALUE (" + user_id + ", " + prescription_id + ")");
 		
 		stmt.close();
 		con.close();

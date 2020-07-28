@@ -38,7 +38,10 @@ div {
   background-color:  #ffc680;
   border-left: 6px solid #FFA500;
 }
-
+.employee_list{
+  background-color: #ffe0b1;
+  border-left: 6px solid #655843;
+}
 
 </style>
 </head>
@@ -51,7 +54,6 @@ div {
 
 
 
-  <%String useremail = session.getAttribute("userEmail").toString(); %>
  
  <% 
     
@@ -68,7 +70,7 @@ div {
         String diagnosis="";
         String condition="";
         int room = 0;
-        int user_id=0;
+        int user_id= (int)session.getAttribute("user_id");
         
         String medications="";
         String allergies ="";
@@ -98,10 +100,9 @@ div {
            ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
           
             while(rs.next()) {  
-                if(rs.getString(8).equals(useremail) ){
-                    user_id= rs.getInt(1);       
-                    first_name =rs.getString(2);
-                    last_name=rs.getString(3);
+                if(rs.getInt("userID") == user_id ){     
+                    first_name =rs.getString("firstName");
+                    last_name=rs.getString("lastName");
                    break;
                 }
             } 
@@ -110,38 +111,38 @@ div {
             
        
 
-          ResultSet rs2 = stmt.executeQuery("SELECT * FROM patient ");
+            rs = stmt.executeQuery("SELECT * FROM patient ");
           
-           while(rs2.next()) {  
-               if(rs2.getInt(1) == user_id){    
-                   diagnosis =  rs2.getString(2);
-                   condition = rs2.getString(7);
-                  diagnosisDate =rs2.getDate(4);
-                  room = rs2.getInt(3);
+           while(rs.next()) {  
+               if(rs.getInt("patientID") == user_id){    
+                   diagnosis =  rs.getString("diagnosis");
+                   condition = rs.getString("patient_condition");
+                  diagnosisDate =rs.getDate("admissionDate");
+                  room = rs.getInt("room");
          break;
                }
            } 
            
            
-           ResultSet rs3 = stmt.executeQuery("SELECT * FROM patientMedicalHistory ");
+           rs = stmt.executeQuery("SELECT * FROM patientMedicalHistory ");
            
-           while(rs3.next()) {  
-               if(rs3.getInt(2) == user_id ){
-                    medications=rs3.getString(3);
-                    allergies =rs3.getString(4);
-                    diseases=rs3.getString(5);
-                    symptoms =rs3.getString(6);
-                    familyHistory=rs3.getString(7);
+           while(rs.next()) {  
+               if(rs.getInt("patientID") == user_id ){
+                    medications=rs.getString("medications");
+                    allergies =rs.getString("allergies");
+                    diseases=rs.getString("diseases");
+                    symptoms =rs.getString("symptoms");
+                    familyHistory=rs.getString("familyHistory");
          break;
                }
            } 
            
    
-           ResultSet rs4 = stmt.executeQuery("SELECT * FROM PatientHasAppointment ");
+           rs = stmt.executeQuery("SELECT * FROM PatientHasAppointment ");
            
-           while(rs4.next()) {  
-               if(rs4.getInt(1) == user_id ){
-                   appointment_id=rs4.getInt(2);
+           while(rs.next()) {  
+               if(rs.getInt("patientID") == user_id ){
+                   appointment_id=rs.getInt("appointmentID");
            break;
                }
            }
@@ -149,29 +150,18 @@ div {
          
           /*  java.sql.Date appointmentDate = Date.valueOf("2000-01-01"); */
            
-       ResultSet rs5 = stmt.executeQuery("SELECT * FROM appointment ");
+       rs = stmt.executeQuery("SELECT * FROM appointment ");
            
-           while(rs5.next()) {  
-               if(rs5.getInt(1) == appointment_id ){
-                   startTime=rs5.getString(2);
-                   endtTime=rs5.getString(3);
-                   appointmentDate = rs5.getString(4);
+           while(rs.next()) {  
+               if(rs.getInt("appointmentID") == appointment_id ){
+                   startTime=rs.getString("start_time");
+                   endtTime=rs.getString("end_time");
+                   appointmentDate = rs.getString("date");
            break;
                }
            } 
        
-
-        
-    /*        rs.close();
-           rs2.close();
-           rs3.close();
-           rs4.close();
-           rs5.close(); */
-            stmt.close();
-            con.close();
-        } catch(SQLException e) { 
-            out.println("SQLException caught: " + e.getMessage()); 
-        }
+            
     %>
     
  <div class="success">
@@ -200,6 +190,45 @@ div {
     <p><strong>Family History: </strong> <%=familyHistory%></p>
 </div>
 
+<div class="employee_list">
+	<h4>Employee List</h4>
+	<%
+		rs = stmt.executeQuery("SELECT userID, position, firstName, lastName" +
+        		" FROM user" +
+        		" JOIN employee ON userID = employeeID" + 
+        		" JOIN employeehaspatients ON employee.employeeID = employeehaspatients.employeeID" +
+        		" WHERE patientID = " + user_id);
+	%>
+	<table border=1 align=top style="text-align:center">
+	<thead>
+	        	<tr>
+	        		<th>Employee ID</th>
+	        		<th>Position</th>
+	        		<th>Name</th>       		
+	        	<tr>
+	</thead>
+	<tbody>
+	<%
+		while(rs.next()){
+			%>
+			<tr>
+				<td><%= rs.getInt("userID") %></td>
+				<td><%= rs.getString("position") %></td>
+				<td><%= rs.getString("firstName") + " " + rs.getString("lastName") %></td>
+			</tr>
+			<% 
+		}
+	%>
+	</tbody>
+	</table>
+</div>
+<%
+	stmt.close();
+	con.close();
+	} catch(SQLException e) { 
+	out.println("SQLException caught: " + e.getMessage()); 
+	}
+%>
 <div class="dbstatus">
 	<p><%=dbStatus%></p>
 </div>

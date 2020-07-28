@@ -44,7 +44,7 @@ div {
 			Order Prescriptions
 		</button>
 		<button class="tabLink" onclick="window.location.href='edit_e_profile.jsp';">
-			Edit My Profile
+			My Profile
 		</button>
 	</div>
     <hr>
@@ -54,14 +54,13 @@ div {
 
     <% 
  
-    	String useremail = session.getAttribute("userEmail").toString();
     	String dbStatus = "Error connecting to database";	//default error message
     
      	String db = "Hospital";
         String user = "root";
         String password = "rootpass";
         
-        int user_id = -1;
+        int user_id = (int)session.getAttribute("user_id");
         String first_name, last_name;
         String position;
         first_name = last_name = position = "";
@@ -87,20 +86,19 @@ div {
             
             ResultSet rs = stmt.executeQuery("SELECT * FROM user");
             while(rs.next()) {  
-                if(rs.getString(8).equals(useremail) ){
-                    user_id= rs.getInt(1);       
-                    first_name =rs.getString(2);
-                    last_name=rs.getString(3);
+                if(rs.getInt("userID") == user_id ){       
+                    first_name =rs.getString("firstName");
+                    last_name=rs.getString("lastName");
                    break;
                 }
             }
             
             rs = stmt.executeQuery("SELECT * FROM employee");
             while(rs.next()){
-            	if(rs.getInt(1) == user_id){
-            		salary = rs.getInt(2);
-            		position = rs.getString(3);
-            		hire_date = sdf2.format(rs.getDate(4));
+            	if(rs.getInt("employeeID") == user_id){
+            		salary = rs.getInt("salary");            		
+            		position = rs.getString("position");
+            		hire_date = sdf2.format(rs.getDate("hireDate"));
             		break;
             	}
             }

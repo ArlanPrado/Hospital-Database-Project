@@ -127,7 +127,8 @@ out.print(login_msg);
 	            	out.println(rs.getInt(1) + "<br/><br/>");         
 	            	out.println(rs.getString(8) + "<br/><br/>");
 	           		out.println(rs.getString(9) + "<br/><br/>");
-	            	user_id = rs.getInt(1);   
+	            	user_id = rs.getInt(1);  
+	            	session.setAttribute("user_id", user_id);
 	            	gotUser = true;
             		break;
                   }
