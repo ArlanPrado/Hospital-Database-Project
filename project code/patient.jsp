@@ -83,7 +83,7 @@ background-image: url("image/11.jpg");
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}
+}>>>>>>> master
 
 
 .collapsible {

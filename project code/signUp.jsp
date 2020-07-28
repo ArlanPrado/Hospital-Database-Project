@@ -41,8 +41,8 @@ body {
     
     <br /> First Name:<input type="text" name="firstName" required/><br />
     <br /> Last Name:<input type="text" name="lastName" required/><br />
-    <br /> Birth Date:<input type="date" name="birthdatE" required/><br />
-    <br /> Gender:<input type="text" name="gendeR" required/><br />
+    <br /> Birth Date:<input type="date" name="birthdate" required/><br />
+    <br /> Gender:<input type="text" name="gender" required/><br />
     <br /> Phone:<input type="number"  name="phone" /><br />
     <br /> Address:<input type="text" name="address" /><br />
         <br /> Email:<input type="email" name="email" required/><br />
@@ -67,18 +67,18 @@ body {
     <% 
     String FirstName=request.getParameter("firstName");
     String LastName=request.getParameter("lastName");
-    String dateOfbirth=request.getParameter("birthdatE");
-    String Gender=request.getParameter("gendeR");
+    String dateOfbirth=request.getParameter("birthdat");
+    String Gender=request.getParameter("gender");
     String Phone=request.getParameter("phone");
     String Address=request.getParameter("address");
     String UserEmail=request.getParameter("email");
-    String USerPassword = request.getParameter("password");
+    String UserPassword = request.getParameter("password");
     
        
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "Iluvhim@123";
+        String password = "rootpass";
         try {
             
             java.sql.Connection con; 
@@ -93,13 +93,14 @@ body {
             String insertSql = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
                     + " phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('"+FirstName+"', '"+LastName+"','"+dateOfbirth+"','"+Gender+"', '"+Phone+"' ,"
-                    +" '"+Address+"','"+UserEmail +"','"+USerPassword+"','" + sqlDate + "')";
+                    +" '"+Address+"','"+UserEmail +"','"+UserPassword+"','" + sqlDate + "')";
             stmt.execute(insertSql);   
             stmt.close();
             con.close();
-        } catch(SQLException e) { 
-            out.println("SQLException caught: " + e.getMessage()); 
-        }
+        }catch(Exception e){
+    		if(e.getMessage() != "null")
+    			out.println("SQL Exception Caught: " + e.getMessage());
+    	}
     %>
     
     

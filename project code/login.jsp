@@ -179,7 +179,7 @@ background-color: rgb(105, 148, 175);
     <% 
  
     String UserEmail=request.getParameter("email");
-    String USerPassword = request.getParameter("password");
+    String UserPassword = request.getParameter("password");
     
        
      String db = "Hospital";
@@ -192,47 +192,52 @@ background-color: rgb(105, 148, 175);
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
             out.println(db + " database successfully connected.<br/><br/>");
-            
- 
+             
             Statement stmt = con.createStatement();
-            
-            
-            ResultSet rs = stmt.executeQuery("SELECT userID,firstName,email FROM user where email = '"+UserEmail+"' AND password = '"+USerPassword+"'");
-          int user_id=0;
-              while(rs.next()) {  
-                
-            out.println(rs.getInt("userID") + "<br/><br/>");         
-            out.println(rs.getString("firstName") + "<br/><br/>");
-            out.println(rs.getString("email") + "<br/><br/>");
-            user_id = rs.getInt(1);
-
+                        
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user");
+          	int user_id=0;
+          	boolean gotUser = false;
+          	boolean attemptedLogin = false;
+          	if(UserEmail != null || UserPassword != null){
+          		attemptedLogin = true;
+          	}
+             while(rs.next()) {  
+             	if(rs.getString(8).equals(UserEmail) && rs.getString(9).equals(UserPassword)){
+	            	out.println(rs.getInt(1) + "<br/><br/>");         
+	            	out.println(rs.getString(8) + "<br/><br/>");
+	           		out.println(rs.getString(9) + "<br/><br/>");
+	            	user_id = rs.getInt(1);  
+	            	session.setAttribute("user_id", user_id);
+	            	gotUser = true;
+            		break;
+                  }
               }
-              
-              ResultSet rs6 = stmt.executeQuery("SELECT employeeID FROM employee where employeeID = '"+user_id+"'");
-              boolean isPatient = true;
-              while(rs6.next()) {  
-                
-                      isPatient=false;
-                    
-              } 
-              if(isPatient == true ){
-                  if(request.getParameter("email")!= null){
-                  session.setAttribute("userEmail", request.getParameter("email"));
-                  response.sendRedirect("patient.jsp");  
-                  }else{ }
-             }else {     
-                 session.setAttribute("userEmail", request.getParameter("email"));
-                 response.sendRedirect("employee.jsp");  
-                 out.println("you are an not a patient");
-                 }
-              
-           
+              if(gotUser && attemptedLogin){
+	              ResultSet rs6 = stmt.executeQuery("SELECT * FROM employee ");
+	              boolean isPatient = true;
+	              while(rs6.next()) {  
+	                  if(rs6.getInt(1)== user_id ){
+	                      isPatient=false;
+	                     break;
+	                  }
+	              } 
+	              if(isPatient == true){
+	                  response.sendRedirect("patient.jsp");        
+	             }else {                
+	                 response.sendRedirect("employee.jsp");  
+	                 out.println("you are an not a patient");
+	                 }
+              }else if(gotUser == false && attemptedLogin){
+            	  out.println("Invalid email or password");
+              }
             rs.close();
             stmt.close();
             con.close();
-        } catch(SQLException e) { 
-            out.println("SQLException caught: " + e.getMessage()); 
-        }
+        } catch(Exception e){
+    		if(e.getMessage() != "null")
+    			out.println("SQL Exception Caught: " + e.getMessage());
+    	}
     %>
 
 

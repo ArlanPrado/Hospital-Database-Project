@@ -2,7 +2,7 @@ CREATE TABLE `user` (
   `userID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `firstName` varchar(45) NOT NULL,
   `lastName` varchar(45) NOT NULL,
-  `dateOfBirth` VARCHAR(45) NOT NULL,
+  `dateOfBirth` date NOT NULL,
    `gender` VARCHAR(45) NOT NULL,
   `phoneNumber` varchar(45) DEFAULT NULL,
   `address` varchar(45) DEFAULT NULL,
@@ -18,15 +18,13 @@ CREATE TABLE `patient` (
  `patientID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `diagnosis` VARCHAR(45) DEFAULT NULL,
   `room` INT UNSIGNED NOT NULL,
+  'patient_condition' VARCHAR(45) DEFAULT 'undetermined',
   `admissionDate` date NOT NULL,
   `dischargeDate` date default NULL,
   `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (patientID),
   FOREIGN KEY (`patientID`) REFERENCES `user`(`userID`) ON DELETE RESTRICT ON 
   UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
-
-
 
 
 CREATE TABLE `employee` (
@@ -36,7 +34,6 @@ CREATE TABLE `employee` (
   `hireDate` date NOT NULL,
   `endDate` date NOT NULL,
   `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`employeeID`),
   FOREIGN KEY (`employeeID`) REFERENCES `user`(`userID`) ON DELETE RESTRICT ON 
 UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
