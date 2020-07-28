@@ -10,6 +10,7 @@
 body {
 	background: linear-gradient(to bottom, #92a8d1 10%, #92a8d1 20%, #D3D3D3 20%,
 		#92a8d1 50%, white 100%);
+		 background-image: url("image/8.jpg");
 }
 
 div {
@@ -61,11 +62,12 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Modal Content */
 .modal-content {
+background-image: url("image/11.jpg");
   background-color: #fefefe;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: 20%;
 }
 
 /* The Close Button */
@@ -111,7 +113,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </head>
 <body>
 	<a href="login.jsp">Logout</a>
-	<h1>Patient Dashboard</h1>
+	<h1 style="color:white;">Patient Dashboard</h1>
 	<hr />
 
 
@@ -120,63 +122,58 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 	<%String useremail = session.getAttribute("userEmail").toString(); %>
 
-	<% 
-    
-         
-         
-         String db = "Hospital";
-        String user; // assumes database name is the same as username
-          user = "root";
-        String password = "Iluvhim@123";
-        
-        String first_name="";
-        String Last_name="";
-        String diagnosis="";
-        int patient_id=0;
-        //int user_id=0;
-        
-        String medications="";
-        String allergies ="";
-        String diseases="";
-        String symptoms ="";
-        String familyHistory="";
-        
-        int appointment_id=0;
-        String startTime ="";
-        String endtTime ="";
-        String appointmentDate ="";
-        
-        String note="";
-        int note_ID=0;
-      
-        boolean changInfo=false;
-       
-          ArrayList <Integer> al = new ArrayList<Integer>();
-   
-        java.sql.Date note_date = Date.valueOf("2000-01-01");
-       java.sql.Date diagnosisDate = Date.valueOf("2000-01-01");
-        
-        try {
-            
-            java.sql.Connection con; 
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            out.println(db + " database successfully connected.<br/><br/>");
-            Statement stmt = con.createStatement();
-            
-            java.util.Date now = new java.util.Date();
-            java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-            //find the patient id using the patient id
-           ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
-           
-            
-            while(rs.next()) {  
-                if(rs.getString(8).equals(useremail) ){
-                    patient_id= rs.getInt(1);       
-                    first_name =rs.getString(2);
-                    Last_name=rs.getString(3);
-                    
-                    %>
+	<%
+	    String db = "Hospital";
+	        String user; // assumes database name is the same as username
+	          user = "root";
+	        String password = "Iluvhim@123";
+	        
+	        String first_name="";
+	        String Last_name="";
+	        String diagnosis="";
+	        int patient_id=0;
+	        //int user_id=0;
+	        
+	        String medications="";
+	        String allergies ="";
+	        String diseases="";
+	        String symptoms ="";
+	        String familyHistory="";
+	        
+	        int appointment_id=0;
+	        String startTime ="";
+	        String endtTime ="";
+	        String appointmentDate ="";
+	        
+	        String note="";
+	        int note_ID=0;
+	      
+	        boolean changInfo=false;
+	       
+	          ArrayList <Integer> al = new ArrayList<Integer>();
+	   
+	        java.sql.Date note_date = Date.valueOf("2000-01-01");
+	       java.sql.Date diagnosisDate = Date.valueOf("2000-01-01");
+	        
+	        try {
+	    
+	    java.sql.Connection con; 
+	    Class.forName("com.mysql.jdbc.Driver");
+	    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
+	    out.println(db + " database successfully connected.<br/><br/>");
+	    Statement stmt = con.createStatement();
+	    
+	    java.util.Date now = new java.util.Date();
+	    java.sql.Date sqlDate = new java.sql.Date(now.getTime());
+	    //find the patient id using the patient id
+	           ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
+	           
+	        while (rs.next()) {
+	            if (rs.getString(8).equals(useremail)) {
+	                patient_id = rs.getInt(1);
+	                first_name = rs.getString(2);
+	                Last_name = rs.getString(3);
+	%>
 	<div class="success">
 		<p>
 			<strong>Hello!</strong>
@@ -194,9 +191,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   Modal content
   <div class="modal-content">
    <form action="patient.jsp" method="post">
-    <br /> Phone:<input type="number"  name="phone" /><br />
-    <br /> Address:<input type="text" name="address" /><br />
-        <br /> Email:<input type="email" name="email"/><br />
+    <br /> Phone:<input type="number"  name="phone" placeholder="new or old phon number" required /><br />
+    <br /> Address:<input type="text" name="address" placeholder="new or old Address" required/><br />
+        <br /> Email:<input type="email" name="email" placeholder="new or old phon email"required/><br />
         <br /> <input type="submit" value="submit" />
      <button><a class="button" href="patient.jsp">Cancel</a></button> 
     </form>
