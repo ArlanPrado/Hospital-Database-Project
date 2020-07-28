@@ -15,6 +15,10 @@ div {
   margin-bottom: 15px;
   padding: 4px 12px;
 }
+table{
+	background-color: #FFF0FF;
+	border:#FFD7FF;
+}
 </style>
 </head>
 <body>
@@ -23,7 +27,7 @@ div {
 			Back to Dashboard
 	</button>
 	<%
-	String useremail = session.getAttribute("userEmail").toString();
+	int user_id = (int)session.getAttribute("user_id");
 	String dbStatus = "Error connecting to database";	//default error message
     
  	String db = "Hospital";
@@ -39,7 +43,6 @@ div {
     SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
     SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd-yyyy");
     
-    int user_id = 0;
 	try{
 		java.sql.Connection con; 
         Class.forName("com.mysql.jdbc.Driver");
@@ -47,16 +50,8 @@ div {
         dbStatus = (db + " database successfully connected.<br/><br/>");
         Statement stmt = con.createStatement();
         
-        ResultSet rs = stmt.executeQuery("SELECT * FROM user");
-        while(rs.next()){
-        	if(rs.getString("email").equals(useremail)){
-        		user_id = rs.getInt("userID");
-        		break;
-        	}
-        }
         
-        
-        rs = stmt.executeQuery("SELECT *" +
+        ResultSet rs = stmt.executeQuery("SELECT *" +
         		"FROM " + 
         		"(SELECT userID, firstName, lastName, room, start_time, end_time, appointment.date, employee.employeeID, appointment.appointmentID " +
         		"FROM user "  +
@@ -98,8 +93,11 @@ div {
 	        	<tr>
 	        		<td><%= rs.getInt("appointmentID") %></td>
 		        	<td><%= rs.getInt("room")%></td>
+		        	<%-- 
 		        	<td><%= (rs.getTime("start_time"))%></td>
-		        	<td><%= (rs.getTime("end_time"))%></td>
+		        	<td><%= (rs.getTime("end_time"))%></td> --%>
+		        	<td><%= (rs.getString("start_time"))%></td>
+		        	<td><%= (rs.getString("end_time"))%></td>
 		        	<td><%= sdf2.format(rs.getDate("date"))%></td>
 		        	<td><%= rs.getInt("userID") %></td>
 		        	<td><%= rs.getString("firstName") + " " + rs.getString("lastName")%></td>

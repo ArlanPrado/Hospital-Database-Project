@@ -73,6 +73,7 @@ div {
         String start_time, end_time, app_date;
         p_first = p_last = start_time = end_time = app_date = "";
         
+
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
         SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd-yyyy");
         
@@ -132,16 +133,22 @@ div {
             		" AND T.start_time >= CURTIME()" +
             		" ORDER BY T.date ASC, T.start_time ASC LIMIT 1 ");
             while(rs.next()){
-            	p_id = rs.getInt(1);
-            	p_first = rs.getString(2);
-            	p_last = rs.getString(3);
-            	room = rs.getInt(4);
-            	start_time = sdf.format(rs.getDate(5));
-            	end_time = sdf.format(rs.getDate(6));
-            	//start_time = rs.getDate(5).toString();
-            	//end_time = rs.getDate(6).toString();
-            	app_date = sdf2.format(rs.getDate(7));
+            	p_id = rs.getInt("userID");
+            	p_first = rs.getString("firstName");
+            	p_last = rs.getString("lastName");
+            	room = rs.getInt("room");
+            	//start_time = sdf.format(rs.getTime(5));	displays time wrong, when using getTime or getDate
+            	//end_time = sdf.format(rs.getTime(6));
+            	start_time = rs.getString("start_time");
+            	end_time = rs.getString("end_time");
+            	app_date = sdf2.format(rs.getDate("date"));
             }
+            stmt.close();
+            con.close();
+	        } catch(Exception e){
+	    		if(e.getMessage() != "null")
+	    			out.println(e.getMessage());
+	    	}
             
             %>
 <div class="appointment">
@@ -153,16 +160,6 @@ div {
 	<h4> No Upcoming Appointments</h4>
 			<%} %>
 </div>     
-
-        <%
-            stmt.close();
-            con.close();
-        } catch(Exception e){
-    		if(e.getMessage() != "null")
-    			out.println(e.getMessage());
-    	}
-    %>
-
 
 <div class="dbstatus">
 	<p><%=dbStatus%></p>

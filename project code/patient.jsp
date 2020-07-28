@@ -80,7 +80,7 @@ div {
         
         int appointment_id=0;
         String startTime ="";
-        String endtTime ="";
+        String endTime ="";
         String appointmentDate ="";
         
         
@@ -155,7 +155,7 @@ div {
            while(rs.next()) {  
                if(rs.getInt("appointmentID") == appointment_id ){
                    startTime=rs.getString("start_time");
-                   endtTime=rs.getString("end_time");
+                   endTime=rs.getString("end_time");
                    appointmentDate = rs.getString("date");
            break;
                }
@@ -173,7 +173,7 @@ div {
  <div class="appointment">
  <h4>Next Appointment</h4>
   <p><strong>Date: </strong> <%=appointmentDate%></p>
-  <p><strong>time: </strong> <%=startTime %> - <%=endtTime%></p> 
+  <p><strong>time: </strong> <%=startTime %> - <%=endTime%></p> 
 </div>
 
  <div class="danger">

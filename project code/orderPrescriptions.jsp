@@ -10,6 +10,32 @@
 body {
  background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 20%,#D3D3D3 20%,#92a8d1 50%,white 100%);
 }
+form{
+	box-sizing: content-box;
+	margin-left: 20em;
+	width: 25em;
+	max-width: 25em;
+	background-color: #acffc7;
+	border: 6px solid  #4CCC75;
+	padding-bottom: 10px;
+	position:absolute;
+}
+input{
+	margin-left: 15em;
+}
+label{
+	margin-left: 1em;
+	position:absolute;
+}
+h4{
+	margin-left:0.5em;
+}
+.submit_button{
+	position: relative;
+	margin-left: 4em;
+	
+}
+
 </style>
 </head>
 <body>
@@ -27,9 +53,9 @@ body {
 		<br></br>
 	 	<label for="p_fname">First Name:</label>
 		<input type="text" id="p_fname" name="p_fname">
+		<br></br>
 		<label for="p_lname">Last Name:</label>
 		<input type="text" id="p_lname" name="p_lname">
-		<br></br>
 		<h4>Medication Form:</h4>
 		<label for="medication">Medication:</label>
 		<input type="text" id="medication" name="medication">
@@ -45,10 +71,13 @@ body {
 		<h4>Employee Confirmation</h4>
 	 	<label for="e_fname">First Name:</label>
 		<input type="text" id="e_fname" name="e_fname">
+		<br></br>
 		<label for="p_name">Last Name:</label>
 		<input type="text" id="e_lname" name="e_lname">
 		<br></br>
+		<div class="submit_button">
 		<input type="submit" value="order" name="submit">
+		</div>
 	</form>
 </div>
 

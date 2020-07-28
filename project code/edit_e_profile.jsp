@@ -54,7 +54,9 @@ div {
 	margin: auto;
 	width: 0%;
 }
-
+.status{
+float:left;
+}
 
 
 </style>
@@ -67,7 +69,7 @@ div {
 <hr>
 <%
 	String dbStatus = "Error connecting to database";	//default error message
-
+	String exception = "";
 	String db = "Hospital";
 	String user = "root";
 	String password = "rootpass";
@@ -214,7 +216,7 @@ div {
        
      }catch(Exception e){
     	if(e.getMessage() != "null")
-			out.println("Exception Caught: " + e.getMessage());
+			exception = ("Exception Caught: " + e.getMessage());
     }
 %>
 	<div class="info">
@@ -238,9 +240,15 @@ div {
 	<% }else{%>
 		<h4>Confirmation not valid</h4>
 	<%} 
-	}%>
+	}else{%>
+		<h3>Changes Displayed Here</h3>
+		<% }%>
+	</div>
 </div>
 </div>
+<div class="status">
+	<p><%=exception %>
+	<p><%=dbStatus%></p>
 </div>
 <%-- 
 <div class="updated_info">
