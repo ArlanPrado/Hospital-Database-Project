@@ -7,24 +7,17 @@
      import="org.joda.time.*"
 %>
 <a href="dashBord.jsp"><button>HOME</button> </a>
-
-<link rel="stylesheet" type="text/css" href="css/style.css"/>
 <html>
 <head>
 <title>Employee</title>
+<link rel="stylesheet" type="text/css" href="basic.css"/>
 <style type="text/css">
-body {
- background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 24%,#D3D3D3 24%,#92a8d1 50%,white 100%);
-}
+
 
 #mylogin {
   align-self: center;
 }
 
-div {
-  margin-bottom: 15px;
-  padding: 4px 12px;
-}
 
 #main {
   margin: auto;

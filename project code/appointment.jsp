@@ -216,7 +216,7 @@ body {
     String doctor_forApp=request.getParameter("DoctoridForList");  
     String FirstName=request.getParameter("firstName");
     String LastName=request.getParameter("lastName");
-    String userid="";
+    String userid=session.getAttribute("user_id").toString();
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
@@ -232,15 +232,6 @@ body {
             
             java.util.Date now = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-            
-ResultSet rs5 = stmt.executeQuery("SELECT userID FROM user where email = '"+useremail+"'");
-            
-            while(rs5.next()) {  
-              
-                   out.println("user id is "+ rs5.getString("userID"));
-                   userid=rs5.getString("userID");
-           
-            } 
             
             
             

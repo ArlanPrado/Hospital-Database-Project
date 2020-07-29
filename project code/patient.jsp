@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>Patient</title>
+<link rel="stylesheet" type="text/css" href="basic.css"/>
 <style type="text/css">
 body {
 	background: linear-gradient(to bottom, #92a8d1 10%, #92a8d1 20%, #D3D3D3 20%,
@@ -17,7 +18,6 @@ div {
 	margin-bottom: 15px;
 	padding: 4px 12px;
 }
-
 .danger {
 	background-color: #ffdddd;
 	border-left: 6px solid #f44336;
@@ -127,6 +127,11 @@ background-image: url("image/11.jpg");
 <body>
 	<a href="login.jsp">Logout</a>
 	<h1 style="color:white;">Patient Dashboard</h1>
+	<div class="tab">
+        <button class="tabLink" onclick="window.location.href='viewPrescriptions.jsp';">
+            My Prescriptions
+        </button>
+    </div>
 	<hr />
 
   <%	int user_id = (int) session.getAttribute("user_id");
