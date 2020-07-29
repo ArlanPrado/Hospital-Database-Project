@@ -135,7 +135,7 @@ background-image: url("image/11.jpg");
         	Request Appointment
         </button>
         <button class="tabLink" onclick="window.location.href='profile.jsp';">
-        	View Profile
+        	View/Edit Profile
         </button>
     </div>
 	<hr />
@@ -197,6 +197,7 @@ background-image: url("image/11.jpg");
 	    //find the patient id using the patient id
 
 	%>
+	<%--
 	<div class="success">
 		<p>
 			<strong>Hello!</strong>
@@ -252,7 +253,7 @@ window.onclick = function(event) {
 }
 </script> 
 	</div>
-
+--%>
 	<%
             String Phone=request.getParameter("phone");
             String Address=request.getParameter("address");

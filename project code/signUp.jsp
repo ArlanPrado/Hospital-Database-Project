@@ -52,17 +52,6 @@ body {
     </form>
 </div> 
 
-    <ul>
-        <li><p>
-                <b>Email:</b>
-                <%= request.getParameter("email")%>
-            </p></li>
-        <li><p>
-                <b>Password:</b>
-                <%= request.getParameter("password")%>
-            </p></li>
-    </ul>
-
 
     <% 
     String FirstName=request.getParameter("firstName");
@@ -73,7 +62,7 @@ body {
     String Address=request.getParameter("address");
     String UserEmail=request.getParameter("email");
     String UserPassword = request.getParameter("password");
-    
+    int user_id = -1;
        
      String db = "Hospital";
         String user; // assumes database name is the same as username
@@ -86,23 +75,39 @@ body {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
             Statement stmt = con.createStatement();
             
-            java.util.Date now = new java.util.Date();
-            java.sql.Date sqlDate = new java.sql.Date(now.getTime());
             
             String insertSql = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
-                    + " phoneNumber, address, email, password, CREATED_DATE) "
+                    + " phoneNumber, address, email, password) "
                     + "VALUES ('"+FirstName+"', '"+LastName+"','"+dateOfbirth+"','"+Gender+"', '"+Phone+"' ,"
-                    +" '"+Address+"','"+UserEmail +"','"+UserPassword+"','" + sqlDate + "')";
+                    +" '"+Address+"','"+UserEmail +"','"+UserPassword+"')";
             stmt.execute(insertSql);   
+            
+            ResultSet rs = stmt.executeQuery("SELECT userID, email FROM user WHERE email='" + UserEmail +"'");
+            while(rs.next()){
+            	user_id = rs.getInt(1);
+            	break;
+            }
             stmt.close();
             con.close();
         }catch(Exception e){
     		if(e.getMessage() != "null")
     			out.println("SQL Exception Caught: " + e.getMessage());
     	}
+    
+    if(user_id > 0){
     %>
-    
-    
+    <div class="newUser">
+    	<p><b>User ID: <%=user_id%></b>
+    	<p>First Name: <%= FirstName%></p>
+    	<p>Last Name: <%= LastName%></p>
+    	<p>Date of Birth: <%= dateOfbirth%></p>
+    	<p>Gender: <%= Gender%></p>
+    	<p>Phone: <%= Phone%></p>
+    	<p>Address: <%=Address %></p>
+    	<p>Email: <%=UserEmail %></p>
+    	<p>
+    </div>
+    <%} %>
 </body>
 </html>
 
