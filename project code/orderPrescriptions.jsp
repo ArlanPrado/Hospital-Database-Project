@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>Order RX</title>
-<link rel="stylesheet" type="text/css" href="basic.css"/>
+<link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
 .container {
 margin: auto;

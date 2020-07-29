@@ -10,7 +10,7 @@
 <html>
 <head>
 <title>Employee</title>
-<link rel="stylesheet" type="text/css" href="basic.css"/>
+<link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
 
 
@@ -341,7 +341,7 @@ noteButton.onclick = function() {
      ResultSet rs = stmt.executeQuery("SELECT * FROM user");
    
      
-     ResultSet rs2 = stmt.executeQuery("SELECT * FROM employeeHasPatient");
+     ResultSet rs2 = stmt.executeQuery("SELECT * FROM employeeHasPatients");
      
      while(rs2.next()) {  
          if(rs2.getInt("employeeID") == user_id){

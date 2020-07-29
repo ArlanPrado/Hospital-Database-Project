@@ -115,7 +115,7 @@ background-image: url("image/11.jpg");
 
 }
 
-.content {
+.note{
   padding: 0 18px;
   display: none;
   overflow: hidden;
@@ -130,6 +130,12 @@ background-image: url("image/11.jpg");
 	<div class="tab">
         <button class="tabLink" onclick="window.location.href='viewPrescriptions.jsp';">
             My Prescriptions
+        </button>
+        <button class="tabLink" onclick="window.location.href='appointment.jsp';">
+        	Request Appointment
+        </button>
+        <button class="tabLink" onclick="window.location.href='profile.jsp';">
+        	View Profile
         </button>
     </div>
 	<hr />
@@ -264,26 +270,13 @@ window.onclick = function(event) {
                if(rs2.getInt("patientID") == user_id ){   
                   diagnosis =  rs2.getString("diagnosis");
                   diagnosisDate =rs2.getDate("admissionDate");
-                  %>
-	<div class="danger">
-		<p>
-			<strong>You are diagnosis with: </strong>
-			<%=diagnosis%></p>
-		<p>
-			<strong>Date: </strong>
-			<%=diagnosisDate%></p>
-	</div>
-
-	<%    
-	
-         break;
+         			break;
                }
            } 
-           
-       
-           
-           
-           
+           %>
+           <%-- 
+           <%
+
 ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            
            while(rs8.next()) {  
@@ -331,43 +324,21 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
     
   al.clear();
 
-           
+           --%>
+           <%
            ResultSet rs3 = stmt.executeQuery("SELECT * FROM patientMedicalHistory ");
            
            while(rs3.next()) {  
-
                if(rs3.getInt(2) == (user_id)){
                     medications=rs3.getString(3);
                     allergies =rs3.getString(4);
                     diseases=rs3.getString(5);
                     symptoms =rs3.getString(6);
                     familyHistory=rs3.getString(7);
-                    
-                    %>
-	<div class="warning">
-		<p>
-			<strong>Medication History: </strong>
-			<%=medications%></p>
-		<p>
-			<strong>Allergies History:</strong>
-			<%=allergies%></p>
-		<p>
-			<strong>Diseases History: </strong>
-			<%=diseases%></p>
-		<p>
-			<strong>Symptoms History:</strong>
-			<%=symptoms%></p>
-		<p>
-			<strong>Family withHistory: </strong>
-			<%=familyHistory%></p>
-	</div>
-
-	<%
-         break;
+	                break;
                }
            } 
-           
-   
+
            ResultSet rs4 = stmt.executeQuery("SELECT * FROM PatientHasAppointment ");
            
            while(rs4.next()) {  
@@ -386,28 +357,8 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
                if(rs5.getInt(1) == appointment_id ){
                    startTime=rs5.getString(2);
                    endTime=rs5.getString(3);
-                   appointmentDate = rs5.getString(4);
-                   
-                   %>
-	<div class="ppointment">
-		<h4>Next Appointment</h4>
-		<p>
-			<strong>Date: </strong>
-			<%=appointmentDate%></p>
-		<p>
-			<strong>time: </strong>
-			<%=startTime %>
-			-
-			<%=endTime%></p>
-		<form action="appointment.jsp">
-			<input type="submit" value="Create Appointment">
-		</form>
-	</div>
-
-	<%
-                   
-                   
-           break;
+                   appointmentDate = rs5.getString(4);                   
+           			break;
                }
            } 
            
@@ -423,6 +374,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
                }            
            } 
            %>
+           <div class="note">
            <p><h3>Doctors note:</h3></p>
            <%
            for(int i=0;i<al.size();i++) {         
@@ -433,7 +385,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
                    
                %>
     <button type="button" class="collapsible"><%=rs7.getString("date")%></button>
-	<div class="content">
+	
 <%-- 		<p>
 			<strong>Note date: </strong>
 			<%=rs7.getString("date")%></p> --%>
@@ -485,10 +437,6 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
   <p><strong>Time: </strong> <%=startTime %> - <%=endTime%></p> 
 </div>
 
- <div class="profile">
- <h4>View Profile</h4>
-  <button><a class="button" href="profile.jsp">Profile</a></button>
-</div>
 
 <script>
 var coll = document.getElementsByClassName("collapsible");

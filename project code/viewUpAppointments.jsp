@@ -7,7 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Upcoming Appointments</title>
-<link rel="stylesheet" type="text/css" href="basic.css"/>
+<link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
 </style>
 </head>

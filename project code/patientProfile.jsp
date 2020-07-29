@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Profile</title>
-<link rel="stylesheet" type="text/css" href="basic.css"/>
+<link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
 #mylogin {
   align-self: center;

@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Employee Profile</title>
-<link rel="stylesheet" type="text/css" href="basic.css"/>
+<link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 20%,#D3D3D3 20%,#92a8d1 50%,white 100%);
