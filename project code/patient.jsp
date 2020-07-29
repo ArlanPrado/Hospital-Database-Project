@@ -399,12 +399,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
 
 
 
-	<%
-    /*        rs.close();
-           rs2.close();
-           rs3.close();
-           rs4.close();
-           rs5.close(); */
+<%
             stmt.close();
             con.close();
         } catch(SQLException e) { 

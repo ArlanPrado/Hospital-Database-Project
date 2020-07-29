@@ -218,7 +218,7 @@ body {
   	     } 
          
          if (patientID != null) {
-         	ResultSet rs2 = stmt.executeQuery("SELECT * FROM employeeHasPatient");
+         	ResultSet rs2 = stmt.executeQuery("SELECT * FROM employeeHasPatients");
          	while(rs2.next()) {  
              	if(rs2.getString(1).equals(patientID)){
                     if (rs2.getString(2).equals(employeeID)) {

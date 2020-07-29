@@ -47,7 +47,7 @@ div {
  String db = "Hospital";
  String user; // assumes database name is the same as username
    user = "root";
- String password = "R?2nX3?6s";
+ String password = session.getAttribute("dbPass").toString();
  
  //int user_id=0;
  //String userId = "";
