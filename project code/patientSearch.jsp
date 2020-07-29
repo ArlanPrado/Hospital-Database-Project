@@ -1,5 +1,3 @@
-
-
 <%@ page import="java.sql.*"
 		 import="java.util.*"%>
 <html>
@@ -49,7 +47,7 @@ body {
     <button><a class="button" href="employee.jsp">Back</a></button>
     <hr />
     
-     <%String userID = session.getAttribute("userID").toString(); %>
+     <%String userID = session.getAttribute("user_id").toString(); %>
 
 <div id="main">
     <br />
@@ -85,7 +83,7 @@ body {
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "R?2nX3?6s";
+        String password = "rootpass";
         try {
             
             java.sql.Connection con; 

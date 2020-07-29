@@ -38,13 +38,13 @@ div {
   	<button><a class="button" href="patient.jsp">Back</a></button>
     <hr />
     
-  <%String userID = session.getAttribute("userID").toString();
+  <%int user_id = (int)session.getAttribute("user_id");
  
  
  String db = "Hospital";
  String user; // assumes database name is the same as username
    user = "root";
- String password = "R?2nX3?6s";
+ String password = "rootpass";
  
  String firstName = "";
  String lastName = "";
@@ -70,8 +70,8 @@ div {
      ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
    
      while(rs.next()) {  
-         if(rs.getString(1).equals(userID) ){
-        	 firstName = rs.getString(2);
+         if(rs.getInt(1) == (user_id) ){
+        	 firstName = rs.getString("firstName");
              lastName = rs.getString(3);
              dateOfBirth = rs.getString(4);
              gender = rs.getString(5);
@@ -97,7 +97,7 @@ div {
 
 <div class="profileInfo">
   <p><strong>User:</strong> <%=firstName%> <%=lastName%></p>
-   <p><strong>User ID:</strong> <%=userID%></p>
+   <p><strong>User ID:</strong> <%=user_id%></p>
     <p><strong>Birth Date:</strong> <%=dateOfBirth%></p>
      <p><strong>Gender:</strong> <%=gender%></p>
       <p><strong>Phone Number:</strong> <%=phoneNumber%></p>

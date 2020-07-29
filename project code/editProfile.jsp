@@ -56,7 +56,7 @@ div {
     </form>
 </div> 
 
-  <%String userID = session.getAttribute("userID").toString();
+  <%int user_id = (int)session.getAttribute("user_id");
 
  String currentPhoneNumber = "";
  String currentAddress = "";
@@ -76,7 +76,7 @@ div {
   String db = "Hospital";
      String user; // assumes database name is the same as username
        user = "root";
-     String password = "R?2nX3?6s";
+     String password = "rootpass";
      try {
          
          java.sql.Connection con; 
@@ -94,7 +94,7 @@ div {
        		formComplete = true;
        	 }
          while(rs.next()) {  
-             if(rs.getString(1).equals(userID) ){
+             if(rs.getInt(1) == (user_id) ){
             	 currentPhoneNumber = rs.getString(6);
             	 if (phoneNumber == "") {
             		 phoneNumber = currentPhoneNumber;
@@ -117,7 +117,7 @@ div {
     	 if (formComplete) {
          String insertSql = "UPDATE user"
         		 + "SET user.phoneNumber ='"+ phoneNumber + "', user.address = '" + address + "', user.email = '" + email + "', user.password = '" + userPassword + "'"
-                 + "WHERE user.userID = " + userID;
+                 + "WHERE user.userID = " + user_id;
          stmt.execute(insertSql);   
          //response.sendRedirect("patient.jsp"); 
     	 }
