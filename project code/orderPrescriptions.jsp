@@ -10,10 +10,11 @@ body {
  background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 20%,#D3D3D3 20%,#92a8d1 50%,white 100%);
 }
 .container {
-  width:80px;
+margin: auto;
+  width:20em;
   clear: both;
+  
 }
-
 </style>
 </head>
 <body>
@@ -30,6 +31,7 @@ body {
         <br></br>
         <label for="p_fname">First Name:</label>
         <input type="text" id="p_fname" name="p_fname">
+        <br></br>
         <label for="p_lname">Last Name:</label>
         <input type="text" id="p_lname" name="p_lname">
         <br></br>
@@ -51,6 +53,7 @@ body {
         <br></br>
         <label for="e_fname">First Name:</label>
         <input type="text" id="e_fname" name="e_fname">
+        <br></br>
         <label for="p_name">Last Name:</label>
         <input type="text" id="e_lname" name="e_lname">
         <br></br>
@@ -63,7 +66,7 @@ body {
     String dbStatus = "Error connecting to database";   //default error message
     String orderStatus = "Error with processing order";
     String user = "root";
-    String password = "rootpass";
+    String password = session.getAttribute("dbPass").toString();
     try{
         java.sql.Connection con; 
         Class.forName("com.mysql.jdbc.Driver");

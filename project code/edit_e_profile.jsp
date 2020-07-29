@@ -72,7 +72,7 @@ float:left;
 	String exception = "";
 	String db = "Hospital";
 	String user = "root";
-	String password = "rootpass";
+	String password = session.getAttribute("dbPass").toString();
 	
 	int user_id = (int)session.getAttribute("user_id");
     String fname, lname, address, 

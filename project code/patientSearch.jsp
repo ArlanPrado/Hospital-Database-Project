@@ -83,7 +83,7 @@ body {
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "rootpass";
+          String password = session.getAttribute("dbPass").toString();
         try {
             
             java.sql.Connection con; 

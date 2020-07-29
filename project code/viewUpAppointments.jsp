@@ -28,7 +28,7 @@ div {
     
     String db = "Hospital";
     String user = "root";
-    String password = "Iluvhim@123";
+    String password = session.getAttribute("dbPass").toString();
     
     String p_first, p_last;
     int room = 0;

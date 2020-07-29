@@ -181,6 +181,7 @@ background-color: rgb(105, 148, 175);
 	           		out.println(rs.getString(9) + "<br/><br/>");
 	            	user_id = rs.getInt(1);  
 	            	session.setAttribute("user_id", user_id);
+	            	session.setAttribute("dbPass", "rootpass");
 	            	gotUser = true;
             		break;
                   }

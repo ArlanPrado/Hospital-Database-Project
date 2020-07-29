@@ -107,7 +107,6 @@ body {
 <body>
     <h1 style="color:blue;">Hospital Management System Appointment </h1>
     <hr />
-  <%String useremail = session.getAttribute("userEmail").toString(); %>
     <div id="continer2">
     <div >
     <p> <h3 style="color:blue;">request appointment</h3></p>
@@ -221,7 +220,7 @@ body {
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "rootpass";
+          String password = session.getAttribute("dbPass").toString();
         
         try {
             
