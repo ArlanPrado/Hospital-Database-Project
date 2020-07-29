@@ -13,10 +13,7 @@ div {
   margin-bottom: 15px;
   padding: 4px 12px;
 }
-.container{
-	margin: auto;
-	width: 50%;
-}
+
 .e_info{
 	margin: auto;
 	background-color:  #F5EDF0;
@@ -30,7 +27,7 @@ div {
 .info{
 	box-sizing:border-box;
 	margin: auto;
-	width:50%;
+	
 	float: left;
 	background-color:  #F5EDF0;
 	border: 6px solid #DCD5D8;
@@ -53,6 +50,9 @@ div {
 .submit_button{
 	margin: auto;
 	width: 0%;
+}
+.new_text{
+	margin: auto;
 }
 .status{
 float:left;

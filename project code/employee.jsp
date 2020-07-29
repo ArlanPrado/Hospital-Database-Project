@@ -129,6 +129,9 @@ div {
         <button class="tabLink" onclick="window.location.href='patientSearch.jsp';">
             Patient Search
         </button>
+        <button class="tabLink" onclick="window.location.href='edit_e_profile.jsp';">
+            My Profile
+        </button>
     </div>
     <hr>
  

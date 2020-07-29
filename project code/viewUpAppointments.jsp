@@ -23,7 +23,6 @@ div {
             Back to Dashboard
     </button>
     <%
-    String useremail = session.getAttribute("userEmail").toString();
     String dbStatus = "Error connecting to database";   //default error message
     
     String db = "Hospital";
@@ -39,7 +38,7 @@ div {
     SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
     SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd-yyyy");
     
-    int user_id = 0;
+    int user_id = (int)session.getAttribute("user_id");
     try{
         java.sql.Connection con; 
         Class.forName("com.mysql.jdbc.Driver");
@@ -47,16 +46,8 @@ div {
         dbStatus = (db + " database successfully connected.<br/><br/>");
         Statement stmt = con.createStatement();
         
-        ResultSet rs = stmt.executeQuery("SELECT * FROM user");
-        while(rs.next()){
-            if(rs.getString("email").equals(useremail)){
-                user_id = rs.getInt("userID");
-                break;
-            }
-        }
         
-        
-        rs = stmt.executeQuery("SELECT *" +
+        ResultSet rs = stmt.executeQuery("SELECT *" +
                 "FROM " + 
                 "(SELECT userID, firstName, lastName, room, start_time, end_time, appointment.date, employee.employeeID, appointment.appointmentID " +
                 "FROM user "  +
