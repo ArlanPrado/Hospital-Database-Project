@@ -80,21 +80,21 @@ body {
         String dose = request.getParameter("dose");
         String freq = request.getParameter("frequency");
         
+        int user_id = (int)session.getAttribute("user_id");
         int e_id = Integer.parseInt(request.getParameter("e_id"));
         String e_fname = request.getParameter("e_fname");
         String e_lname = request.getParameter("e_lname");
         
         //check if the employee confirmation and the email logged in with matches
-        ResultSet rs = stmt.executeQuery("SELECT userID, firstName, lastName, email" + 
+        ResultSet rs = stmt.executeQuery("SELECT userID, firstName, lastName" + 
                 " FROM user" +
                 " JOIN employee ON userID = employeeID" +
                 " WHERE userID = " + e_id + 
                 " AND firstName = '" + e_fname + "'" +
-                " AND lastName = '" + e_lname + "'" +
-                " AND email = '" + useremail + "'");
+                " AND lastName = '" + e_lname + "'");
         
         
-        if(rs.next());
+        if(rs.next() && user_id==e_id);
         else
             throw new Exception("Invalid employee confirmation");
         
