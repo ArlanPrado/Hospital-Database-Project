@@ -22,7 +22,6 @@ body {
             Back to Dashboard
     </button>
     <hr>
-      <%String useremail = session.getAttribute("userEmail").toString(); %>
  <div class="container">
      <form action="orderPrescriptions.jsp" method="post">
         <h4>Patient Form:</h4>
@@ -64,7 +63,7 @@ body {
     String dbStatus = "Error connecting to database";   //default error message
     String orderStatus = "Error with processing order";
     String user = "root";
-    String password = "Iluvhim@123";
+    String password = "rootpass";
     try{
         java.sql.Connection con; 
         Class.forName("com.mysql.jdbc.Driver");

@@ -38,10 +38,23 @@ div {
 	border-left: 6px solid #ffeb3b;
 }
 
-.ppointment {
-	background-color: #ffc680;
-	border-left: 6px solid #FFA500;
+.appointment {
+  background-color:  #FFE7CB;
+  border-left: 6px solid #FFA500;
 }
+
+.profile {
+  background-color:  #FDF7B2;
+  border-left: 6px solid #FBEB2C;
+}
+
+.button {
+  border: none;
+  color: black;
+  padding: 5px ;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
 
 body {font-family: Arial, Helvetica, sans-serif;}
 
@@ -83,7 +96,6 @@ background-image: url("image/11.jpg");
   color: #000;
   text-decoration: none;
   cursor: pointer;
-}>>>>>>> master
 
 
 .collapsible {
@@ -100,6 +112,7 @@ background-image: url("image/11.jpg");
 
 .active, .collapsible:hover {
   background-color: #555;
+
 }
 
 .content {
@@ -116,72 +129,71 @@ background-image: url("image/11.jpg");
 	<h1 style="color:white;">Patient Dashboard</h1>
 	<hr />
 
-
-
-
-
-	<%String useremail = session.getAttribute("userEmail").toString(); %>
-
-	<%
-	    String db = "Hospital";
-	        String user; // assumes database name is the same as username
-	          user = "root";
-	        String password = "Iluvhim@123";
+  <%	int user_id = (int) session.getAttribute("user_id");
+         
+       	String db = "Hospital";
+        String user; // assumes database name is the same as username
+        user = "root";
+        String password = "rootpass";
+        
+        String firstName="";
+        String lastName="";
+        String diagnosis="";
+        
+        String medications="";
+        String allergies ="";
+        String diseases="";
+        String symptoms ="";
+        String familyHistory="";
+        
+        int appointment_id=0;
+        String startTime ="";
+        String endTime ="";
+        String appointmentDate ="";
+        
+        
+       java.sql.Date diagnosisDate = Date.valueOf("2000-01-01");
+        
+        try {
+            
+            java.sql.Connection con; 
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
+            Statement stmt = con.createStatement();
+            
+            java.util.Date now = new java.util.Date();
+            java.sql.Date sqlDate = new java.sql.Date(now.getTime());
+            //find the patient id using the patient id
+           	ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
+          
+            while(rs.next()) {  
+                if(rs.getInt("userID") == user_id){
+                    firstName =rs.getString("firstName");
+                    lastName=rs.getString("lastName");
+                   break;
+                }
+            } 
 	        
-	        String first_name="";
-	        String Last_name="";
-	        String diagnosis="";
-	        int patient_id=0;
-	        //int user_id=0;
-	        
-	        String medications="";
-	        String allergies ="";
-	        String diseases="";
-	        String symptoms ="";
-	        String familyHistory="";
-	        
-	        int appointment_id=0;
-	        String startTime ="";
-	        String endtTime ="";
-	        String appointmentDate ="";
-	        
-	        String note="";
-	        int note_ID=0;
+	      	String note="";
+	      	int note_ID=0;
 	      
-	        boolean changInfo=false;
-	       
-	          ArrayList <Integer> al = new ArrayList<Integer>();
+	      	boolean changInfo=false;
+	      	 
+	        ArrayList <Integer> al = new ArrayList<Integer>();
 	   
-	        java.sql.Date note_date = Date.valueOf("2000-01-01");
-	       java.sql.Date diagnosisDate = Date.valueOf("2000-01-01");
-	        
-	        try {
-	    
-	    java.sql.Connection con; 
-	    Class.forName("com.mysql.jdbc.Driver");
-	    con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-	    out.println(db + " database successfully connected.<br/><br/>");
-	    Statement stmt = con.createStatement();
-	    
-	    java.util.Date now = new java.util.Date();
-	    java.sql.Date sqlDate = new java.sql.Date(now.getTime());
+	       	java.sql.Date note_date = Date.valueOf("2000-01-01");
+
 	    //find the patient id using the patient id
-	           ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
-	           
-	        while (rs.next()) {
-	            if (rs.getString(8).equals(useremail)) {
-	                patient_id = rs.getInt(1);
-	                first_name = rs.getString(2);
-	                Last_name = rs.getString(3);
+
 	%>
 	<div class="success">
 		<p>
 			<strong>Hello!</strong>
-			<%=first_name%>
-			<%=Last_name%></p>
+			<%=firstName%>
+			<%=lastName%></p>
 		<p>
 			<strong>your User_ID</strong>
-			<%=patient_id%></p>
+			<%=user_id%></p>
 			 <!-- Trigger/Open The Modal -->
 <button id="myBtn">Change your Information</button>
 
@@ -231,31 +243,22 @@ window.onclick = function(event) {
 	</div>
 
 	<%
-	
-                   break;
-                }
-            } 
             String Phone=request.getParameter("phone");
             String Address=request.getParameter("address");
             String UserEmail=request.getParameter("email");
-      if(request.getParameter("phone") != null || request.getParameter("address") != null
-                               || request.getParameter("email") != null){
-          String insertSql = "UPDATE user SET  phoneNumber = '"+Phone+"',"
-                  +"address = '"+Address+"', email='"+UserEmail +"' WHERE userID='"+patient_id+"' ";
+      		if(request.getParameter("phone") != null || request.getParameter("address") != null || request.getParameter("email") != null){
+	         	String insertSql = "UPDATE user SET  phoneNumber = '"+Phone+"',"
+	                  +"address = '"+Address+"', email='"+UserEmail +"' WHERE userID='"+user_id+"' ";
                       
-                     stmt.execute(insertSql); 
-           
-          
+                stmt.execute(insertSql); 
       } 
 
             
           ResultSet rs2 = stmt.executeQuery("SELECT * FROM patient ");         
            while(rs2.next()) {  
-               if(rs2.getInt(1) == patient_id ){
-                   patient_id= rs2.getInt(1);       
-                   diagnosis =  rs2.getString(2);
-                  diagnosisDate =rs2.getDate(4);
-                  session.setAttribute("id", request.getParameter("patient_id"));
+               if(rs2.getInt("patientID") == user_id ){   
+                  diagnosis =  rs2.getString("diagnosis");
+                  diagnosisDate =rs2.getDate("admissionDate");
                   %>
 	<div class="danger">
 		<p>
@@ -280,7 +283,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            
            while(rs8.next()) {  
                
-               if(rs8.getInt(1) == patient_id ){
+               if(rs8.getInt(1) == user_id ){
                    note_ID=rs8.getInt(2);
                   // out.println(rs6.getInt(2));
                    al.add(rs8.getInt(2));   
@@ -323,21 +326,12 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
     
   al.clear();
 
-
- 
-           
-           
-         
-           
-           
-           
-           
-           
            
            ResultSet rs3 = stmt.executeQuery("SELECT * FROM patientMedicalHistory ");
            
            while(rs3.next()) {  
-               if(rs3.getInt(2) == patient_id ){
+
+               if(rs3.getInt(2) == (user_id)){
                     medications=rs3.getString(3);
                     allergies =rs3.getString(4);
                     diseases=rs3.getString(5);
@@ -372,9 +366,9 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            ResultSet rs4 = stmt.executeQuery("SELECT * FROM PatientHasAppointment ");
            
            while(rs4.next()) {  
-               if(rs4.getInt(1) == patient_id ){
-                   appointment_id=rs4.getInt(2);
-           break;
+               if(rs4.getInt(1) == user_id ){
+                   	appointment_id=rs4.getInt(2);
+           			break;
                }
            }
           
@@ -386,7 +380,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            while(rs5.next()) {  
                if(rs5.getInt(1) == appointment_id ){
                    startTime=rs5.getString(2);
-                   endtTime=rs5.getString(3);
+                   endTime=rs5.getString(3);
                    appointmentDate = rs5.getString(4);
                    
                    %>
@@ -399,7 +393,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
 			<strong>time: </strong>
 			<%=startTime %>
 			-
-			<%=endtTime%></p>
+			<%=endTime%></p>
 		<form action="appointment.jsp">
 			<input type="submit" value="Create Appointment">
 		</form>
@@ -416,7 +410,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            
            while(rs6.next()) {  
                
-               if(rs6.getInt(1) == patient_id ){
+               if(rs6.getInt(1) == user_id ){
                    note_ID=rs6.getInt(2);
                   // out.println(rs6.getInt(2));
                    al.add(rs6.getInt(2));   
@@ -459,7 +453,37 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
         } catch(SQLException e) { 
             out.println("SQLException caught: " + e.getMessage()); 
         }
+          
     %>
+    
+ <div class="success">
+  <p><strong>Hello!</strong> <%=firstName%> <%=lastName%></p>
+   <p><strong>Your User ID:</strong> <%=user_id%></p>
+</div>
+
+ <div class="info">
+  <p><strong>Medication History: </strong> <%=medications%></p>
+   <p><strong>Allergy History:</strong> <%=allergies%></p>
+    <p><strong>Disease History: </strong> <%=diseases%></p>
+   <p><strong>Symptom History:</strong> <%=symptoms%></p>
+    <p><strong>Family History: </strong> <%=familyHistory%></p>
+</div>
+
+ <div class="danger">
+  <p><strong>You are diagnosed with: </strong> <%=diagnosis%></p>
+   <p><strong>Date: </strong> <%=diagnosisDate%></p>
+</div>
+
+ <div class="appointment">
+ <h4>Next Appointment</h4>
+  <p><strong>Date: </strong> <%=appointmentDate%></p>
+  <p><strong>Time: </strong> <%=startTime %> - <%=endTime%></p> 
+</div>
+
+ <div class="profile">
+ <h4>View Profile</h4>
+  <button><a class="button" href="profile.jsp">Profile</a></button>
+</div>
 
 <script>
 var coll = document.getElementsByClassName("collapsible");

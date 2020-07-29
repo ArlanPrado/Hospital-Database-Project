@@ -67,7 +67,7 @@ body {
     <% 
     String FirstName=request.getParameter("firstName");
     String LastName=request.getParameter("lastName");
-    String dateOfbirth=request.getParameter("birthdat");
+    String dateOfbirth=request.getParameter("birthdate");
     String Gender=request.getParameter("gender");
     String Phone=request.getParameter("phone");
     String Address=request.getParameter("address");
@@ -84,7 +84,6 @@ body {
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            out.println(db + " database successfully connected.<br/><br/>");
             Statement stmt = con.createStatement();
             
             java.util.Date now = new java.util.Date();

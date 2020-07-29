@@ -136,7 +136,6 @@ body {
     </form>
     
 </div> 
-
    </div>     
    <div >
     <br />
@@ -189,7 +188,6 @@ body {
         }
     </script>
 
- 
     <ul>
         <li><p>
                 <b>start_time:</b>
@@ -224,7 +222,6 @@ body {
         String user; // assumes database name is the same as username
           user = "root";
         String password = "rootpass";
-
         
         try {
             
