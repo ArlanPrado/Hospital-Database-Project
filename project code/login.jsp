@@ -180,8 +180,8 @@ background-color: rgb(105, 148, 175);
 	            	out.println(rs.getString(8) + "<br/><br/>");
 	           		out.println(rs.getString(9) + "<br/><br/>");
 	            	user_id = rs.getInt(1);  
-	            	session.setAttribute("user_id", user_id);
-	            	session.setAttribute("dbPass", "rootpass");
+	            	session.setAttribute("user_id", user_id);						//SET USER_ID THAT WILL BE USED THROUGH OUT THE PERSONAL EXPERIENCE
+	            	session.setAttribute("dbPass", "rootpass");						//CHANGE THE DATABASE PASSWORD HERE
 	            	gotUser = true;
             		break;
                   }
