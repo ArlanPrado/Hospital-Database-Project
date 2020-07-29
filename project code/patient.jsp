@@ -47,7 +47,10 @@ div {
   background-color:  #FDF7B2;
   border-left: 6px solid #FBEB2C;
 }
-
+.note {
+  background-color:  #FFF8E7;
+  border-left: 6px solid #CEC8BA;
+}
 .button {
   border: none;
   color: black;
@@ -115,13 +118,6 @@ background-image: url("image/11.jpg");
 
 }
 
-.note{
-  padding: 0 18px;
-  display: none;
-  overflow: hidden;
-  background-color: #e7f3fe;
-  border-left: 6px solid #2196F3;
-}
 </style>
 </head>
 <body>
@@ -362,7 +358,35 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            			break;
                }
            } 
+           %>
            
+         <div class="success">
+  <p><strong>Hello!</strong> <%=firstName%> <%=lastName%></p>
+   <p><strong>Your User ID:</strong> <%=user_id%></p>
+</div>
+
+ <div class="info">
+  <p><strong>Medication History: </strong> <%=medications%></p>
+   <p><strong>Allergy History:</strong> <%=allergies%></p>
+    <p><strong>Disease History: </strong> <%=diseases%></p>
+   <p><strong>Symptom History:</strong> <%=symptoms%></p>
+    <p><strong>Family History: </strong> <%=familyHistory%></p>
+</div>
+
+ <div class="danger">
+  <p><strong>You are diagnosed with: </strong> <%=diagnosis%></p>
+   <p><strong>Date: </strong> <%=diagnosisDate%></p>
+</div>
+
+ <div class="appointment">
+ <h4>Next Appointment</h4>
+  <p><strong>Date: </strong> <%=appointmentDate%></p>
+  <p><strong>Time: </strong> <%=startTime %> - <%=endTime%></p> 
+</div>   
+           
+           
+           
+           <%
         ResultSet rs6 = stmt.executeQuery("SELECT * FROM patientsHasNote");
            
            while(rs6.next()) {  
@@ -409,29 +433,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
           
     %>
     
- <div class="success">
-  <p><strong>Hello!</strong> <%=firstName%> <%=lastName%></p>
-   <p><strong>Your User ID:</strong> <%=user_id%></p>
-</div>
 
- <div class="info">
-  <p><strong>Medication History: </strong> <%=medications%></p>
-   <p><strong>Allergy History:</strong> <%=allergies%></p>
-    <p><strong>Disease History: </strong> <%=diseases%></p>
-   <p><strong>Symptom History:</strong> <%=symptoms%></p>
-    <p><strong>Family History: </strong> <%=familyHistory%></p>
-</div>
-
- <div class="danger">
-  <p><strong>You are diagnosed with: </strong> <%=diagnosis%></p>
-   <p><strong>Date: </strong> <%=diagnosisDate%></p>
-</div>
-
- <div class="appointment">
- <h4>Next Appointment</h4>
-  <p><strong>Date: </strong> <%=appointmentDate%></p>
-  <p><strong>Time: </strong> <%=startTime %> - <%=endTime%></p> 
-</div>
 
 
 <script>
