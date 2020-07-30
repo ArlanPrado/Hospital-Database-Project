@@ -219,7 +219,6 @@ div {
                   "employee.employeeID = employeecreatesappointment.employeeID) AS T " +
                   "WHERE T.employeeID = " + user_id +
                   " AND T.date >= CURDATE()" +
-                  " AND T.start_time >= CURTIME()" +
                   " ORDER BY T.date ASC, T.start_time ASC LIMIT 1 ");
           while(rs.next()){
               p_id = rs.getInt(1);

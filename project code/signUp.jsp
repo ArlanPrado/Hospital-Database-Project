@@ -7,6 +7,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 13%,#D3D3D3 13%,#92a8d1 50%,white 100%);
+  background-image: url("image7.jpg");
 }
 #mylogin {
   align-self: center;
@@ -17,6 +18,7 @@ body {
   width: 320px;
   height: 370px;
   border: 3px solid #73AD21;
+  background-color: #FFFFFF;
   padding: 10px;
   display: flex;
 }
@@ -33,6 +35,7 @@ body {
 </head>
 <body>
     <h1>Hospital Management System Registration </h1>
+      <a href="dashBord.jsp">   <button>Back to Dashboard</button> </a>
     <hr />
 
 <div id="main">
@@ -47,7 +50,7 @@ body {
     <br /> Address:<input type="text" name="address" /><br />
         <br /> Email:<input type="email" name="email" required/><br />
         <br /> Password:<input type="password" name="password" required/><br />
-        <br /> <input type="submit" value="submit" />
+        <br /> <input type="submit" value="Submit" />
         <button><a class="button" href="login.jsp"> Login</a></button>
     </form>
 </div> 
@@ -63,6 +66,7 @@ body {
     String UserEmail=request.getParameter("email");
     String UserPassword = request.getParameter("password");
     int user_id = -1;
+    boolean formCompleted = false;
        
      String db = "Hospital";
         String user; // assumes database name is the same as username
@@ -75,7 +79,7 @@ body {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
             Statement stmt = con.createStatement();
             
-            
+            if (UserEmail != null) {
             String insertSql = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
                     + " phoneNumber, address, email, password) "
                     + "VALUES ('"+FirstName+"', '"+LastName+"','"+dateOfbirth+"','"+Gender+"', '"+Phone+"' ,"
@@ -86,6 +90,7 @@ body {
             while(rs.next()){
             	user_id = rs.getInt(1);
             	break;
+            }
             }
             stmt.close();
             con.close();
