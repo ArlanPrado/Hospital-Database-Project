@@ -7,6 +7,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 13%,#D3D3D3 13%,#92a8d1 50%,white 100%);
+  background-image: url("image11.jpg");
 }
 #mylogin {
   align-self: center;
@@ -16,8 +17,8 @@ body {
   margin: auto;
   width: 290px;
   height: 200px;
-  border: 6px solid #D17CFF;
-  background-color: #F8EBFF;
+  border: 6px solid #E6FFDD;
+  background-color: #FFFFFF;
   padding: 10px;
   display: flex;
 }
@@ -26,8 +27,8 @@ body {
   margin: auto;
   width: 290px;
   height: 120px;
-  border: 6px solid #D17CFF;
-  background-color: #F8EBFF;
+  border: 6px solid #E6FFDD;
+  background-color: #FFFFFF;
   padding: 10px;
   display: flex;
 }
@@ -53,7 +54,7 @@ body {
 <div id="main">
     <br />
     <form action="patientSearch.jsp" method="post">
-    <br /><strong> Patient Search:</strong><br/>
+    <br /><strong> Search Based on 1 Attribute:</strong><br/>
     <br /> Patient ID: <input type="text" name="patientID" /><br />
     <br /> First Name: <input type="text" name="firstName" /><br />
     <br /> Last Name: <input type="text" name="lastName" /><br />
@@ -218,7 +219,7 @@ body {
   	     } 
          
          if (patientID != null) {
-         	ResultSet rs2 = stmt.executeQuery("SELECT * FROM employeeHasPatients");
+         	ResultSet rs2 = stmt.executeQuery("SELECT * FROM employeeHasPatient");
          	while(rs2.next()) {  
              	if(rs2.getString(1).equals(patientID)){
                     if (rs2.getString(2).equals(employeeID)) {

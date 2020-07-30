@@ -3,9 +3,25 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>My Prescriptions</title>
+<title>View RX</title>
 <link rel="stylesheet" type="text/css" href="css/basic.css"/>
+<style type="text/css">
+body {
+	background: linear-gradient(to bottom, #92a8d1 10%, #92a8d1 20%, #D3D3D3 20%,
+		#92a8d1 50%, white 100%);
+		 background-image: url("image18.jpg");
+}
+.container {
+margin: auto;
+  width:20em;
+  clear: both;
+  
+}
+</style>
 </head>
-<body>
+
+
+
 <h1>My Prescriptions</h1>
     <button onclick="window.location.href='patient.jsp';">
             Back to Dashboard

@@ -12,7 +12,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   background-color: #867979;
-  background-image: url("image/14.jpg");
+  background-image: url("image14.jpg");
   color: #ffbf00;
 }
 /* Header/logo Title */
@@ -73,10 +73,10 @@ body {
 }
 /* Footer */
 .footer {
-  padding: 100px;
+  padding: 150px;
   text-align: center;
 background-color: rgb(105, 148, 175);
- background-image: url("image/15.jpg");
+ background-image: url("image15.jpg");
 }
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
@@ -115,7 +115,7 @@ background-color: rgb(105, 148, 175);
 </head>
 <body>
 <div class="header">
-  <h1>welcome please sign in</h1>
+  <h1>Welcome! Please sign in</h1>
 </div>
 <div class="navbar">
   <a href="dashBord.jsp" style="color:#ff8000;">HOME</a>
@@ -128,8 +128,8 @@ background-color: rgb(105, 148, 175);
     <form action="login.jsp" method="post">
         <br />Email:<input type="text" name="email" /><br />
         <br /> Password:<input type="password" name="password" /><br />
-        <br /> <input  type="submit" value="login" />
-        <button><a class="button" href="signUp.jsp"> SignUp</a></button>
+        <br /> <input  type="submit" value="Login" />
+        <button><a class="button" href="signUp.jsp"> Sign Up</a></button>
         
         <%
    // session.setAttribute("userEmail", request.getParameter("email"));
@@ -138,7 +138,8 @@ background-color: rgb(105, 148, 175);
 </div>  
 </div>  
 </div> 
-     <ul>
+    
+    <%--  <ul>
         <li><p>
                 <b>Email:</b>
                 <%= request.getParameter("email")%>
@@ -147,7 +148,7 @@ background-color: rgb(105, 148, 175);
                 <b>Password:</b>
                 <%= request.getParameter("password")%>
             </p></li>
-    </ul> 
+    </ul> --%>
     <% 
  
     String UserEmail=request.getParameter("email");
@@ -157,7 +158,7 @@ background-color: rgb(105, 148, 175);
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "rootpass";
+        String password = "R?2nX3?6s";
         try {
             
             java.sql.Connection con; 
@@ -181,7 +182,7 @@ background-color: rgb(105, 148, 175);
 	           		out.println(rs.getString(9) + "<br/><br/>");
 	            	user_id = rs.getInt(1);  
 	            	session.setAttribute("user_id", user_id);						//SET USER_ID THAT WILL BE USED THROUGH OUT THE PERSONAL EXPERIENCE
-	            	session.setAttribute("dbPass", "rootpass");						//CHANGE THE DATABASE PASSWORD HERE
+	            	session.setAttribute("dbPass", "R?2nX3?6s");						//CHANGE THE DATABASE PASSWORD HERE
 	            	gotUser = true;
             		break;
                   }

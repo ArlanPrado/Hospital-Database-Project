@@ -7,10 +7,23 @@
 <title>Order RX</title>
 <link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
+body {
+ background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 20%,#D3D3D3 20%,#92a8d1 50%,white 100%);
+  background-image: url("image16.jpg");
+}
+
+
+div {
+	margin-bottom: 15px;
+	padding: 4px 12px;
+}
+
 .container {
 margin: auto;
   width:20em;
   clear: both;
+  background-color:  #FFFFFF;
+  border: 6px solid #FFF7EE;
   
 }
 </style>
@@ -45,7 +58,7 @@ margin: auto;
         <br></br>
         <label for="frequency">Frequency:</label>
         <input type="text" id="frequency" name="frequency">
-        <h4>Employee Confirmation</h4>
+        <h4>Employee Confirmation:</h4>
         <label for="e_id">ID:</label>
         <input type="number" id="e_id" name="e_id">
         <br></br>
@@ -55,7 +68,7 @@ margin: auto;
         <label for="p_name">Last Name:</label>
         <input type="text" id="e_lname" name="e_lname">
         <br></br>
-        <input type="submit" value="order" name="submit">
+        <input type="submit" value="Order" name="submit">
     </form>
 </div>
 
@@ -151,12 +164,12 @@ margin: auto;
 %>
 <div class="status">
     <% String check = request.getParameter("submit");
-    if(check != null && check.equals("order")){
+    if(check != null && check.equals("Order")){
     %>
         <p><%=orderStatus%></p>
     <% }
     %>
-    <p><%=dbStatus%></p>
+    <%-- <p><%=dbStatus%></p>--%>
 </div>
 
 </body>

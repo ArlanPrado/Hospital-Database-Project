@@ -7,6 +7,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 20%,#D3D3D3 20%,#92a8d1 50%,white 100%);
+  background-image: url("image19.jpg");
 }
 div {
   margin-bottom: 15px;
@@ -35,7 +36,7 @@ div {
 </head>
 <body>
     <h1>User Profile</h1>
-  	<button><a class="button" href="patient.jsp">Back</a></button>
+  	<button><a class="button" href="patient.jsp">Back to Dashboard</a></button>
     <hr />
     
   <%int user_id = (int)session.getAttribute("user_id");

@@ -6,13 +6,17 @@
     import="org.joda.time.format.*"
      import="org.joda.time.*"
 %>
-<a href="dashBord.jsp"><button>HOME</button> </a>
+<a href="dashBord.jsp"><button>Home</button> </a>
 <html>
 <head>
 <title>Employee</title>
 <link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
-
+body {
+	background: linear-gradient(to bottom, #92a8d1 10%, #92a8d1 20%, #D3D3D3 20%,
+		#92a8d1 50%, white 100%);
+		 background-image: url("image8.jpg");
+}
 
 #mylogin {
   align-self: center;
@@ -27,6 +31,12 @@
   padding: 10px;
   display: flex;
 }
+
+div {
+	margin-bottom: 15px;
+	padding: 4px 12px;
+}
+
 .button {
   border: none;
   color: black;
@@ -40,9 +50,15 @@
   	border-left: 6px solid #4CAF50;
 }
 .appointment{
-	background-color: #ffc680;
+	background-color: #FFE4B3;
 	border-left: 6px solid #FFA500;
 }
+
+.options{
+	background-color: #E1E3FF;
+	border-left: 6px solid #6A71FF;
+}
+<%--
 .note {
   background-color: #FFD7D7;
   border-left: 6px solid #FF4242;
@@ -62,7 +78,7 @@
   background-color: #D6FFEC;
   border-left: 6px solid #48F9A8;
 }
-
+--%>
 .modal {
   display: none;
   position: fixed;
@@ -102,13 +118,10 @@
 </style>
 </head>
 <body>
-
-
 <button onclick="window.location.href='login.jsp';">
             Log Out
     </button>
-    <h1>Employee Dashboard</h1>
-
+    <h1 style="color:white;">Employee Dashboard</h1>
     <div class="tab">
         <button class="tabLink" onclick="window.location.href='viewUpAppointments.jsp';">
             View Upcoming Appointments
@@ -190,44 +203,43 @@
 </div>         
           <%
           //THERE IS A PROBLEM WITH DISPLAYING TIME, IT DOES NOT MATCH WITH THE MYSQL
-            rs = stmt.executeQuery("SELECT *" +
-                    "FROM " + 
-                    "(SELECT userID, firstName, lastName, room, start_time, end_time, appointment.date, employee.employeeID " +
-                    "FROM user "  +
-                    "JOIN patient ON " +
-                    "patient.patientID = user.userID " +
-                    "JOIN patienthasappointment ON " + 
-                    "patienthasappointment.patientID = patient.patientID " +
-                    "JOIN appointment ON " +
-                    "appointment.appointmentID = patienthasappointment.appointmentID " +
-                    "JOIN employeecreateappointment ON " +
-                    "appointment.appointmentID = employeecreateappointment.appointmentID " +
-                    "JOIN employee ON " +
-                    "employee.employeeID = employeecreateappointment.employeeID) AS T " +
-                    "WHERE T.employeeID = " + user_id +
-                    " AND T.date >= CURDATE()" +
-                    " AND T.start_time >= CURTIME()" +
-                    " ORDER BY T.date ASC, T.start_time ASC LIMIT 1 ");
-            while(rs.next()){
-                p_id = rs.getInt(1);
-                p_first = rs.getString(2);
-                p_last = rs.getString(3);
-                room = rs.getInt(4);
-
-                start_time = rs.getString(5);
-                end_time = rs.getString(6);
-                app_date = rs.getString("date");
-            }
-            
-            %>
+          rs = stmt.executeQuery("SELECT *" +
+                  "FROM " + 
+                  "(SELECT userID, firstName, lastName, room, start_time, end_time, appointment.date, employee.employeeID " +
+                  "FROM user "  +
+                  "JOIN patient ON " +
+                  "patient.patientID = user.userID " +
+                  "JOIN patienthasappointment ON " + 
+                  "patienthasappointment.patientID = patient.patientID " +
+                  "JOIN appointment ON " +
+                  "appointment.appointmentID = patienthasappointment.appointmentID " +
+                  "JOIN employeecreatesappointment ON " +
+                  "appointment.appointmentID = employeecreatesappointment.appointmentID " +
+                  "JOIN employee ON " +
+                  "employee.employeeID = employeecreatesappointment.employeeID) AS T " +
+                  "WHERE T.employeeID = " + user_id +
+                  " AND T.date >= CURDATE()" +
+                  " AND T.start_time >= CURTIME()" +
+                  " ORDER BY T.date ASC, T.start_time ASC LIMIT 1 ");
+          while(rs.next()){
+              p_id = rs.getInt(1);
+              p_first = rs.getString(2);
+              p_last = rs.getString(3);
+              room = rs.getInt(4);
+              start_time = rs.getString(5);
+              end_time = rs.getString(6);
+              app_date = rs.getString("date");
+          }
+          
+          %>
 <div class="appointment">
-            <%if(room != -1){ %>
-    <h4>Next Appointment</h4>
-        <p><strong><%=p_first%> <%=p_last%></strong> at room <%=room%></p>
-        <p><%=start_time%> - <%=end_time%> <%=app_date%></p>
-            <%}else{ %>
-    <h4> No Upcoming Appointments</h4>
-            <%} %>
+          <%if(room != -1){ %>
+  <h4>Next Appointment</h4>
+      <p><strong><%=p_first%> <%=p_last%></strong> at room <%=room%></p>
+      <p><%=start_time%> - <%=end_time%> <%=app_date%></p>
+          <%}else{ %>
+  <h4> No Upcoming Appointments</h4>
+          <%} %>
 </div>     
 
         <%
@@ -238,9 +250,10 @@
                 out.println(e.getMessage());
         }
     %>
-        
+    
+<div class="options"> 
+ <h4>Options</h4>       
 <div class="note">
- <h4>Write Note</h4>
  <button id="noteButton">Write Note</button>
 </div>
 
@@ -320,8 +333,7 @@ noteButton.onclick = function() {
 <%-- NOTE MODEL END --%>
 <%-- PATIENT LIST START --%>
 <div class="patientList">
- <h4>Current Patients</h4>
- <button id="patientListButton">Patient List</button>
+ <button id="patientListButton">Current Patients</button>
 </div>
 
  <%
@@ -342,7 +354,7 @@ noteButton.onclick = function() {
      ResultSet rs = stmt.executeQuery("SELECT * FROM user");
    
      
-     ResultSet rs2 = stmt.executeQuery("SELECT * FROM employeeHasPatients");
+     ResultSet rs2 = stmt.executeQuery("SELECT * FROM employeeHasPatient");
      
      while(rs2.next()) {  
          if(rs2.getInt("employeeID") == user_id){
@@ -404,8 +416,7 @@ patientListButton.onclick = function() {
 
 <%-- ADD EMPLOYEE START --%>
 <div class="addEmployee">
- <h4>Hire Employee</h4>
- <button id="addEmployeeButton">Add Employee</button>
+ <button id="addEmployeeButton">Hire Employee</button>
 </div>
 
  <% 
@@ -465,10 +476,9 @@ addEmployeeModal.style.display = "block";
 </script>
   <%-- ADD EMPLOYEE MODAL END --%>
 
-<div class="dbstatus">
-    <p><%=dbStatus%></p>
+<%--<div class="dbstatus">
+    <p><%=dbStatus%></p> --%>
+</div>
 </div>
 </body>
 </html>
-
-

@@ -7,6 +7,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 20%,#D3D3D3 20%,#92a8d1 50%,white 100%);
+ background-image: url("image19.jpg");
 }
 div {
   margin-bottom: 15px;
@@ -16,7 +17,7 @@ div {
 #main {
   margin: auto;
   width: 300px;
-  height: 270px;
+  height: 300px;
   border: 6px solid #D17CFF;
   background-color: #F3DDFF;
 }
@@ -52,6 +53,7 @@ div {
     <br /> Address: <input type="text" name="address" /><br />
         <br /> Email: <input type="email" name="email" /><br />
         <br /> Password: <input type="password" name="password" /><br />
+         <br /> Confirm Password: <input type="password" name="confirmedPassword" /><br />
         <br /> <input type="submit" value="Submit" />
     </form>
 </div> 
@@ -72,6 +74,8 @@ div {
  email = request.getParameter("email");
  String userPassword = "";
  userPassword = request.getParameter("password");
+ String confirmedUserPassword = "";
+ confirmedUserPassword = request.getParameter("confirmedPassword");
     
   String db = "Hospital";
      String user; // assumes database name is the same as username
@@ -93,6 +97,10 @@ div {
          if (phoneNumber != null || address != null || email != null || userPassword != null){
        		formComplete = true;
        	 }
+         
+         if (formComplete && !userPassword.equals(confirmedUserPassword)) {
+        	 out.print("Passwords must match! Try again");
+         } else {
          while(rs.next()) {  
              if(rs.getInt(1) == (user_id) ){
             	 currentPhoneNumber = rs.getString(6);
@@ -122,6 +130,7 @@ div {
          //response.sendRedirect("patient.jsp"); 
     	 }
     	 //rs.close();
+         }
          stmt.close();
          con.close();
      } catch(SQLException e) { 

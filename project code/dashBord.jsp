@@ -13,7 +13,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
-  background-image: url("image/12.jpg");
+  background-image: url("image12.jpg");
 }
 
 /* Header/logo Title */
@@ -83,7 +83,7 @@ body {
 
 /* Fake image, just for this example */
 .fakeimg {
-   background-image: url("image/6.jpg");
+   background-image: url("image6.jpg");
   width: 100%;
   padding: 20px;
 }
@@ -93,7 +93,7 @@ body {
   padding: 100px;
   text-align: center;
 background-color: green;
-background-image: url("image/16.jpg");
+background-image: url("image16.jpg");
 }
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */

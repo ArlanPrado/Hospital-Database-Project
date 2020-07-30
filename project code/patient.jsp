@@ -3,6 +3,7 @@
 <%@ page import="java.sql.*"%>
 <%@page import="java.util.ArrayList"%>
 
+<a href="dashBord.jsp"><button>Home</button> </a>
 <html>
 <head>
 <title>Patient</title>
@@ -11,7 +12,7 @@
 body {
 	background: linear-gradient(to bottom, #92a8d1 10%, #92a8d1 20%, #D3D3D3 20%,
 		#92a8d1 50%, white 100%);
-		 background-image: url("image/8.jpg");
+		 background-image: url("image8.jpg");
 }
 
 div {
@@ -51,10 +52,6 @@ div {
   background-color:  #FFF8E7;
   border-left: 6px solid #CEC8BA;
 }
-.employeeList{
-	background-color: #E7E3FF;
-  border-left: 6px solid #BBB0FF;
-}
 .button {
   border: none;
   color: black;
@@ -65,22 +62,20 @@ div {
 
 body {font-family: Arial, Helvetica, sans-serif;}
 
-/* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%;
+  height: 100%; 
+  overflow: auto;
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal Content */
 .modal-content {
 background-image: url("image/11.jpg");
   background-color: #fefefe;
@@ -90,7 +85,6 @@ background-image: url("image/11.jpg");
   width: 20%;
 }
 
-/* The Close Button */
 .close {
   color: #aaaaaa;
   float: right;
@@ -125,7 +119,9 @@ background-image: url("image/11.jpg");
 </style>
 </head>
 <body>
-	<a href="login.jsp">Logout</a>
+	<button onclick="window.location.href='login.jsp';">
+            Log Out
+    </button>
 	<h1 style="color:white;">Patient Dashboard</h1>
 	<div class="tab">
         <button class="tabLink" onclick="window.location.href='viewPrescriptions.jsp';">
@@ -135,7 +131,7 @@ background-image: url("image/11.jpg");
         	Request Appointment
         </button>
         <button class="tabLink" onclick="window.location.href='profile.jsp';">
-        	View/Edit Profile
+        	My Profile
         </button>
     </div>
 	<hr />
@@ -391,7 +387,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            
            
            <%
-        ResultSet rs6 = stmt.executeQuery("SELECT * FROM patientsHasNote");
+        ResultSet rs6 = stmt.executeQuery("SELECT * FROM patientHasNote");
            
            while(rs6.next()) {  
                
@@ -404,7 +400,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            } 
            %>
            <div class="note">
-           <p><h3>Doctors note:</h3></p>
+           <p><h3>Doctor's Notes</h3></p>
            <%
            for(int i=0;i<al.size();i++) {         
        ResultSet rs7 = stmt.executeQuery("SELECT * FROM note");      
@@ -413,48 +409,22 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
                if(rs7.getInt(1) == al.get(i) ){
                    
                %>
-    <button type="button" class="collapsible"><%=rs7.getString("date")%></button>
+   <%-- <button type="button" class="collapsible"><%=rs7.getString("date")%></button>--%>
 	
 <%-- 		<p>
 			<strong>Note date: </strong>
 			<%=rs7.getString("date")%></p> --%>
 		<p>
-			<strong>note:</strong>
+			<strong>Note:</strong>
 			<%=rs7.getString("detail")%><br>
 		</p>
 
 	</div>
-	<%}}}
-           
-			rs = stmt.executeQuery("SELECT userID, firstName, lastName, position" +
-					" FROM user" +
-					" JOIN employee ON employeeID = userID" + 
-					" JOIN employeehaspatients ON employeehaspatients.employeeID = employee.employeeID" +
-					" WHERE patientID=" + user_id);
-			%>
-			<div class="employeeList">
-				<h3>Your Healthcare Development Team</h3>
-				<table>
-					<thead>
-						<tr>
-							<th>Employee ID</th>
-							<th>Position</th>
-							<th>Name</th>
-						</tr>
-					</thead>
-					<tbody>
-					<%while(rs.next()){ %>
-						<tr>
-							<td><%=rs.getInt("userID")%></td>
-							<td><%=rs.getString("position")%></td>
-							<td><%=rs.getString("firstName") + " " + rs.getString("lastName")%></td>
-							
-						</tr>
-						<%} %>
-					</tbody>
-				</table>
-			</div>
-			<%
+	<%}}}%>
+
+
+
+<%
             stmt.close();
             con.close();
         } catch(SQLException e) { 

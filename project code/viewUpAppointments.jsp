@@ -9,6 +9,10 @@
 <title>Upcoming Appointments</title>
 <link rel="stylesheet" type="text/css" href="css/basic.css"/>
 <style type="text/css">
+body {
+ background: linear-gradient(to bottom, #92a8d1 100%,#92a8d1 5%,#D3D3D3 5%,#92a8d1 100%,white 100%);
+ background-image: url("image17.jpg");
+}
 </style>
 </head>
 <body>
@@ -51,10 +55,10 @@
                 "patienthasappointment.patientID = patient.patientID " +
                 "JOIN appointment ON " +
                 "appointment.appointmentID = patienthasappointment.appointmentID " +
-                "JOIN employeecreateappointment ON " +
-                "appointment.appointmentID = employeecreateappointment.appointmentID " +
+                "JOIN employeecreatesappointment ON " +
+                "appointment.appointmentID = employeecreatesappointment.appointmentID " +
                 "JOIN employee ON " +
-                "employee.employeeID = employeecreateappointment.employeeID) AS T " +
+                "employee.employeeID = employeecreatesappointment.employeeID) AS T " +
                 "WHERE T.employeeID = " + user_id +
                 " AND T.date >= CURDATE()" + //this line makes sure appointment
                 " ORDER BY T.date ASC, T.start_time ASC");
@@ -100,8 +104,8 @@
     }
     %>
     
-<div class="dbstatus">
+<%-- <div class="dbstatus">
     <p><%=dbStatus%></p>
-</div>
+</div>--%>
 </body>
 </html>

@@ -7,14 +7,15 @@
 <%@page import="java.text.DateFormat" %>
 <%@page import="java.util.Date" %>
 <%@page import="java.text.ParseException" %>
-<a href="patient.jsp">   <button>HOME</button> </a>
+
 <html>
 <head>
 <title>appointment</title>
+
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 100%,#92a8d1 5%,#D3D3D3 5%,#92a8d1 100%,white 100%);
- background-image: url("image/9.jpg");
+ background-image: url("image9.jpg");
 }
 #mylogin {
   align-self: center;
@@ -105,11 +106,12 @@ body {
     <script src="https://kendo.cdn.telerik.com/2020.2.617/js/kendo.all.min.js"></script>
 </head>
 <body>
-    <h1 style="color:blue;">Hospital Management System Appointment </h1>
+    <h1 style="color:blue;">Appointments </h1>
+    <a href="patient.jsp">   <button>Back to Dashboard</button> </a>
     <hr />
     <div id="continer2">
     <div >
-    <p> <h3 style="color:blue;">request appointment</h3></p>
+    <p> <h3 style="color:blue;">Request Appointment</h3></p>
     </div>
     </div>
  <div id="continer">
@@ -130,8 +132,7 @@ body {
     <br /> Start Time:<input type="time"id="timePicker3"   name="start_time"  min="09:00" max="18:00" required/><br />
     <br /> End Time:<input type="time" id="timePicker4"  name="end_time"  min="09:00" max="18:00" required/><br />
     <br /> Date:<input type="date" name="date" id="DOB3" required/><br />
-        <br /> <input type="submit"  value="submit" />
-        <button><a class="button" href="patient.jsp"> Back</a></button>
+        <br /> <input type="submit"  value="Submit" />
     </form>
     
 </div> 
@@ -142,7 +143,7 @@ body {
      <label style="color:blue;">check appointment by doctor</label>
       <br /> First Name:<input type="text" name="firstName" required/><br />
       <br /> Last Name:<input type="text" name="lastName" required/><br />   
-        <br /> <input type="submit"  value= "submit" />
+        <br /> <input type="submit"  value= "Submit" />
     </form>
     
 </div>
@@ -187,28 +188,7 @@ body {
         }
     </script>
 
-    <ul>
-        <li><p>
-                <b>Start Time:</b>
-                <%= request.getParameter("start_time")%>
-            </p></li>
-             <li><p>
-                <b>End Time:</b>
-                <%= request.getParameter("end_time")%>
-            </p></li>
-        <li><p>
-                <b>Date:</b>
-                <%= request.getParameter("date")%>
-            </p></li>
-            <li><p>
-                <b>Doctor ID:</b>
-                <%= request.getParameter("Doctorid")%>
-            </p></li>
-    </ul>
-
-     
-
-    <% 
+   <% 
     String StartTime=request.getParameter("start_time");
     String EndTime=request.getParameter("end_time");
     String AppDate=request.getParameter("date");
@@ -227,7 +207,6 @@ body {
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            out.println(db + " database successfully connected.<br/><br/>");
             Statement stmt = con.createStatement();
             
             java.util.Date now = new java.util.Date();
@@ -290,7 +269,7 @@ body {
                       out.println(rs2.getString(2) + " to");
                       out.println(rs2.getString(3));
                       out.println(rs2.getString(4));
-                      out.println(" is not aveleble");
+                      out.println(" is not available");
                       out.println(" check the table below");
                      check =false;
 
@@ -336,7 +315,7 @@ body {
                 out.println(rs3.getString(4));
                 out.println(rs3.getString(5));
                 out.println(rs3.getString(6));
-                out.println(" is not aveleble");
+                out.println(" is not available");
                check =false;
 
       break;
@@ -364,7 +343,7 @@ body {
              stmt.execute(insertSql); 
              
          }else{
-             out.println("invalide time or unaveleble date and time");
+             out.println("invalid time or unavailable date and time");
              }
          
         } 
@@ -401,7 +380,7 @@ body {
          </table><br>
          </div>
        <%
-       ResultSet rs = stmt.executeQuery("SELECT start_time,end_time,date FROM appointment JOIN EmployeeCreateAppointment ON EmployeeCreateAppointment.appointmentID=appointment.appointmentID WHERE  EmployeeCreateAppointment.employeeID = '"+userid+"' ");    
+       ResultSet rs = stmt.executeQuery("SELECT start_time,end_time,date FROM appointment JOIN EmployeeCreatesAppointment ON EmployeeCreatesAppointment.appointmentID=appointment.appointmentID WHERE  EmployeeCreatesAppointment.employeeID = '"+userid+"' ");    
 
        %>
        <div >

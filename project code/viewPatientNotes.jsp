@@ -66,7 +66,7 @@ div {
      java.util.Date now = new java.util.Date();
      java.sql.Date sqlDate = new java.sql.Date(now.getTime());
      //find the patient id using the patient id
-     ResultSet rs = stmt.executeQuery("SELECT * FROM patientsHasNote;");
+     ResultSet rs = stmt.executeQuery("SELECT * FROM patientHasNote;");
      
      while(rs.next()) {  
          if(rs.getString(1).equals(patientID) ){
