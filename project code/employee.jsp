@@ -216,6 +216,7 @@
 
                 start_time = rs.getString(5);
                 end_time = rs.getString(6);
+                app_date = rs.getString("date");
             }
             
             %>
