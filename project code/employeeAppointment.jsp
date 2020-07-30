@@ -1,7 +1,7 @@
 
 
 <%@ page import="java.sql.*"%>
-
+<a href="dashBord.jsp"><button>HOME</button> </a>
 <link rel="stylesheet" type="text/css" href="css/style.css"/>
 <html>
 <head>
@@ -9,7 +9,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 100%,#92a8d1 5%,#D3D3D3 5%,#92a8d1 100%,white 100%);
- background-image: url("image9.jpg");
+ background-image: url("image/9.jpg");
 }
 #mylogin {
   align-self: center;
@@ -101,7 +101,6 @@ body {
 </head>
 <body>
     <h1 style="color:blue;">Appointments</h1>
-    <a href="employee.jsp">   <button>Back to Dashboard</button> </a>
     <hr />
  <div id="continer">
 <script>
@@ -116,27 +115,28 @@ body {
 <div id="main">
     <br />
     <form action="employeeAppointment.jsp" method="post">
-    <label >Choose time in 30 minute intervals</label>
-     <br />Patient Id: <input type="text" name="Patientid"  required/><br />
-    <br />Start Time: <input type="time" id="timePicker" name="start_time" min="09:00" max="18:00"  required/><br />
-    <br />End Time: <input type="time" id="timePicker2" name="end_time" min="09:00" max="18:00"  required/><br />
-    <br />Date: <input type="date" name="date" id="DOB"  required/><br />
-        <br /> <input type="submit" onclick="submit()  value="Submit" />
+    <label >Choose time in 30 minute interval</label>
+     <br />patient Id:<input type="text" name="Patientid"  required/><br />
+    <br />Start Time:<input type="time" id="timePicker" name="start_time" min="09:00" max="18:00"  required/><br />
+    <br />End Time:  <input type="time" id="timePicker2" name="end_time" min="09:00" max="18:00"  required/><br />
+    <br />Date:<input type="date" name="date" id="DOB"  required/><br />
+        <br /> <input type="submit" onclick="submit()  value="submit" />
+        <button><a class="button" href="employee.jsp"> BACK</a></button>
     </form>
     
 </div> 
 
 
    </div>     
-   <div >
+<!--    <div >
     <br />
     <form action="employeeAppointment.jsp" method="post">
-     <label style="color:blue;">Check appointment by doctor</label>
-      <br />Doctor Id: <input type="text" name="DoctoridForList"  required/><br />     
-        <br /> <input type="submit"   value="Submit" />
+     <label style="color:blue;">check appointment by doctor</label>
+      <br />Doctor Id:<input type="text" name="DoctoridForList"  required/><br />     
+        <br /> <input type="submit"   value="submit" />
     </form>
     
-</div>
+</div> -->
 
 <script>
       $(function() {
@@ -178,8 +178,8 @@ body {
         }
     </script>
 
- <%-- 
-    <ul>
+ 
+<%--     <ul>
         <li><p>
                 <b>start_time:</b>
                 <%= request.getParameter("start_time")%>
@@ -189,7 +189,9 @@ body {
                 <%= request.getParameter("end_time")%>
             </p></li>
      
-    </ul>--%>
+    </ul> --%>
+
+     <%String useremail = session.getAttribute("userEmail").toString(); %>
  
     <% 
     
@@ -202,23 +204,33 @@ body {
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-          String password = session.getAttribute("dbPass").toString();
-         int userid= (int)session.getAttribute("user_id");
+        String password = "Iluvhim@123";
+         String userid="";
         
         try {
             
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            //out.println(db + " database successfully connected.<br/><br/>");
+           /*  out.println(db + " database successfully connected.<br/><br/>"); */
             Statement stmt = con.createStatement();
             
             java.util.Date now = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(now.getTime());
             
 
+            
+            
+            ResultSet rs3 = stmt.executeQuery("SELECT userID FROM user where email = '"+useremail+"'");
+            
+            while(rs3.next()) {                
+                  /* out.println("user id is "+ rs3.getString("userID")); */
+                   userid=rs3.getString("userID");           
+            } 
+            
+
                 
-                ResultSet rs4 = stmt.executeQuery("SELECT * FROM appointmentRequest where employeeID ='"+userid+"'");
+        ResultSet rs4 = stmt.executeQuery("SELECT * FROM appointmentRequest where employeeID ='"+userid+"'");
                 %>
                 <div id="continer2">
     <div >
@@ -269,7 +281,7 @@ body {
          if( StartTime != null ||  EndTime != null ||  AppDate != null ){ 
              
               boolean check=true;
-              ResultSet rs2 = stmt.executeQuery("SELECT * FROM appointment join EmployeeCreatesAppointment on appointment.appointmentID=EmployeeCreatesAppointment.appointmentID AND EmployeeCreatesAppointment.employeeID='"+userid+"'");
+              ResultSet rs2 = stmt.executeQuery("SELECT * FROM appointment join EmployeeCreateAppointment on appointment.appointmentID=EmployeeCreateAppointment.appointmentID AND EmployeeCreateAppointment.employeeID='"+userid+"'");
               
               
               while(rs2.next()) {  
@@ -331,7 +343,7 @@ body {
             
               appID=rs6.getInt("appointmentID");
              }
-             String insertSql3 = "INSERT INTO EmployeeCreatesAppointment (appointmentID,employeeID,"
+             String insertSql3 = "INSERT INTO EmployeeCreateAppointment (appointmentID,employeeID,"
                      + " CREATED_DATE) "
                      + "VALUES ('"+appID+"', '"+userid+"' ,"
                      +"'" + sqlDate + "')";
@@ -346,13 +358,13 @@ body {
              stmt.execute(insertSql5);  
              
              }else{
-             out.println("invalid time or unavailable date and time");
+             out.println("invalide time or unaveleble date and time");
              }
        
         } 
          
  
-    ResultSet rs = stmt.executeQuery("SELECT start_time,appointment.end_time,date,firstName,userID FROM user,  appointment  join EmployeeCreatesAppointment on  appointment.appointmentID=EmployeeCreatesAppointment.appointmentID join PatientHasAppointment  on  PatientHasAppointment.appointmentID=EmployeeCreatesAppointment.appointmentID where  user.userID=PatientHasAppointment.patientID AND  EmployeeCreatesAppointment.employeeID = '"+userid+"' AND date >= CURDATE() ORDER BY date ASC, start_time ASC");
+    ResultSet rs = stmt.executeQuery("SELECT start_time,appointment.end_time,date,firstName,userID FROM user,  appointment  join EmployeeCreateAppointment on  appointment.appointmentID=EmployeeCreateAppointment.appointmentID join PatientHasAppointment  on  PatientHasAppointment.appointmentID=EmployeeCreateAppointment.appointmentID where  user.userID=PatientHasAppointment.patientID AND  EmployeeCreateAppointment.employeeID = '"+userid+"'");
     
          %>
 
