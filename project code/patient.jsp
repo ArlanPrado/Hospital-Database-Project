@@ -51,6 +51,10 @@ div {
   background-color:  #FFF8E7;
   border-left: 6px solid #CEC8BA;
 }
+.employeeList{
+	background-color: #E7E3FF;
+  border-left: 6px solid #BBB0FF;
+}
 .button {
   border: none;
   color: black;
@@ -420,11 +424,37 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
 		</p>
 
 	</div>
-	<%}}}%>
-
-
-
-<%
+	<%}}}
+           
+			rs = stmt.executeQuery("SELECT userID, firstName, lastName, position" +
+					" FROM user" +
+					" JOIN employee ON employeeID = userID" + 
+					" JOIN employeehaspatients ON employeehaspatients.employeeID = employee.employeeID" +
+					" WHERE patientID=" + user_id);
+			%>
+			<div class="employeeList">
+				<h3>Your Healthcare Development Team</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Employee ID</th>
+							<th>Position</th>
+							<th>Name</th>
+						</tr>
+					</thead>
+					<tbody>
+					<%while(rs.next()){ %>
+						<tr>
+							<td><%=rs.getInt("userID")%></td>
+							<td><%=rs.getString("position")%></td>
+							<td><%=rs.getString("firstName") + " " + rs.getString("lastName")%></td>
+							
+						</tr>
+						<%} %>
+					</tbody>
+				</table>
+			</div>
+			<%
             stmt.close();
             con.close();
         } catch(SQLException e) { 

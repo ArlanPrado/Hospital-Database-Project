@@ -7,7 +7,7 @@
 <%@page import="java.text.DateFormat" %>
 <%@page import="java.util.Date" %>
 <%@page import="java.text.ParseException" %>
-<a href="dashBord.jsp">   <button>HOME</button> </a>
+<a href="patient.jsp">   <button>HOME</button> </a>
 <html>
 <head>
 <title>appointment</title>
@@ -189,19 +189,19 @@ body {
 
     <ul>
         <li><p>
-                <b>start_time:</b>
+                <b>Start Time:</b>
                 <%= request.getParameter("start_time")%>
             </p></li>
              <li><p>
-                <b>end_time:</b>
+                <b>End Time:</b>
                 <%= request.getParameter("end_time")%>
             </p></li>
         <li><p>
-                <b>Padatessword:</b>
+                <b>Date:</b>
                 <%= request.getParameter("date")%>
             </p></li>
             <li><p>
-                <b>Doctorid:</b>
+                <b>Doctor ID:</b>
                 <%= request.getParameter("Doctorid")%>
             </p></li>
     </ul>
