@@ -186,16 +186,3 @@ CREATE TABLE `PatientHasPrescription` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
 
 
-CREATE TABLE `PatientHasMedicalHistory` (
-  `patientMedicalHistoryID` INT UNSIGNED NOT NULL,
-  `patientID` int UNSIGNED NOT NULL,
-  `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (`patientMedicalHistoryID`) REFERENCES `patientMedicalHistory`(`patientMedicalHistoryID`) ON DELETE RESTRICT ON 
-  UPDATE CASCADE,
-  FOREIGN KEY (`patientID`) REFERENCES `patient`(`patientID`) ON DELETE   RESTRICT ON 
-  UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
-
-
-
-
