@@ -18,7 +18,7 @@ CREATE TABLE `patient` (
  `patientID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `diagnosis` VARCHAR(45) DEFAULT NULL,
   `room` INT UNSIGNED NOT NULL,
-  'patient_condition' VARCHAR(45) DEFAULT 'undetermined',
+  `patient_condition` VARCHAR(45) DEFAULT 'undetermined',
   `admissionDate` date NOT NULL,
   `dischargeDate` date default NULL,
   `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -80,14 +80,27 @@ CREATE TABLE `note` (
 
 CREATE TABLE `appointment` (
   `appointmentID` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `start_time`  time not NULL,
-  `end_time`   time not NULL,
+  `start_time`  varchar(100) not NULL,
+  `end_time`   varchar(100) not NULL,
   `date`       date  not NULL,
   `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`appointmentID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
 
-
+CREATE TABLE `appointmentRequest` (
+  `appointmentID` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `patientID` int UNSIGNED NOT NULL,
+  `employeeID` int UNSIGNED NOT NULL,
+  `start_time`  varchar(100) not NULL,
+  `end_time`   varchar(100) not NULL,
+  `date`       date  not NULL,
+  `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`appointmentID`),
+  FOREIGN KEY (`employeeID`) REFERENCES `employee`(`employeeID`) ON DELETE RESTRICT ON 
+  UPDATE CASCADE,
+  FOREIGN KEY (`patientID`) REFERENCES `patient`(`patientID`) ON DELETE RESTRICT ON 
+  UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
 
 CREATE TABLE `EmployeeOrdersPrescription` (
   `prescriptionID` INT UNSIGNED not NULL,
@@ -171,29 +184,5 @@ CREATE TABLE `PatientHasPrescription` (
   FOREIGN KEY (`prescriptionID`) REFERENCES `prescription`(`prescriptionID`) ON DELETE   RESTRICT ON 
   UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
-
-
-
-CREATE TABLE `EmployeeViewsMedicalHistory` (
-  `patientMedicalHistoryID` INT UNSIGNED not NULL,
-  `employeeID` int UNSIGNED not NULL,
- `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (`patientMedicalHistoryID`) REFERENCES `patientMedicalHistory`(`patientMedicalHistoryID`) ON DELETE RESTRICT ON 
-  UPDATE CASCADE,
-  FOREIGN KEY (`employeeID`) REFERENCES `employee`(`employeeID`) ON DELETE   RESTRICT ON 
-  UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
-
-CREATE TABLE `PatientHasMedicalHistory` (
-  `patientMedicalHistoryID` INT UNSIGNED NOT NULL,
-  `patientID` int UNSIGNED NOT NULL,
-  `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (`patientMedicalHistoryID`) REFERENCES `patientMedicalHistory`(`patientMedicalHistoryID`) ON DELETE RESTRICT ON 
-  UPDATE CASCADE,
-  FOREIGN KEY (`patientID`) REFERENCES `patient`(`patientID`) ON DELETE   RESTRICT ON 
-  UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=big5;
-
-
 
 

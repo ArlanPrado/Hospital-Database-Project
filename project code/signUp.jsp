@@ -5,111 +5,9 @@
 <head>
 <title>SignUp</title>
 <style type="text/css">
- {
-  box-sizing: border-box;
-}
-
-/* Style the body */
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background-color: #867979;
-  background-image: url("image/9.jpg");
-  color: #4CB9A8;
-}
-
-/* Header/logo Title */
-.header {
-  padding: 2px;
-  text-align: center;
-  background: #1abc9c;
-  color: white;
-}
-
-/* Increase the font size of the heading */
-.header h1 {
-  font-size: 40px;
-}
-
-/* Style the top navigation bar */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-}
-
-/* Style the navigation bar links */
-.navbar a {
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
-}
-
-/* Right-aligned link */
-.navbar a.right {
-  float: right;
-}
-
-/* Change color on hover */
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Column container */
-.row {  
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-}
-
-/* Create two unequal columns that sits next to each other */
-/* Sidebar/left column */
-.side {
-  -ms-flex: 30%; /* IE10 */
-  flex: 30%;
-  background-color: #f1f1f1;
-  padding: 20px;
-}
-
-/* Main column */
-.main {   
-  -ms-flex: 70%; /* IE10 */
-  flex: 70%;
-  background-color: #80ff00;
-  padding: 20px;
-}
-
-
-
-/* Footer */
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   height: 20%;
-   background-color: #4CB9B1;
-   color: white;
-   text-align: center;
-}
-
-/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 700px) {
-  .row {   
-    flex-direction: column;
-  }
-}
-
-/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
-@media screen and (max-width: 400px) {
-  .navbar a {
-    float: none;
-    width: 100%;
-  }
+ background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 13%,#D3D3D3 13%,#92a8d1 50%,white 100%);
+  background-image: url("image7.jpg");
 }
 #mylogin {
   align-self: center;
@@ -120,6 +18,7 @@ body {
   width: 320px;
   height: 370px;
   border: 3px solid #73AD21;
+  background-color: #FFFFFF;
   padding: 10px;
   display: flex;
 }
@@ -135,16 +34,9 @@ body {
 </style>
 </head>
 <body>
-<div class="header">
-  <h1>Hospital Management System Registration</h1>
-</div>
-
-<div class="navbar">
-  <a href="dashBord.jsp" style="color:#ff8000;">HOME</a>
-</div>
-
-
-
+    <h1>Hospital Management System Registration </h1>
+      <a href="dashBord.jsp">   <button>Back to Dashboard</button> </a>
+    <hr />
 
 <div id="main">
     <br />
@@ -152,70 +44,75 @@ body {
     
     <br /> First Name:<input type="text" name="firstName" required/><br />
     <br /> Last Name:<input type="text" name="lastName" required/><br />
-    <br /> Birth Date:<input type="date" name="birthdatE" required/><br />
-    <br /> Gender:<input type="text" name="gendeR" required/><br />
+    <br /> Birth Date:<input type="date" name="birthdate" required/><br />
+    <br /> Gender:<input type="text" name="gender" required/><br />
     <br /> Phone:<input type="number"  name="phone" /><br />
     <br /> Address:<input type="text" name="address" /><br />
         <br /> Email:<input type="email" name="email" required/><br />
         <br /> Password:<input type="password" name="password" required/><br />
-        <br /> <input type="submit" value="submit" />
+        <br /> <input type="submit" value="Submit" />
         <button><a class="button" href="login.jsp"> Login</a></button>
     </form>
 </div> 
-
-    <ul>
-        <li><p>
-                <b>Email:</b>
-                <%= request.getParameter("email")%>
-            </p></li>
-        <li><p>
-                <b>Password:</b>
-                <%= request.getParameter("password")%>
-            </p></li>
-    </ul>
 
 
     <% 
     String FirstName=request.getParameter("firstName");
     String LastName=request.getParameter("lastName");
-    String dateOfbirth=request.getParameter("birthdatE");
-    String Gender=request.getParameter("gendeR");
+    String dateOfbirth=request.getParameter("birthdate");
+    String Gender=request.getParameter("gender");
     String Phone=request.getParameter("phone");
     String Address=request.getParameter("address");
     String UserEmail=request.getParameter("email");
-    String USerPassword = request.getParameter("password");
-    
+    String UserPassword = request.getParameter("password");
+    int user_id = -1;
+    boolean formCompleted = false;
        
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-        String password = "Iluvhim@123";
+          String password = session.getAttribute("dbPass").toString();
         try {
             
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            out.println(db + " database successfully connected.<br/><br/>");
             Statement stmt = con.createStatement();
             
-            java.util.Date now = new java.util.Date();
-            java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-            
+            if (UserEmail != null) {
             String insertSql = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
-                    + " phoneNumber, address, email, password, CREATED_DATE) "
+                    + " phoneNumber, address, email, password) "
                     + "VALUES ('"+FirstName+"', '"+LastName+"','"+dateOfbirth+"','"+Gender+"', '"+Phone+"' ,"
-                    +" '"+Address+"','"+UserEmail +"','"+USerPassword+"','" + sqlDate + "')";
+                    +" '"+Address+"','"+UserEmail +"','"+UserPassword+"')";
             stmt.execute(insertSql);   
+            
+            ResultSet rs = stmt.executeQuery("SELECT userID, email FROM user WHERE email='" + UserEmail +"'");
+            while(rs.next()){
+            	user_id = rs.getInt(1);
+            	break;
+            }
+            }
             stmt.close();
             con.close();
-        } catch(SQLException e) { 
-            out.println("SQLException caught: " + e.getMessage()); 
-        }
-    %>
+        }catch(Exception e){
+    		if(e.getMessage() != "null")
+    			out.println("SQL Exception Caught: " + e.getMessage());
+    	}
     
-    <div class="footer">
-  <p>Footer</p>
-</div>
+    if(user_id > 0){
+    %>
+    <div class="newUser">
+    	<p><b>User ID: <%=user_id%></b>
+    	<p>First Name: <%= FirstName%></p>
+    	<p>Last Name: <%= LastName%></p>
+    	<p>Date of Birth: <%= dateOfbirth%></p>
+    	<p>Gender: <%= Gender%></p>
+    	<p>Phone: <%= Phone%></p>
+    	<p>Address: <%=Address %></p>
+    	<p>Email: <%=UserEmail %></p>
+    	<p>
+    </div>
+    <%} %>
 </body>
 </html>
 
