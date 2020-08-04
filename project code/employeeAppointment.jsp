@@ -191,8 +191,9 @@ body {
      
     </ul> --%>
 
-     <%String useremail = session.getAttribute("userEmail").toString(); %>
- 
+    <%--  <%String useremail = session.getAttribute("userEmail").toString(); %> --%>
+      
+ <%    int user_id =(int)session.getAttribute("userID"); %>
     <% 
     
     String Patient_id=request.getParameter("Patientid");
@@ -205,7 +206,7 @@ body {
         String user; // assumes database name is the same as username
           user = "root";
         String password = "Iluvhim@123";
-         String userid="";
+         int userid= user_id;
         
         try {
             
@@ -219,14 +220,6 @@ body {
             java.sql.Date sqlDate = new java.sql.Date(now.getTime());
             
 
-            
-            
-            ResultSet rs3 = stmt.executeQuery("SELECT userID FROM user where email = '"+useremail+"'");
-            
-            while(rs3.next()) {                
-                  /* out.println("user id is "+ rs3.getString("userID")); */
-                   userid=rs3.getString("userID");           
-            } 
             
 
                 

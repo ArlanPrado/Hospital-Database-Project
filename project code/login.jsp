@@ -226,11 +226,11 @@ body {
               } 
               if(isPatient == true ){
                   if(request.getParameter("email")!= null){
-                  session.setAttribute("userEmail", request.getParameter("email"));
+                      session.setAttribute("userID", user_id);
                   response.sendRedirect("patient.jsp");  
                   }else{ }
              }else {     
-                 session.setAttribute("userEmail", request.getParameter("email"));
+                 session.setAttribute("userID", user_id);
                  response.sendRedirect("employee.jsp");  
                  out.println("you are an not a patient");
                  }

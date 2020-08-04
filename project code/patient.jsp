@@ -125,7 +125,8 @@ background-image: url("image/11.jpg");
 
 
 
-	<%String useremail = session.getAttribute("userEmail").toString(); %>
+	<%-- <%String  = session.getAttribute("userEmail").toString(); %> --%>
+	 <%    int user_id =(int)session.getAttribute("userID"); %>
 
 	<%
 	    String db = "Hospital";
@@ -174,7 +175,7 @@ background-image: url("image/11.jpg");
 	           ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
 	           
 	        while (rs.next()) {
-	            if (rs.getString(8).equals(useremail)) {
+	            if (rs.getInt(1)==(user_id)) {
 	                patient_id = rs.getInt(1);
 	                first_name = rs.getString(2);
 	                Last_name = rs.getString(3);
@@ -406,7 +407,7 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
 			-
 			<%=endtTime%></p>
 		<form action="appointment.jsp">
-			<input type="submit" value="Create Appointment">
+			<input type="submit" value="request Appointment">
 		</form>
 	</div>
 

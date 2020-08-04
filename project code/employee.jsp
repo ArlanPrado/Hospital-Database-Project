@@ -85,14 +85,15 @@ background-image: url("image/11.jpg");
 
     <% 
  
-        String useremail = session.getAttribute("userEmail").toString();
+       /*  String useremail = session.getAttribute("userEmail").toString(); */
+        int user__id =(int)session.getAttribute("userID"); 
         String dbStatus = "Error connecting to database";   //default error message
     
         String db = "Hospital";
         String user = "root";
         String password = "Iluvhim@123";
         
-        int user_id = -1;
+        int user_id = user__id;
         String first_name, last_name;
         String position;
         first_name = last_name = position = "";
@@ -116,17 +117,9 @@ background-image: url("image/11.jpg");
             dbStatus = (db + " database successfully connected.<br/><br/>");            
             Statement stmt = con.createStatement();
             
-            ResultSet rs = stmt.executeQuery("SELECT * FROM user");
-            while(rs.next()) {  
-                if(rs.getString(8).equals(useremail) ){
-                    user_id= rs.getInt(1);       
-                    first_name =rs.getString(2);
-                    last_name=rs.getString(3);
-                   break;
-                }
-            }
+
             
-            rs = stmt.executeQuery("SELECT * FROM employee");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM employee");
             while(rs.next()){
                 if(rs.getInt(1) == user_id){
                     salary = rs.getInt(2);

@@ -107,7 +107,8 @@ body {
 <body>
     <h1 style="color:blue;">Hospital Management System Appointment </h1>
     <hr />
-  <%String useremail = session.getAttribute("userEmail").toString(); %>
+ <%--  <%String useremail = session.getAttribute("userEmail").toString(); %> --%>
+   <%    int user_id =(int)session.getAttribute("userID"); %>
     <div id="continer2">
     <div >
     <p> <h3 style="color:blue;">request appointment</h3></p>
@@ -219,7 +220,7 @@ body {
     String doctor_forApp=request.getParameter("DoctoridForList");  
     String FirstName=request.getParameter("firstName");
     String LastName=request.getParameter("lastName");
-    String userid="";
+    int userid=user_id;
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
@@ -236,15 +237,7 @@ body {
             
             java.util.Date now = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-            
-ResultSet rs5 = stmt.executeQuery("SELECT userID FROM user where email = '"+useremail+"'");
-            
-            while(rs5.next()) {  
-              
-/*                    out.println("user id is "+ rs5.getString("userID")); */
-                   userid=rs5.getString("userID");
-           
-            } 
+
             
             
             
@@ -401,7 +394,7 @@ ResultSet rs5 = stmt.executeQuery("SELECT userID FROM user where email = '"+user
           
          while(rs2.next())
          {
-             userid=rs2.getString("userID");
+             userid=rs2.getInt("userID");
              %>
              <tr>
                  <td><%=rs2.getString("userID") %></td>
