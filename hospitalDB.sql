@@ -1,3 +1,4 @@
+CREATE SCHEMA `hospital`;
 CREATE TABLE `user` (
   `userID` int UNSIGNED NOT NULL AUTO_INCREMENT,
   `firstName` varchar(45) NOT NULL,
