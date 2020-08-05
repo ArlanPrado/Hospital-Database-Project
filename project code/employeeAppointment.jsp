@@ -9,7 +9,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 100%,#92a8d1 5%,#D3D3D3 5%,#92a8d1 100%,white 100%);
- background-image: url("image9.jpg");
+ background-image: url("9.jpg");
 }
 #mylogin {
   align-self: center;
@@ -121,7 +121,7 @@ body {
     <br />Start Time: <input type="time" id="timePicker" name="start_time" min="09:00" max="18:00"  required/><br />
     <br />End Time: <input type="time" id="timePicker2" name="end_time" min="09:00" max="18:00"  required/><br />
     <br />Date: <input type="date" name="date" id="DOB"  required/><br />
-        <br /> <input type="submit" onclick="submit()  value="Submit" />
+        <br /> <input type="submit" value="Submit" />
     </form>
     
 </div> 
@@ -177,28 +177,10 @@ body {
             }
         }
     </script>
-
- <%-- 
-    <ul>
-        <li><p>
-                <b>start_time:</b>
-                <%= request.getParameter("start_time")%>
-            </p></li>
-             <li><p>
-                <b>end_time:</b>
-                <%= request.getParameter("end_time")%>
-            </p></li>
-     
-<<<<<<< HEAD
-    </ul> --%>
-
-    <%--  <%String useremail = session.getAttribute("userEmail").toString(); %> --%>
       
  <%    int user_id =(int)session.getAttribute("userID"); %>
-=======
-    </ul>--%>
  
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
+
     <% 
     
     String Patient_id=request.getParameter("Patientid");
@@ -210,13 +192,11 @@ body {
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
-<<<<<<< HEAD
-        String password = "Iluvhim@123";
+
          int userid= user_id;
-=======
+
           String password = session.getAttribute("dbPass").toString();
-         int userid= (int)session.getAttribute("user_id");
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
+         
         
         try {
             
@@ -228,13 +208,6 @@ body {
             
             java.util.Date now = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-            
-
-<<<<<<< HEAD
-            
-
-=======
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
                 
                 ResultSet rs4 = stmt.executeQuery("SELECT * FROM appointmentRequest where employeeID ='"+userid+"'");
                 %>

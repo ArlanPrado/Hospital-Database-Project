@@ -11,7 +11,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 100%,#92a8d1 5%,#D3D3D3 5%,#92a8d1 100%,white 100%);
- background-image: url("image17.jpg");
+ background-image: url("17.jpg");
 }
 </style>
 </head>

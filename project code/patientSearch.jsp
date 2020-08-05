@@ -7,7 +7,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 10%,#92a8d1 13%,#D3D3D3 13%,#92a8d1 50%,white 100%);
-  background-image: url("image11.jpg");
+  background-image: url("11.jpg");
 }
 #mylogin {
   align-self: center;

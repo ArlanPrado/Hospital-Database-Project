@@ -15,7 +15,7 @@
 <style type="text/css">
 body {
  background: linear-gradient(to bottom, #92a8d1 100%,#92a8d1 5%,#D3D3D3 5%,#92a8d1 100%,white 100%);
- background-image: url("image9.jpg");
+ background-image: url("9.jpg");
 }
 #mylogin {
   align-self: center;
@@ -109,11 +109,10 @@ body {
     <h1 style="color:blue;">Appointments </h1>
     <a href="patient.jsp">   <button>Back to Dashboard</button> </a>
     <hr />
-<<<<<<< HEAD
+
  <%--  <%String useremail = session.getAttribute("userEmail").toString(); %> --%>
    <%    int user_id =(int)session.getAttribute("userID"); %>
-=======
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
+
     <div id="continer2">
     <div >
     <p> <h3 style="color:blue;">Request Appointment</h3></p>
@@ -201,11 +200,10 @@ body {
     String doctor_forApp=request.getParameter("DoctoridForList");  
     String FirstName=request.getParameter("firstName");
     String LastName=request.getParameter("lastName");
-<<<<<<< HEAD
-    int userid=user_id;
-=======
+
+
     String userid=session.getAttribute("user_id").toString();
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
+
      String db = "Hospital";
         String user; // assumes database name is the same as username
           user = "root";
@@ -220,12 +218,6 @@ body {
             
             java.util.Date now = new java.util.Date();
             java.sql.Date sqlDate = new java.sql.Date(now.getTime());
-<<<<<<< HEAD
-
-=======
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
-            
-            
             
             if(doctor_forApp != null){
             
@@ -380,7 +372,7 @@ body {
           
          while(rs2.next())
          {
-             userid=rs2.getInt("userID");
+             userid=rs2.getString("userID");
              %>
              <tr>
                  <td><%=rs2.getString("userID") %></td>

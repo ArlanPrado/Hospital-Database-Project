@@ -12,7 +12,7 @@
 body {
 	background: linear-gradient(to bottom, #92a8d1 10%, #92a8d1 20%, #D3D3D3 20%,
 		#92a8d1 50%, white 100%);
-		 background-image: url("image8.jpg");
+		 background-image: url("8.jpg");
 }
 
 div {
@@ -136,38 +136,10 @@ background-image: url("image/11.jpg");
     </div>
 	<hr />
 
-<<<<<<< HEAD
-
-
-
 
 	<%-- <%String  = session.getAttribute("userEmail").toString(); %> --%>
-	 <%    int user_id =(int)session.getAttribute("userID"); %>
-
-	<%
-	    String db = "Hospital";
-	        String user; // assumes database name is the same as username
-	          user = "root";
-	        String password = "Iluvhim@123";
-	        
-	        String first_name="";
-	        String Last_name="";
-	        String diagnosis="";
-	        int patient_id=0;
-	        //int user_id=0;
-	        
-	        String medications="";
-	        String allergies ="";
-	        String diseases="";
-	        String symptoms ="";
-	        String familyHistory="";
-	        
-	        int appointment_id=0;
-	        String startTime ="";
-	        String endtTime ="";
-	        String appointmentDate ="";
-=======
-  <%	int user_id = (int) session.getAttribute("user_id");
+	 <%    int user_id =(int)session.getAttribute("userID");
+ 
          
        	String db = "Hospital";
         String user; // assumes database name is the same as username
@@ -211,7 +183,7 @@ background-image: url("image/11.jpg");
                    break;
                 }
             } 
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
+
 	        
 	      	String note="";
 	      	int note_ID=0;
@@ -219,80 +191,7 @@ background-image: url("image/11.jpg");
 	      	boolean changInfo=false;
 	      	 
 	        ArrayList <Integer> al = new ArrayList<Integer>();
-	   
-	       	java.sql.Date note_date = Date.valueOf("2000-01-01");
 
-	    //find the patient id using the patient id
-<<<<<<< HEAD
-	           ResultSet rs = stmt.executeQuery("SELECT * FROM user ");
-	           
-	        while (rs.next()) {
-	            if (rs.getInt(1)==(user_id)) {
-	                patient_id = rs.getInt(1);
-	                first_name = rs.getString(2);
-	                Last_name = rs.getString(3);
-=======
-
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
-	%>
-	<%--
-	<div class="success">
-		<p>
-			<strong>Hello!</strong>
-			<%=firstName%>
-			<%=lastName%></p>
-		<p>
-			<strong>your User_ID</strong>
-			<%=user_id%></p>
-			 <!-- Trigger/Open The Modal -->
-<button id="myBtn">Change your Information</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  Modal content
-  <div class="modal-content">
-   <form action="patient.jsp" method="post">
-    <br /> Phone:<input type="number"  name="phone" placeholder="new or old phon number" required /><br />
-    <br /> Address:<input type="text" name="address" placeholder="new or old Address" required/><br />
-        <br /> Email:<input type="email" name="email" placeholder="new or old phon email"required/><br />
-        <br /> <input type="submit" value="submit" />
-     <button><a class="button" href="patient.jsp">Cancel</a></button> 
-    </form>
-  </div>
-
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script> 
-	</div>
---%>
-	<%
             String Phone=request.getParameter("phone");
             String Address=request.getParameter("address");
             String UserEmail=request.getParameter("email");
@@ -313,57 +212,7 @@ window.onclick = function(event) {
                }
            } 
            %>
-           <%-- 
-           <%
-
-ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
-           
-           while(rs8.next()) {  
-               
-               if(rs8.getInt(1) == user_id ){
-                   note_ID=rs8.getInt(2);
-                  // out.println(rs6.getInt(2));
-                   al.add(rs8.getInt(2));   
-                  // out.println(al.size());
-               }            
-           } 
-           String recived="Yes";
-           for(int i=0;i<al.size();i++) {         
-       ResultSet rs9 = stmt.executeQuery("SELECT * FROM prescription");      
-           while(rs9.next())
-           {
-               if(rs9.getInt(1) == al.get(i) ){    
-                   
-                   if(rs9.getInt(1) ==0){
-                       recived ="No";  
-                   }
-               %>
-    <div class="info">
-    <h3>prescription detail</h3>
-        <p>
-            <strong>Name: </strong>
-            <%=rs9.getString("medicationName")%></p>
-        <p>
-            <strong>Amount:</strong>
-            <%=rs9.getString("totalAmount")%><br>
-        </p>
-        <p>
-            <strong>Note date: </strong>
-            <%=rs9.getString("receivedByPatient")%></p>
-        <p>
-            <strong>received:</strong>
-            <%=recived%><br>
-        </p>
-        <p>
-            <strong>frequency: </strong>
-            <%=rs9.getString("frequency")%></p>
-
-    </div>
-    <%}}}
-    
-  al.clear();
-
-           --%>
+         
            <%
            ResultSet rs3 = stmt.executeQuery("SELECT * FROM patientMedicalHistory ");
            
@@ -386,48 +235,20 @@ ResultSet rs8 = stmt.executeQuery("SELECT * FROM PatientHasPrescription");
            			break;
                }
            }
-          
-         
-          /*  java.sql.Date appointmentDate = Date.valueOf("2000-01-01"); */
+        
            
        ResultSet rs5 = stmt.executeQuery("SELECT * FROM appointment ");
            
            while(rs5.next()) {  
                if(rs5.getInt(1) == appointment_id ){
                    startTime=rs5.getString(2);
-<<<<<<< HEAD
-                   endtTime=rs5.getString(3);
+                   endTime=rs5.getString(3);
                    appointmentDate = rs5.getString(4);
+               }
+           }
                    
                    %>
-	<div class="ppointment">
-		<h4>past and current Appointment</h4>
-		<p>
-			<strong>Date: </strong>
-			<%=appointmentDate%></p>
-		<p>
-			<strong>time: </strong>
-			<%=startTime %>
-			-
-			<%=endtTime%></p>
-		<form action="appointment.jsp">
-			<input type="submit" value="request Appointment">
-		</form>
-	</div>
-
-	<%
-                   
-                   
-           break;
-=======
-                   endTime=rs5.getString(3);
-                   appointmentDate = rs5.getString(4);                   
-           			break;
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
-               }
-           } 
-           %>
-           
+	
          <div class="success">
   <p><strong>Hello!</strong> <%=firstName%> <%=lastName%></p>
    <p><strong>Your User ID:</strong> <%=user_id%></p>

@@ -12,7 +12,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   background-color: #867979;
-  background-image: url("image14.jpg");
+  background-image: url("14.jpg");
   color: #ffbf00;
 }
 /* Header/logo Title */
@@ -76,7 +76,7 @@ body {
   padding: 150px;
   text-align: center;
 background-color: rgb(105, 148, 175);
- background-image: url("image15.jpg");
+ background-image: url("15.jpg");
 }
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
@@ -164,7 +164,6 @@ background-color: rgb(105, 148, 175);
             java.sql.Connection con; 
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
-            out.println(db + " database successfully connected.<br/><br/>");
              
             Statement stmt = con.createStatement();
                         
@@ -182,7 +181,7 @@ background-color: rgb(105, 148, 175);
 	           		out.println(rs.getString(9) + "<br/><br/>");
 	            	user_id = rs.getInt(1);  
 	            	session.setAttribute("user_id", user_id);						//SET USER_ID THAT WILL BE USED THROUGH OUT THE PERSONAL EXPERIENCE
-	            	session.setAttribute("dbPass", "R?2nX3?6s");						//CHANGE THE DATABASE PASSWORD HERE
+	            	session.setAttribute("dbPass", password);						//CHANGE THE DATABASE PASSWORD HERE
 	            	gotUser = true;
             		break;
                   }
@@ -205,7 +204,6 @@ background-color: rgb(105, 148, 175);
               }else if(gotUser == false && attemptedLogin){
             	  out.println("Invalid email or password");
               }
-<<<<<<< HEAD
               
               ResultSet rs6 = stmt.executeQuery("SELECT employeeID FROM employee where employeeID = '"+user_id+"'");
               boolean isPatient = true;
@@ -226,8 +224,7 @@ background-color: rgb(105, 148, 175);
                  }
               
               session.setAttribute("userID", user_id);
-=======
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
+
             rs.close();
             stmt.close();
             con.close();
