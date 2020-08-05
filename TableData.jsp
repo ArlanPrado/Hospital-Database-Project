@@ -275,35 +275,35 @@ String insertSqluser30 = "INSERT INTO user (firstName,lastName,dateOfBirth,gende
            + "VALUES (30,'Epilepsy',119 ,'2020-02-13','2020-02-23','" + sqlDate + "')";  
            
    String insertSqlemployee1 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (31,120000,'Doctor','1970-09-12', '" + sqlDate + "')";
+         + "VALUES (31,120000,'Doctor','2019-09-12', '" + sqlDate + "')";
  String insertSqlemployee2 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (32,100000,'Nurse','1970-09-12', '" + sqlDate + "')";
+         + "VALUES (32,100000,'Nurse','2018-09-12', '" + sqlDate + "')";
  String insertSqlemployee3 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (33,150000,'Surgeon','1971-09-12', '" + sqlDate + "')";
+         + "VALUES (33,150000,'Surgeon','2018-09-12', '" + sqlDate + "')";
  String insertSqlemployee4 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (34,150000,'Specialist','1972-09-12', '" + sqlDate + "')";
+         + "VALUES (34,150000,'Specialist','2017-09-12', '" + sqlDate + "')";
  String insertSqlemployee5 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (35,100000,'Nurse','1973-09-12', '" + sqlDate + "')";
+         + "VALUES (35,100000,'Nurse','2010-09-12', '" + sqlDate + "')";
  String insertSqlemployee6 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (36,160000,'Surgeon','1970-09-12', '" + sqlDate + "')";
+         + "VALUES (36,160000,'Surgeon','2019-09-12', '" + sqlDate + "')";
  String insertSqlemployee7 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (37,140000,'Doctor','1970-09-01', '" + sqlDate + "')";
+         + "VALUES (37,140000,'Doctor','2018-09-01', '" + sqlDate + "')";
  String insertSqlemployee8 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (38,150000,'Pharmacist','1990-09-12', '" + sqlDate + "')";
+         + "VALUES (38,150000,'Pharmacist','2017-09-12', '" + sqlDate + "')";
  String insertSqlemployee9 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (39,130000,'Doctor','1995-09-12', '" + sqlDate + "')";
+         + "VALUES (39,130000,'Doctor','2019-09-12', '" + sqlDate + "')";
  String insertSqlemployee10 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (40,120000,'Surgeon','1995-09-12', '" + sqlDate + "')";
+         + "VALUES (40,120000,'Surgeon','2018-09-12', '" + sqlDate + "')";
  String insertSqlemployee11 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (41,135000,'Pharmacist','1999-09-12', '" + sqlDate + "')";
+         + "VALUES (41,135000,'Pharmacist','2019-09-12', '" + sqlDate + "')";
  String insertSqlemployee12 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (42,160000,'Doctor','2000-09-12', '" + sqlDate + "')";
+         + "VALUES (42,160000,'Doctor','2016-09-12', '" + sqlDate + "')";
  String insertSqlemployee13 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (43,136000,'Nurse','2000-09-12', '" + sqlDate + "')";
+         + "VALUES (43,136000,'Nurse','2018-09-12', '" + sqlDate + "')";
  String insertSqlemployee14 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (44,110000,'Surgeon','1970-09-12', '" + sqlDate + "')";
+         + "VALUES (44,110000,'Surgeon','2016-09-12', '" + sqlDate + "')";
  String insertSqlemployee15 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (45,140000,'Specialist','1980-09-12', '" + sqlDate + "')";
+         + "VALUES (45,140000,'Specialist','2015-09-12', '" + sqlDate + "')";
    
    
    String insertSqlmedhist1 = "INSERT INTO patientMedicalHistory (patientID,medications,allergies,"
@@ -595,35 +595,35 @@ String insertSqlpatientapp15 = "INSERT INTO PatientHasAppointment (patientID,app
 
   
   String insertSqlappointment1 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('2:00','2:30', '1920-08-15','" + sqlDate + "')";
+          + "VALUES ('2:00','2:30', '2020-08-15','" + sqlDate + "')";
   String insertSqlappointment2 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('3:00', '3:30', '1920-08-21','" + sqlDate + "')";
+          + "VALUES ('3:00', '3:30', '2020-08-21','" + sqlDate + "')";
   String insertSqlappointment3 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ( '4:00', '4:30','1920-08-14', '" + sqlDate + "')";
+          + "VALUES ( '4:00', '4:30','2020-08-14', '" + sqlDate + "')";
   String insertSqlappointment4 ="INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('4:30', '5:00', '1920-09-18', '" + sqlDate + "')";
+          + "VALUES ('4:30', '5:00', '2020-09-18', '" + sqlDate + "')";
   String insertSqlappointment5 ="INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('1:00', '1:30', '1920-09-21', '" + sqlDate + "')";
+          + "VALUES ('1:00', '1:30', '2020-09-21', '" + sqlDate + "')";
   String insertSqlappointment6 ="INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('1:15', '1:45', '1920-09-5', '" + sqlDate + "')";
+          + "VALUES ('1:15', '1:45', '2020-09-5', '" + sqlDate + "')";
   String insertSqlappointment7 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('1:40', '2:00', '1920-10-7', '" + sqlDate + "')";
+          + "VALUES ('1:40', '2:00', '2020-10-7', '" + sqlDate + "')";
   String insertSqlappointment8 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('10:00', '10:30', '1920-10-8', '" + sqlDate + "')";
+          + "VALUES ('10:00', '10:30', '2020-10-8', '" + sqlDate + "')";
   String insertSqlappointment9 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('8:45', '9:20', '1920-10-17', '" + sqlDate + "')";
+          + "VALUES ('8:45', '9:20', '2020-10-17', '" + sqlDate + "')";
   String insertSqlappointment10 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('11:00', '11:45', '1920-11-16', '" + sqlDate + "')";
+          + "VALUES ('11:00', '11:45', '2020-11-16', '" + sqlDate + "')";
   String insertSqlappointment11 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('10:00', '10:30', '1920-11-12', '" + sqlDate + "')";
+          + "VALUES ('10:00', '10:30', '2020-11-12', '" + sqlDate + "')";
   String insertSqlappointment12 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('11:00', '11:30', '1920-11-12', '" + sqlDate + "')";
+          + "VALUES ('11:00', '11:30', '2020-11-12', '" + sqlDate + "')";
   String insertSqlappointment13 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ( '11:30',  '12:00', '1920-11-12','" + sqlDate + "')";
+          + "VALUES ( '11:30',  '12:00', '2020-11-12','" + sqlDate + "')";
   String insertSqlappointment14 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('12:00', '12:30', '1920-11-12', '" + sqlDate + "')";
+          + "VALUES ('12:00', '12:30', '2020-11-12', '" + sqlDate + "')";
   String insertSqlappointment15 = "INSERT INTO appointment (start_time,end_time,date,CREATED_DATE) "
-          + "VALUES ('12:30','1:00','1920-11-12',  '" + sqlDate + "')";
+          + "VALUES ('12:30','1:00','2020-11-12',  '" + sqlDate + "')";
  
 
   
