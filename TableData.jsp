@@ -723,6 +723,23 @@ String insertSqlpatientapp15 = "INSERT INTO PatientHasAppointment (patientID,app
         statement.execute(insertSqlemployee14);
         statement.execute(insertSqlemployee15);
         
+         
+        statement.execute(insertSqlappointment1);
+        statement.execute(insertSqlappointment2);
+        statement.execute(insertSqlappointment3);
+        statement.execute(insertSqlappointment4);
+        statement.execute(insertSqlappointment5);
+        statement.execute(insertSqlappointment6);
+        statement.execute(insertSqlappointment7);
+        statement.execute(insertSqlappointment8);
+        statement.execute(insertSqlappointment9); 
+        statement.execute(insertSqlappointment10);
+        statement.execute(insertSqlappointment11);
+        statement.execute(insertSqlappointment12); 
+        statement.execute(insertSqlappointment13);
+        statement.execute(insertSqlappointment14);
+        statement.execute(insertSqlappointment15);
+        
         statement.execute(insertSqlmedhist1);
         statement.execute(insertSqlmedhist2);
         statement.execute(insertSqlmedhist3);
@@ -858,24 +875,7 @@ String insertSqlpatientapp15 = "INSERT INTO PatientHasAppointment (patientID,app
         statement.execute(insertSqlpatpres14);
         statement.execute(insertSqlpatpres15);
     
-        
-        
-        statement.execute(insertSqlappointment1);
-        statement.execute(insertSqlappointment2);
-        statement.execute(insertSqlappointment3);
-        statement.execute(insertSqlappointment4);
-        statement.execute(insertSqlappointment5);
-        statement.execute(insertSqlappointment6);
-        statement.execute(insertSqlappointment7);
-        statement.execute(insertSqlappointment8);
-        statement.execute(insertSqlappointment9); 
-        statement.execute(insertSqlappointment10);
-        statement.execute(insertSqlappointment11);
-        statement.execute(insertSqlappointment12); 
-        statement.execute(insertSqlappointment13);
-        statement.execute(insertSqlappointment14);
-        statement.execute(insertSqlappointment15);
-        
+    
         
         
         statement.close();
