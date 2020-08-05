@@ -44,123 +44,123 @@ connection passwored=passwored -->
 String insertSqluser1 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
                    + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Roman', 'Ballard','1970-09-12','m',0133434830,"
-                   +"'801 Pretlow St, Franklin, VA, 23851','airship@grufefse.cf',111111 ,'" + sqlDate + "')"; 
+                   +"'801 Pretlow St, Franklin, VA, 23851','airship@grufefse.cf',291029 ,'" + sqlDate + "')"; 
 String insertSqluser2 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Marisela', 'Gadison','1966-05-13','f',0143434830,"
-                    +"'63 Twin Peaks Ln, Sequim, WA, 98382','crimsane@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'63 Twin Peaks Ln, Sequim, WA, 98382','crimsane@grufefse.cf',234819 ,'" + sqlDate + "')";
 String insertSqluser3 ="INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Cliff', 'Woullard','1989-06-20','m',0153434830,"
-                    +"'6908 Longview Beach Rd, Jeffersonville','chrisk@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'6908 Longview Beach Rd, Jeffersonville','chrisk@grufefse.cf',112271 ,'" + sqlDate + "')";
 String insertSqluser4 ="INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Domingo', 'Zobel','1978-11-02','m',0163434830,"
-                    +"'8863 Black Point Rd, Syracuse, IN, 46567','aribaud@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'8863 Black Point Rd, Syracuse, IN, 46567','aribaud@grufefse.cf',189b61 ,'" + sqlDate + "')";
 String insertSqluser5 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Andria', 'Straley','1978-04-19','f',0153174830,"
-                    +"'10318 Kk Rd, Rapid River, MI, 49878','iamcal@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'10318 Kk Rd, Rapid River, MI, 49878','iamcal@grufefse.cf',290T31 ,'" + sqlDate + "')";
 String insertSqluser6 ="INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Santina', 'Linker','1994-03-17','f',0163184830,"
-                    +"'87 Gore Rd, Lancaster, NH, 03584','msloan@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'87 Gore Rd, Lancaster, NH, 03584','msloan@grufefse.cf',nMwufo ,'" + sqlDate + "')";
 String insertSqluser7 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Lucretia', 'Grissom','1965-07-06','f',0173194830,"
-                    +"'150 Barren, Conshohocken, PA, 19428 ','kodeman@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'150 Barren, Conshohocken, PA, 19428 ','kodeman@grufefse.cf',H20lsj ,'" + sqlDate + "')";
 String insertSqluser8 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Tianna', 'Nielson','1955-08-23','f',0183420830,"
-                    +"'30 Northington Dr, Avon, CT, 06001 ','delpino@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'30 Northington Dr, Avon, CT, 06001 ','delpino@grufefse.cf',hwuMn2 ,'" + sqlDate + "')";
 String insertSqluser9 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Angelia', 'Sisk','1998-03-16','f',0193214830,"
-                    +"'472 870th Hwy, Winnsboro, LA, 71295','arnold@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'472 870th Hwy, Winnsboro, LA, 71295','arnold@grufefse.cf',P19301 ,'" + sqlDate + "')";
 String insertSqluser10 ="INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Sheilah', 'Rueb','1979-09-26','f',0203224830,"
-                    +"'625 E Plum St, Vineland, NJ, 08360','portele@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'625 E Plum St, Vineland, NJ, 08360','portele@grufefse.cf',h18394 ,'" + sqlDate + "')";
 String insertSqluser11 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Mafalda', 'Call','1984-01-02','f',0213234830,"
-                    +"'234 E Black Point Rd, Syracuse, IN, 46567 ','presoff@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'234 E Black Point Rd, Syracuse, IN, 46567 ','presoff@grufefse.cf',fhioq1 ,'" + sqlDate + "')";
 String insertSqluser12 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
                     + "VALUES ('Lilia', 'Thorsen','1995-08-12','f',0222434830,"
-                    +"'23 Gore st, Lancaster, NH, 03584','vsprintf@grufefse.cf',111111 ,'" + sqlDate + "')";
+                    +"'23 Gore st, Lancaster, NH, 03584','vsprintf@grufefse.cf',08Iu24 ,'" + sqlDate + "')";
 String insertSqluser13 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
         + "VALUES ('Mafalda', 'Thorsen','1998-05-07','f',0092434830,"
-        +"'77 Gore st, hamilton, NH, 03584','Mafalda@grufefse.cf',111111 ,'" + sqlDate + "')";
+        +"'77 Gore st, hamilton, NH, 03584','Mafalda@grufefse.cf',(o1b4j2 ,'" + sqlDate + "')";
 String insertSqluser14 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
         + "VALUES ('Lilia', 'Sheilah','1973-04-11','f',0222434830,"
-        +"'567 Gore st, Lancaster, NH, 03584','Lilia45@grufefse.cf',111111 ,'" + sqlDate + "')";
+        +"'567 Gore st, Lancaster, NH, 03584','Lilia45@grufefse.cf',B918g4 ,'" + sqlDate + "')";
 String insertSqluser15 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
         + "phoneNumber, address, email, password, CREATED_DATE) "
         + "VALUES ('Angelia', 'Thorsen','1975-09-30','f',0792434830,"
-        +"'568 Gore st, Lancaster, NH, 03584','Angelia56@grufefse.cf',111111 ,'" + sqlDate + "')"; 
+        +"'568 Gore st, Lancaster, NH, 03584','Angelia56@grufefse.cf',B81Bd3,'" + sqlDate + "')"; 
 String insertSqluser16 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
                   + "phoneNumber, address, email, password, CREATED_DATE) "
                   + "VALUES ('Ballard','Roman', '1970-09-12','m',0133434830,"
-                  +"'801 Pretlow St, Franklin, VA, 23851','rrirship@grufefse.cf',111111 ,'" + sqlDate + "')"; 
+                  +"'801 Pretlow St, Franklin, VA, 23851','rrirship@grufefse.cf',928838 ,'" + sqlDate + "')"; 
 String insertSqluser17 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Gadison','Marisela', '1970-09-12','m',0143434830,"
-                   +"'63 Twin Peaks Ln, Sequim, WA, 98382','hgimsane@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'63 Twin Peaks Ln, Sequim, WA, 98382','hgimsane@grufefse.cf',262262 ,'" + sqlDate + "')";
 String insertSqluser18 ="INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Woullard','Cliff', '1970-09-12','m',0153434830,"
-                   +"'6908 Longview Beach Rd, Jeffersonville','jfrisk@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'6908 Longview Beach Rd, Jeffersonville','jfrisk@grufefse.cf',j94Che ,'" + sqlDate + "')";
 String insertSqluser19 ="INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Zobel','Domingo', '1970-09-12','m',0163434830,"
-                   +"'8863 Black Point Rd, Syracuse, IN, 46567','mjibaud@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'8863 Black Point Rd, Syracuse, IN, 46567','mjibaud@grufefse.cf',hiq94S ,'" + sqlDate + "')";
 String insertSqluser20 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Straley','Andria', '1970-09-12','m',0153174830,"
-                   +"'10318 Kk Rd, Rapid River, MI, 49878','rsmcal@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'10318 Kk Rd, Rapid River, MI, 49878','rsmcal@grufefse.cf',9M274D ,'" + sqlDate + "')";
 String insertSqluser21 ="INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Linker','Santina', '1970-09-12','m',0163184830,"
-                   +"'87 Gore Rd, Lancaster, NH, 03584','wfloan@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'87 Gore Rd, Lancaster, NH, 03584','wfloan@grufefse.cf',183bTr ,'" + sqlDate + "')";
 String insertSqluser22 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Grissom','Lucretia', '1970-09-12','m',0173194830,"
-                   +"'150 Barren, Conshohocken, PA, 19428 ','kudeman@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'150 Barren, Conshohocken, PA, 19428 ','kudeman@grufefse.cf',9201Bn ,'" + sqlDate + "')";
 String insertSqluser23 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Nielson','Tianna', '1970-09-12','m',0183420830,"
-                   +"'30 Northington Dr, Avon, CT, 06001 ','whlpino@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'30 Northington Dr, Avon, CT, 06001 ','whlpino@grufefse.cf',M83b1S ,'" + sqlDate + "')";
 String insertSqluser24 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Sisk','Angelia', '1970-09-12','m',0193214830,"
-                   +"'472 870th Hwy, Winnsboro, LA, 71295','ulnold@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'472 870th Hwy, Winnsboro, LA, 71295','ulnold@grufefse.cf',91StUw ,'" + sqlDate + "')";
 String insertSqluser25 ="INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Rueb','Sheilah', '1970-09-12','m',0203224830,"
-                   +"'625 E Plum St, Vineland, NJ, 08360','qdrtele@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'625 E Plum St, Vineland, NJ, 08360','qdrtele@grufefse.cf',9271Bd ,'" + sqlDate + "')";
 String insertSqluser26 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Call','Mafalda', '1970-09-12','m',0213234830,"
-                   +"'234 E Black Point Rd, Syracuse, IN, 46567 ','whgsoff@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'234 E Black Point Rd, Syracuse, IN, 46567 ','whgsoff@grufefse.cf',KT6301 ,'" + sqlDate + "')";
 String insertSqluser27 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
                    + "VALUES ('Thorsen','Lilia', '1970-09-12','m',0222434830,"
-                   +"'23 Gore st, Lancaster, NH, 03584','typrintf@grufefse.cf',111111 ,'" + sqlDate + "')";
+                   +"'23 Gore st, Lancaster, NH, 03584','typrintf@grufefse.cf',91M648 ,'" + sqlDate + "')";
 String insertSqluser28 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
        + "VALUES ('Thorsen','Mafalda', '1970-09-12','m',0092434830,"
-       +"'77 Gore st, hamilton, NH, 03584','enfalda@grufefse.cf',111111 ,'" + sqlDate + "')";
+       +"'77 Gore st, hamilton, NH, 03584','enfalda@grufefse.cf',927174 ,'" + sqlDate + "')";
 String insertSqluser29 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
        + "VALUES ('Sheilah','Lilia', '1970-09-12','m',0222434830,"
-       +"'567 Gore st, Lancaster, NH, 03584','oplia45@grufefse.cf',111111 ,'" + sqlDate + "')";
+       +"'567 Gore st, Lancaster, NH, 03584','oplia45@grufefse.cf',FT7291 ,'" + sqlDate + "')";
 String insertSqluser30 = "INSERT INTO user (firstName,lastName,dateOfBirth,gender,"
        + "phoneNumber, address, email, password, CREATED_DATE) "
        + "VALUES ('Angelia', 'Thorsen','1970-09-12','m',0792434830,"
-       +"'568 Gore st, Lancaster, NH, 03584','qrgelia56@grufefse.cf',111111 ,'" + sqlDate + "')"; 
+       +"'568 Gore st, Lancaster, NH, 03584','qrgelia56@grufefse.cf',9271Ba ,'" + sqlDate + "')"; 
 
  
     
@@ -564,35 +564,35 @@ String insertSqlpatientapp15 = "INSERT INTO PatientHasAppointment (patientID,app
  
  
  String insertSqlemployee1 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (57,120000,'Specialists','1970-09-12', '" + sqlDate + "')";
+         + "VALUES (57,120000,'Doctor','1970-09-12', '" + sqlDate + "')";
  String insertSqlemployee2 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (58,100000,'Nurses','1970-09-12', '" + sqlDate + "')";
+         + "VALUES (58,100000,'Nurse','1970-09-12', '" + sqlDate + "')";
  String insertSqlemployee3 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (59,150000,'Surgeons','1971-09-12', '" + sqlDate + "')";
+         + "VALUES (59,150000,'Surgeon','1971-09-12', '" + sqlDate + "')";
  String insertSqlemployee4 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (60,150000,'Specialists','1972-09-12', '" + sqlDate + "')";
+         + "VALUES (60,150000,'Specialist','1972-09-12', '" + sqlDate + "')";
  String insertSqlemployee5 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (61,100000,'Nurses','1973-09-12', '" + sqlDate + "')";
+         + "VALUES (61,100000,'Nurse','1973-09-12', '" + sqlDate + "')";
  String insertSqlemployee6 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (72,160000,'Surgeons','1970-09-12', '" + sqlDate + "')";
+         + "VALUES (72,160000,'Surgeon','1970-09-12', '" + sqlDate + "')";
  String insertSqlemployee7 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (73,140000,'Nurses','1970-09-01', '" + sqlDate + "')";
+         + "VALUES (73,140000,'Doctor','1970-09-01', '" + sqlDate + "')";
  String insertSqlemployee8 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (74,150000,'Pharmacists','1990-09-12', '" + sqlDate + "')";
+         + "VALUES (74,150000,'Pharmacist','1990-09-12', '" + sqlDate + "')";
  String insertSqlemployee9 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (75,130000,'Pharmacists','1995-09-12', '" + sqlDate + "')";
+         + "VALUES (75,130000,'Doctor','1995-09-12', '" + sqlDate + "')";
  String insertSqlemployee10 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (76,120000,'Surgeons','1995-09-12', '" + sqlDate + "')";
+         + "VALUES (76,120000,'Surgeon','1995-09-12', '" + sqlDate + "')";
  String insertSqlemployee11 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (77,135000,'Pharmacists','1999-09-12', '" + sqlDate + "')";
+         + "VALUES (77,135000,'Pharmacist','1999-09-12', '" + sqlDate + "')";
  String insertSqlemployee12 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (78,160000,'Surgeons','2000-09-12', '" + sqlDate + "')";
+         + "VALUES (78,160000,'Doctor','2000-09-12', '" + sqlDate + "')";
  String insertSqlemployee13 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (79,136000,'Nurses','2000-09-12', '" + sqlDate + "')";
+         + "VALUES (79,136000,'Nurse','2000-09-12', '" + sqlDate + "')";
  String insertSqlemployee14 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (80,110000,'Surgeons','1970-09-12', '" + sqlDate + "')";
+         + "VALUES (80,110000,'Surgeon','1970-09-12', '" + sqlDate + "')";
  String insertSqlemployee15 = "INSERT INTO employee (employeeID,salary,position,hireDate, CREATED_DATE) "
-         + "VALUES (81,140000,'Specialists','1980-09-12', '" + sqlDate + "')";
+         + "VALUES (81,140000,'Specialist','1980-09-12', '" + sqlDate + "')";
    
 
   
