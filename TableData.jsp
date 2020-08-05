@@ -707,6 +707,21 @@ String insertSqlpatientapp15 = "INSERT INTO PatientHasAppointment (patientID,app
         statement.execute(insertSqlpatient14);
         statement.execute(insertSqlpatient15);
         
+         statement.execute(insertSqlemployee1);
+        statement.execute(insertSqlemployee2);
+        statement.execute(insertSqlemployee3);
+        statement.execute(insertSqlemployee4);
+        statement.execute(insertSqlemployee5);
+        statement.execute(insertSqlemployee6);
+        statement.execute(insertSqlemployee7);
+        statement.execute(insertSqlemployee8);
+        statement.execute(insertSqlemployee9); 
+        statement.execute(insertSqlemployee10);
+        statement.execute(insertSqlemployee11);
+        statement.execute(insertSqlemployee12); 
+        statement.execute(insertSqlemployee13);
+        statement.execute(insertSqlemployee14);
+        statement.execute(insertSqlemployee15);
         
         statement.execute(insertSqlmedhist1);
         statement.execute(insertSqlmedhist2);
@@ -842,23 +857,7 @@ String insertSqlpatientapp15 = "INSERT INTO PatientHasAppointment (patientID,app
         statement.execute(insertSqlpatpres13);
         statement.execute(insertSqlpatpres14);
         statement.execute(insertSqlpatpres15);
-        
-        
-        statement.execute(insertSqlemployee1);
-        statement.execute(insertSqlemployee2);
-        statement.execute(insertSqlemployee3);
-        statement.execute(insertSqlemployee4);
-        statement.execute(insertSqlemployee5);
-        statement.execute(insertSqlemployee6);
-        statement.execute(insertSqlemployee7);
-        statement.execute(insertSqlemployee8);
-        statement.execute(insertSqlemployee9); 
-        statement.execute(insertSqlemployee10);
-        statement.execute(insertSqlemployee11);
-        statement.execute(insertSqlemployee12); 
-        statement.execute(insertSqlemployee13);
-        statement.execute(insertSqlemployee14);
-        statement.execute(insertSqlemployee15);
+    
         
         
         statement.execute(insertSqlappointment1);
