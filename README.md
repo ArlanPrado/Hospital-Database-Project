@@ -10,3 +10,11 @@ Jade Webb
 
 Girma Jembere
 
+
+Assignment Requirements:
+
+- Create a database using MySQL
+
+- Create an application utilizing the database
+
+- Write and submit a report
