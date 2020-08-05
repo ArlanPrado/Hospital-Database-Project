@@ -465,35 +465,35 @@ String insertSqlpatientapp15 = "INSERT INTO PatientHasAppointment (patientID,app
 
   
 
-   String insertSqlemppat1 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat1 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
          + "VALUES (16,31, '" + sqlDate + "')";
-   String insertSqlemppat2 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat2 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (17,32, '" + sqlDate + "')";
-   String insertSqlemppat3 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat3 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (18,33, '" + sqlDate + "')";
-   String insertSqlemppat4 ="INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat4 ="INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (19,34, '" + sqlDate + "')";
-   String insertSqlemppat5 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat5 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (20,35, '" + sqlDate + "')";
-   String insertSqlemppat6 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat6 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (21,36,'" + sqlDate + "')";
-   String insertSqlemppat7 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat7 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (22,37, '" + sqlDate + "')";
-   String insertSqlemppat8 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat8 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (23,38, '" + sqlDate + "')";
-   String insertSqlemppat9 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat9 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (24,39, '" + sqlDate + "')";
-   String insertSqlemppat10 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat10 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (25,40, '" + sqlDate + "')";
-   String insertSqlemppat11 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat11 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (26,41, '" + sqlDate + "')";
-   String insertSqlemppat12 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat12 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (27,42, '" + sqlDate + "')";
-   String insertSqlemppat13 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat13 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (28,43, '" + sqlDate + "')";
-   String insertSqlemppat14 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat14 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (29,44, '" + sqlDate + "')";
-   String insertSqlemppat15 = "INSERT INTO employeeHasPatients (patientID,employeeID, CREATED_DATE) "
+   String insertSqlemppat15 = "INSERT INTO employeeHasPatient (patientID,employeeID, CREATED_DATE) "
            + "VALUES (30,45, '" + sqlDate + "')";
 
 
