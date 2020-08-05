@@ -15,7 +15,7 @@
 body {
 	background: linear-gradient(to bottom, #92a8d1 10%, #92a8d1 20%, #D3D3D3 20%,
 		#92a8d1 50%, white 100%);
-		 background-image: url("image8.jpg");
+		 background-image: url("8.jpg");
 }
 
 #mylogin {
@@ -143,24 +143,18 @@ div {
  
 
     <% 
-<<<<<<< HEAD
  
        /*  String useremail = session.getAttribute("userEmail").toString(); */
         int user__id =(int)session.getAttribute("userID"); 
-=======
-
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
         String dbStatus = "Error connecting to database";   //default error message
     
         String db = "Hospital";
         String user = "root";
         String password = session.getAttribute("dbPass").toString();
         
-<<<<<<< HEAD
-        int user_id = user__id;
-=======
+       // int user_id = user__id;
         int user_id = (int)session.getAttribute("user_id");
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
+
         String first_name, last_name;
         String position;
         int salary = 0;
@@ -184,10 +178,7 @@ div {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Hospital?serverTimezone=EST5EDT",user, password);
             dbStatus = (db + " database successfully connected.<br/><br/>");            
             Statement stmt = con.createStatement();
-            
-<<<<<<< HEAD
 
-=======
             ResultSet rs = stmt.executeQuery("SELECT * FROM user");
             while(rs.next()) {  
                 if(rs.getInt("userID") == user_id){;       
@@ -196,14 +187,14 @@ div {
                    break;
                 }
             }
->>>>>>> 55f579b52521b584cca3a7547770df4e959d4288
+
             
-            ResultSet rs = stmt.executeQuery("SELECT * FROM employee");
-            while(rs.next()){
-                if(rs.getInt("employeeID") == user_id){
-                    salary = rs.getInt("salary");
-                    position = rs.getString("position");
-                    hire_date = sdf2.format(rs.getDate("hireDate"));
+            ResultSet rs2 = stmt.executeQuery("SELECT * FROM employee");
+            while(rs2.next()){
+                if(rs2.getInt("employeeID") == user_id){
+                    salary = rs2.getInt("salary");
+                    position = rs2.getString("position");
+                    hire_date = sdf2.format(rs2.getDate("hireDate"));
                     break;
                 }
             }
@@ -216,7 +207,7 @@ div {
        <p><strong>Hire Date: </strong> <%=hire_date%></p>
 </div>         
           <%
-          //THERE IS A PROBLEM WITH DISPLAYING TIME, IT DOES NOT MATCH WITH THE MYSQL
+         
           rs = stmt.executeQuery("SELECT *" +
                   "FROM " + 
                   "(SELECT userID, firstName, lastName, room, start_time, end_time, appointment.date, employee.employeeID " +
