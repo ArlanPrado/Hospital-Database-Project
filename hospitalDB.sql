@@ -142,7 +142,7 @@ CREATE TABLE `PatientHasAppointment` (
 
 
 
-CREATE TABLE `employeeHasPatients` (
+CREATE TABLE `employeeHasPatient` (
   `patientID`int UNSIGNED not NULL,
   `employeeID` int UNSIGNED not NULL,
   `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
