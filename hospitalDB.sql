@@ -114,7 +114,7 @@ CREATE TABLE `EmployeeOrdersPrescription` (
 
 
 
-CREATE TABLE `EmployeeCreateAppointment` (
+CREATE TABLE `EmployeeCreatesAppointment` (
   `appointmentID` INT UNSIGNED not NULL,
   `employeeID` int UNSIGNED not NULL,
  `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -154,7 +154,7 @@ CREATE TABLE `employeeHasPatients` (
 
 
 
-CREATE TABLE `patientsHasNote` (
+CREATE TABLE `patientHasNote` (
   `patientID` int UNSIGNED not NULL,
   `noteID` int UNSIGNED not NULL,
  `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
