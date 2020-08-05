@@ -16,10 +16,10 @@
 
 <html>
   <head>
-    <title>JDBC Connection example</title>
+    <title>Loading Tables</title>
     </head>
   <body>
-    <h1>JDBC Connection example</h1>
+    <h1>Loading Tables</h1>
 
 <!--   dabase name =Hospital -->
 <!-- conection name= root
