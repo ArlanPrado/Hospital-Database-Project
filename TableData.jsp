@@ -646,7 +646,7 @@ String insertSqlpatientapp15 = "INSERT INTO PatientHasAppointment (patientID,app
         statement.execute(insertSqluser14);
         statement.execute(insertSqluser15);
         statement.execute(insertSqluser16);
-        statement.execute(insertSqluse(17);
+        statement.execute(insertSqluser17);
         statement.execute(insertSqluser18);
         statement.execute(insertSqluser19);
         statement.execute(insertSqluser20);
