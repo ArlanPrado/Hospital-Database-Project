@@ -212,35 +212,35 @@ String insertSqluser30 = "INSERT INTO user (firstName,lastName,dateOfBirth,gende
     
    
   String insertSqlnote1 = "INSERT INTO note (detail, date, CREATED_DATE) "
-          + "VALUES ('Blood pressure is lower. Feet are inspected and there are no callouses, no compromised skin. No vision complaints.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('Blood pressure is lower. Feet are inspected and there are no callouses, no compromised skin. No vision complaints.','2019-07-18', '" + sqlDate + "')";
   String insertSqlnote2 =  "INSERT INTO note (detail,date, CREATED_DATE) "
-          + "VALUES ('Oral cavity and pharynx normal. No inflammation, swelling, exudate, or lesions. Teeth and gingiva in good general condition.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('Oral cavity and pharynx normal. No inflammation, swelling, exudate, or lesions. Teeth and gingiva in good general condition.','2019-04-12', '" + sqlDate + "')";
   String insertSqlnote3 = "INSERT INTO note (detail,date, CREATED_DATE) "
-          + "VALUES ('External auditory canals and tympanic membranes clear, hearing ','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('External auditory canals and tympanic membranes clear, hearing ','2019-09-02', '" + sqlDate + "')";
   String insertSqlnote4 =  "INSERT INTO note (detail, date,CREATED_DATE) "
-          + "VALUES ('Neck supple, non-tender without lymphadenopathy, masses or thyromegaly.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('Neck supple, non-tender without lymphadenopathy, masses or thyromegaly.','2019-10-17', '" + sqlDate + "')";
   String insertSqlnote5 =  "INSERT INTO note (detail, date,CREATED_DATE) "
-          + "VALUES ('No inflammation, swelling, exudate, or lesions. Teeth and gingiva in good general condition.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('No inflammation, swelling, exudate, or lesions. Teeth and gingiva in good general condition.','2019-02-12', '" + sqlDate + "')";
   String insertSqlnote6 =  "INSERT INTO note (detail,date, CREATED_DATE) "
-          + "VALUES ('No significant deformity or joint abnormality. No edema. Peripheral pulses intact. No varicosities.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('No significant deformity or joint abnormality. No edema. Peripheral pulses intact. No varicosities.','2019-08-22', '" + sqlDate + "')";
   String insertSqlnote7 =  "INSERT INTO note (detail, date,CREATED_DATE) "
-          + "VALUES ('The head is normocephalic and atraumatic.  The head and neck are nontender without thyromegaly or adenopathy.  ','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('The head is normocephalic and atraumatic.  The head and neck are nontender without thyromegaly or adenopathy.  ','2019-07-11', '" + sqlDate + "')";
   String insertSqlnote8 =  "INSERT INTO note (detail, date,CREATED_DATE) "
-          + "VALUES ('LUNGS:  Clear to auscultation. ABDOMEN:  Soft and nontender.', '1920-09-12','" + sqlDate + "')";
+          + "VALUES ('LUNGS:  Clear to auscultation. ABDOMEN:  Soft and nontender.', '2019-02-14','" + sqlDate + "')";
   String insertSqlnote9 =  "INSERT INTO note (detail,date, CREATED_DATE) "
-          + "VALUES ('EXTREMITIES:  No cyanosis, clubbing or edema in the extremities.', '1920-09-12','" + sqlDate + "')";
+          + "VALUES ('EXTREMITIES:  No cyanosis, clubbing or edema in the extremities.', '2019-02-15','" + sqlDate + "')";
   String insertSqlnote10 =  "INSERT INTO note (detail,date, CREATED_DATE) "
-          + "VALUES ('The patient is pleasant, appears her stated age.  Body habitus is mesomorphic.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('The patient is pleasant, appears her stated age.  Body habitus is mesomorphic.','2019-01-18', '" + sqlDate + "')";
   String insertSqlnote11 =  "INSERT INTO note (detail, date,CREATED_DATE) "
-          + "VALUES ('VITAL SIGNS:  Currently stable.  The patient is afebrile.', '1920-09-12','" + sqlDate + "')";
+          + "VALUES ('VITAL SIGNS:  Currently stable.  The patient is afebrile.', '2019-11-12','" + sqlDate + "')";
   String insertSqlnote12 =  "INSERT INTO note (detail,date, CREATED_DATE) "
-          + "VALUES ('SKIN AND EXTREMITIES:  No skin rashes or lesions are noted.  No cyanosis, clubbing or edema of the extremities.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('SKIN AND EXTREMITIES:  No skin rashes or lesions are noted.  No cyanosis, clubbing or edema of the extremities.','2019-09-12', '" + sqlDate + "')";
   String insertSqlnote13 =  "INSERT INTO note (detail,date, CREATED_DATE) "
-          + "VALUES ('HEART:  Regular rate and rhythm.LUNGS:  Clear to auscultation.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('HEART:  Regular rate and rhythm.LUNGS:  Clear to auscultation.','2019-02-16', '" + sqlDate + "')";
   String insertSqlnote14 =  "INSERT INTO note (detail, date,CREATED_DATE) "
-          + "VALUES ('GENERAL:  The patient is a well-developed, well-nourished male in no acute distress, oriented x3.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('GENERAL:  The patient is a well-developed, well-nourished male in no acute distress, oriented x3.','2019-08-05', '" + sqlDate + "')";
   String insertSqlnote15 =  "INSERT INTO note (detail, date,CREATED_DATE) "
-          + "VALUES ('LUNGS:  Clear to auscultation bilaterally. No wheezes, rales or rhonchi.','1920-09-12', '" + sqlDate + "')";
+          + "VALUES ('LUNGS:  Clear to auscultation bilaterally. No wheezes, rales or rhonchi.','2019-09-06', '" + sqlDate + "')";
    
      
    String insertSqlpatient1 = "INSERT INTO patient (patientID,diagnosis,room,admissionDate,dischargeDate, CREATED_DATE) "
