@@ -33,7 +33,7 @@ CREATE TABLE `employee` (
   `salary` INT  DEFAULT NULL,
   `position` varchar(45) DEFAULT NULL,
   `hireDate` date NOT NULL,
-  `endDate` date NOT NULL,
+  `endDate` date DEFAULT NULL,
   `CREATED_DATE` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (`employeeID`) REFERENCES `user`(`userID`) ON DELETE RESTRICT ON 
 UPDATE CASCADE
